@@ -4,6 +4,7 @@ import { classNames } from '~/utils/classNames';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Avatar } from '~/components/Avatar';
+import { Nav } from '~/components/Nav';
 
 enum MessageTypesEnum {
   AI = 'AI',
@@ -140,14 +141,7 @@ export default function Chat() {
   return (
     <main className="flex flex-col items-center p-8">
       <h1 className="text-2xl mb-4">Autoblocks Chat Example</h1>
-      <ul className="text-blue-700 text-lg list-disc">
-        <li>
-          <Link href="/chat">Chat Example</Link>
-        </li>
-        <li>
-          <Link href="/email">Email Example</Link>
-        </li>
-      </ul>
+      <Nav />
       <div className="max-w-6xl w-full mx-auto">
         <div
           className="border-2 border-black rounded-t-lg border-b-0 p-4 h-[600px] flex flex-col space-y-4 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
