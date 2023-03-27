@@ -98,7 +98,7 @@ export default function Task() {
     await fetch('/api/send-llm-event', {
       method: 'POST',
       body: JSON.stringify({
-        name: `Summarize Title and Description`,
+        name: 'Find relevant ticket.',
         feature: 'Auto Assign Ticket',
         interactionId,
         input: `With the following tickets which is more similar to "A bug ticket about auto assign". ""Ticket 1=Fix description auto complete when changing assignee. Assignee=Wade Cooper."" ""Ticket 2=Assignee Dropdowns are the wrong size. Assignee Olivia Rhye.""`,
