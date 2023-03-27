@@ -85,13 +85,31 @@ export default function Chat() {
         }),
       });
       await sleep(100);
+      await fetch('/api/send-event', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: `Searching Vector DB with query: ${usersMessage}`,
+          feature: 'Support Chatbot',
+          interactionId,
+        }),
+      });
+      await sleep(100);
+      await fetch('/api/send-event', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: `Results from Vector DB: ["Advanced tools", "Configure settings", "How to setup your instance"]`,
+          feature: 'Support Chatbot',
+          interactionId,
+        }),
+      });
+      await sleep(100);
       await fetch('/api/send-llm-event', {
         method: 'POST',
         body: JSON.stringify({
           name: `Process user message`,
           feature: 'Support Chatbot',
           interactionId,
-          input: usersMessage,
+          input: `You are an AI assistant. You are friendly and helpful. A user is asking "${usersMessage}". Which of the following support articles best match their query? "Advanced tools", "Configure settings", "How to setup your instance"`,
           output: aiMessages[1].text,
           provider: 'OPENAI',
           model: 'gpt-3.5-turbo',
