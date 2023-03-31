@@ -77,10 +77,11 @@ export default function Chat() {
     });
     setCurrentMessage('');
     if (messages.length === 1) {
-      await fetch('/api/send-event', {
+      await fetch('/api/send-user-input-event', {
         method: 'POST',
         body: JSON.stringify({
-          name: `User message: ${usersMessage}`,
+          name: `User message`,
+          input: usersMessage,
           feature: 'Support Chatbot',
           interactionId,
         }),
@@ -128,10 +129,11 @@ export default function Chat() {
         }),
       });
     } else {
-      await fetch('/api/send-event', {
+      await fetch('/api/send-user-input-event', {
         method: 'POST',
         body: JSON.stringify({
-          name: `User message: ${usersMessage}`,
+          name: `User message`,
+          input: usersMessage,
           feature: 'Support Chatbot',
           interactionId,
         }),
