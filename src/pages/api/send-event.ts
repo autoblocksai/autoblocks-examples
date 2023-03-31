@@ -4,7 +4,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await fetch('https://api.autoblocks.ai/v1/event', {
+  await fetch('https://api.autoblocks.ai/v1/events', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

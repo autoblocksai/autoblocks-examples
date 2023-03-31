@@ -44,19 +44,21 @@ export default function Task() {
     value: null;
     avatar?: string;
   }) => {
-    await fetch('/api/send-event', {
+    await fetch('/api/send-user-input-event', {
       method: 'POST',
       body: JSON.stringify({
-        name: `Entered Title: ${title}`,
+        name: `Entered Title`,
+        input: title,
         feature: 'Auto Assign Ticket',
         interactionId,
       }),
     });
     await sleep(100);
-    await fetch('/api/send-event', {
+    await fetch('/api/send-user-input-event', {
       method: 'POST',
       body: JSON.stringify({
-        name: `Entered Description: ${description}`,
+        name: `Entered Description`,
+        input: description,
         feature: 'Auto Assign Ticket',
         interactionId,
       }),
@@ -123,6 +125,17 @@ export default function Task() {
       method: 'POST',
       body: JSON.stringify({
         name: `User Overrode Assignee to ${selectedVal.name}`,
+        feature: 'Auto Assign Ticket',
+        interactionId,
+      }),
+    });
+    await sleep(100);
+    await fetch('/api/send-user-feedback-event', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: 'User Feedback for Auto Assign',
+        feedbackType: 'POSITIVE_NEGATIVE',
+        feedback: 'NEGATIVE',
         feature: 'Auto Assign Ticket',
         interactionId,
       }),
