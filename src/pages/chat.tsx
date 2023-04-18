@@ -7,7 +7,7 @@ import { createId } from '@paralleldrive/cuid2';
 
 enum MessageTypesEnum {
   AI = 'AI',
-  HUMAN = 'HUMAN"',
+  HUMAN = 'HUMAN',
 }
 
 interface Message {
@@ -27,6 +27,7 @@ const aiMessages = [
 
 export default function Chat() {
   const chatboxRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       ...aiMessages[0],
@@ -50,52 +51,57 @@ export default function Chat() {
   });
 
   const onAsk = async () => {
-    const usersMessage = currentMessage;
-    setMessages((prevMessages) => {
-      return [
-        ...prevMessages,
-        {
-          text: usersMessage,
-          type: MessageTypesEnum.HUMAN,
-          dateTime: new Date().getTime(),
-          id: createId(),
-        },
-      ];
-    });
-    setCurrentMessage('');
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      body: JSON.stringify({
-        userInput: usersMessage,
-        pastMessages: openAIMessages,
-        traceId,
-      }),
-    });
-    const { message } = await res.json();
-    setMessages((prevMessages) => {
-      return [
-        ...prevMessages,
-        {
-          text: message,
-          type: MessageTypesEnum.AI,
-          dateTime: new Date().getTime(),
-          id: createId(),
-        },
-      ];
-    });
-    setOpenAIMessages((prevMessages) => {
-      return [
-        ...prevMessages,
-        {
-          role: 'user',
-          content: usersMessage,
-        },
-        {
-          role: 'assistant',
-          content: message,
-        },
-      ];
-    });
+    setIsLoading(true);
+    try {
+      const usersMessage = currentMessage;
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            text: usersMessage,
+            type: MessageTypesEnum.HUMAN,
+            dateTime: new Date().getTime(),
+            id: createId(),
+          },
+        ];
+      });
+      setCurrentMessage('');
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        body: JSON.stringify({
+          userInput: usersMessage,
+          pastMessages: openAIMessages,
+          traceId,
+        }),
+      });
+      const { message } = await res.json();
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            text: message,
+            type: MessageTypesEnum.AI,
+            dateTime: new Date().getTime(),
+            id: createId(),
+          },
+        ];
+      });
+      setOpenAIMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            role: 'user',
+            content: usersMessage,
+          },
+          {
+            role: 'assistant',
+            content: message,
+          },
+        ];
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <main className="flex flex-col items-center p-8">
@@ -115,12 +121,22 @@ export default function Chat() {
               />
             );
           })}
+          {isLoading && (
+            <Message
+              message={{
+                text: 'Thinking...',
+                type: MessageTypesEnum.AI,
+                id: createId(),
+                dateTime: new Date().getTime(),
+              }}
+            />
+          )}
         </div>
         <div className="flex">
           <input
             id="ask-anything"
             type="search"
-            placeholder="How to come up with recipes"
+            placeholder="Ask me anything..."
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.currentTarget.value)}
             onKeyDown={(ev) => {
