@@ -20,7 +20,7 @@ export const authOptions = {
           profile.email_verified && profile.email.endsWith('@autoblocks.ai')
         );
       }
-      return true; // Do different verification for other providers that don't have `email_verified`
+      return profile.email.endsWith('@autoblocks.ai'); // Do different verification for other providers that don't have `email_verified`
     },
   },
 };
