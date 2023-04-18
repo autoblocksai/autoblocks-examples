@@ -158,7 +158,7 @@ function Message({
       <div className="flex items-end justify-end">
         <div className="flex flex-col space-y-2 text-md max-w-xs mx-2 order-1 items-end">
           <div>
-            <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-orange-600 text-white text-sm md:text-base">
+            <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-orange-600 text-white text-sm md:text-base whitespace-pre-line">
               {message.text}
             </span>
           </div>
@@ -180,7 +180,7 @@ function Message({
     <div className="flex items-end">
       <div className="flex flex-col space-y-2 text-md max-w-xs mx-2 order-2 items-start">
         <div>
-          <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-900 text-sm md:text-base">
+          <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-900 text-sm md:text-base whitespace-pre-line">
             {message.text}
           </span>
         </div>
