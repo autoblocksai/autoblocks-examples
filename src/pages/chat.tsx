@@ -1,10 +1,9 @@
-import Link from 'next/link';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
 import { classNames } from '~/utils/classNames';
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { Avatar } from '~/components/Avatar';
 import { Nav } from '~/components/Nav';
+import { createId } from '@paralleldrive/cuid2';
 
 enum MessageTypesEnum {
   AI = 'AI',
@@ -22,12 +21,7 @@ const aiMessages = [
   {
     type: MessageTypesEnum.AI,
     text: 'Hi, how can I help you today?',
-    id: uuidv4(),
-  },
-  {
-    type: MessageTypesEnum.AI,
-    text: "I'm sorry workflows is not a feature that we support",
-    id: uuidv4(),
+    id: createId(),
   },
 ];
 
@@ -39,7 +33,15 @@ export default function Chat() {
       dateTime: new Date().getTime(),
     },
   ]);
-  const [interactionId] = useState(uuidv4());
+  const [openAIMessages, setOpenAIMessages] = useState<
+    { role: 'user' | 'assistant'; content: string }[]
+  >([
+    {
+      role: 'assistant',
+      content: aiMessages[0].text,
+    },
+  ]);
+  const [traceId] = useState(createId());
   const [currentMessage, setCurrentMessage] = useState('');
   useEffect(() => {
     if (chatboxRef.current && currentMessage === '') {
@@ -50,95 +52,50 @@ export default function Chat() {
   const onAsk = async () => {
     const usersMessage = currentMessage;
     setMessages((prevMessages) => {
-      if (prevMessages.length === 1) {
-        return [
-          ...prevMessages,
-          {
-            text: usersMessage,
-            type: MessageTypesEnum.HUMAN,
-            dateTime: new Date().getTime(),
-            id: uuidv4(),
-          },
-          {
-            ...aiMessages[1],
-            dateTime: new Date().getTime(),
-          },
-        ];
-      }
       return [
         ...prevMessages,
         {
           text: usersMessage,
           type: MessageTypesEnum.HUMAN,
           dateTime: new Date().getTime(),
-          id: uuidv4(),
+          id: createId(),
         },
       ];
     });
     setCurrentMessage('');
-    if (messages.length === 1) {
-      await fetch('/api/send-user-input-event', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: `User message`,
-          input: usersMessage,
-          feature: 'Support Chatbot',
-          interactionId,
-        }),
-      });
-      await sleep(100);
-      await fetch('/api/send-event', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: `Searching Vector DB with query: ${usersMessage}`,
-          feature: 'Support Chatbot',
-          interactionId,
-        }),
-      });
-      await sleep(100);
-      await fetch('/api/send-event', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: `Results from Vector DB: ["Advanced tools", "Configure settings", "How to setup your instance"]`,
-          feature: 'Support Chatbot',
-          interactionId,
-        }),
-      });
-      await sleep(100);
-      await fetch('/api/send-llm-event', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: `Process user message`,
-          feature: 'Support Chatbot',
-          interactionId,
-          input: `You are an AI assistant. You are friendly and helpful. A user is asking "${usersMessage}". Which of the following support articles best match their query? "Advanced tools", "Configure settings", "How to setup your instance"`,
-          output: aiMessages[1].text,
-          provider: 'OPENAI',
-          model: 'gpt-3.5-turbo',
-          temperature: '0',
-          params: {},
-        }),
-      });
-      await sleep(1000);
-      await fetch('/api/send-event', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: `AI message: ${aiMessages[1].text}`,
-          feature: 'Support Chatbot',
-          interactionId,
-        }),
-      });
-    } else {
-      await fetch('/api/send-user-input-event', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: `User message`,
-          input: usersMessage,
-          feature: 'Support Chatbot',
-          interactionId,
-        }),
-      });
-    }
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      body: JSON.stringify({
+        userInput: usersMessage,
+        pastMessages: openAIMessages,
+        traceId,
+      }),
+    });
+    const { message } = await res.json();
+    setMessages((prevMessages) => {
+      return [
+        ...prevMessages,
+        {
+          text: message,
+          type: MessageTypesEnum.AI,
+          dateTime: new Date().getTime(),
+          id: createId(),
+        },
+      ];
+    });
+    setOpenAIMessages((prevMessages) => {
+      return [
+        ...prevMessages,
+        {
+          role: 'user',
+          content: usersMessage,
+        },
+        {
+          role: 'assistant',
+          content: message,
+        },
+      ];
+    });
   };
   return (
     <main className="flex flex-col items-center p-8">
@@ -201,7 +158,7 @@ function Message({
       <div className="flex items-end justify-end">
         <div className="flex flex-col space-y-2 text-md max-w-xs mx-2 order-1 items-end">
           <div>
-            <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-orange-600 text-white text-sm md:text-base">
+            <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-orange-600 text-white text-sm md:text-base whitespace-pre-line">
               {message.text}
             </span>
           </div>
@@ -223,7 +180,7 @@ function Message({
     <div className="flex items-end">
       <div className="flex flex-col space-y-2 text-md max-w-xs mx-2 order-2 items-start">
         <div>
-          <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-900 text-sm md:text-base">
+          <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-900 text-sm md:text-base whitespace-pre-line">
             {message.text}
           </span>
         </div>
