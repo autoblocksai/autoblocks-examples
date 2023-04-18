@@ -80,6 +80,7 @@ export default async function handler(
       message: openAIResponseMessage.content,
     });
 
+    console.log('Sending LLM event to autoblocks');
     await fetch('https://api.autoblocks.ai/v1/events/llm', {
       method: 'POST',
       headers: {
