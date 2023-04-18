@@ -28,20 +28,18 @@ export default async function handler(
     return res.status(400).json({ error: 'Missing traceId' });
   }
 
-  setImmediate(async () => {
-    await fetch('https://api.autoblocks.ai/v1/events/user-input', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
-      },
-      body: JSON.stringify({
-        featureId: 'clglc6t620000mx0g5ladrfnq',
-        name: 'User Message',
-        input: userInput,
-        traceId,
-      }),
-    });
+  await fetch('https://api.autoblocks.ai/v1/events/user-input', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+    },
+    body: JSON.stringify({
+      featureId: 'clglc6t620000mx0g5ladrfnq',
+      name: 'User Message',
+      input: userInput,
+      traceId,
+    }),
   });
 
   const messages = [
@@ -60,7 +58,6 @@ export default async function handler(
     !openAIResponse.data.choices ||
     !openAIResponse.data.choices[0]?.message
   ) {
-    res.status(500).json({ error: 'No response from OpenAI' });
     await fetch('https://api.autoblocks.ai/v1/events', {
       method: 'POST',
       headers: {
@@ -73,33 +70,32 @@ export default async function handler(
         traceId,
       }),
     });
-  } else {
-    const openAIResponseMessage = openAIResponse.data.choices[0].message;
-
-    res.status(200).json({
-      message: openAIResponseMessage.content,
-    });
-
-    console.log('Sending LLM event to autoblocks');
-    await fetch('https://api.autoblocks.ai/v1/events/llm', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
-      },
-      body: JSON.stringify({
-        featureId: 'clglc6t620000mx0g5ladrfnq',
-        name: 'Chat Completion',
-        traceId,
-        input: messages
-          .map((message) => `${message.role}: ${message.content}`)
-          .join('\n'),
-        output: openAIResponseMessage.content,
-        model: 'gpt-3.5-turbo',
-        temperature: '1',
-        provider: 'OPENAI',
-        params: {},
-      }),
-    });
+    return res.status(500).json({ error: 'No response from OpenAI' });
   }
+  const openAIResponseMessage = openAIResponse.data.choices[0].message;
+
+  await fetch('https://api.autoblocks.ai/v1/events/llm', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+    },
+    body: JSON.stringify({
+      featureId: 'clglc6t620000mx0g5ladrfnq',
+      name: 'Chat Completion',
+      traceId,
+      input: messages
+        .map((message) => `${message.role}: ${message.content}`)
+        .join('\n'),
+      output: openAIResponseMessage.content,
+      model: 'gpt-3.5-turbo',
+      temperature: '1',
+      provider: 'OPENAI',
+      params: {},
+    }),
+  });
+
+  return res.status(200).json({
+    message: openAIResponseMessage.content,
+  });
 }
