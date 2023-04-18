@@ -60,25 +60,26 @@ export default async function handler(
     !openAIResponse.data.choices ||
     !openAIResponse.data.choices[0]?.message
   ) {
-    setImmediate(async () => {
-      await fetch('https://api.autoblocks.ai/v1/events', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
-        },
-        body: JSON.stringify({
-          featureId: 'clglc6t620000mx0g5ladrfnq',
-          name: 'No response from OpenAI',
-          traceId,
-        }),
-      });
+    res.status(500).json({ error: 'No response from OpenAI' });
+    await fetch('https://api.autoblocks.ai/v1/events', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+      },
+      body: JSON.stringify({
+        featureId: 'clglc6t620000mx0g5ladrfnq',
+        name: 'No response from OpenAI',
+        traceId,
+      }),
     });
-    return res.status(500).json({ error: 'No response from OpenAI' });
-  }
+  } else {
+    const openAIResponseMessage = openAIResponse.data.choices[0].message;
 
-  const openAIResponseMessage = openAIResponse.data.choices[0].message;
-  setImmediate(async () => {
+    res.status(200).json({
+      message: openAIResponseMessage.content,
+    });
+
     await fetch('https://api.autoblocks.ai/v1/events/llm', {
       method: 'POST',
       headers: {
@@ -99,9 +100,5 @@ export default async function handler(
         params: {},
       }),
     });
-  });
-
-  return res.status(200).json({
-    message: openAIResponseMessage.content,
-  });
+  }
 }
