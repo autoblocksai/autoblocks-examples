@@ -36,7 +36,7 @@ export default async function handler(
     },
     body: JSON.stringify({
       featureId: 'clglc6t620000mx0g5ladrfnq',
-      name: 'User Message',
+      message: 'User Message',
       input: userInput,
       traceId,
     }),
@@ -66,7 +66,7 @@ export default async function handler(
       },
       body: JSON.stringify({
         featureId: 'clglc6t620000mx0g5ladrfnq',
-        name: 'No response from OpenAI',
+        message: 'No response from OpenAI',
         traceId,
       }),
     });
@@ -82,7 +82,7 @@ export default async function handler(
     },
     body: JSON.stringify({
       featureId: 'clglc6t620000mx0g5ladrfnq',
-      name: 'Chat Completion',
+      message: 'Chat Completion',
       traceId,
       input: messages
         .map((message) => `${message.role}: ${message.content}`)
