@@ -35,7 +35,7 @@ export default async function handler(
       Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
     },
     body: JSON.stringify({
-      featureId: 'clglc6t620000mx0g5ladrfnq',
+      featureId: 'clgy8w0ic0000l308i5x38znf',
       message: 'User Message',
       input: userInput,
       traceId,
@@ -65,7 +65,7 @@ export default async function handler(
         Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
       },
       body: JSON.stringify({
-        featureId: 'clglc6t620000mx0g5ladrfnq',
+        featureId: 'clgy8w0ic0000l308i5x38znf',
         message: 'No response from OpenAI',
         traceId,
       }),
@@ -81,7 +81,7 @@ export default async function handler(
       Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
     },
     body: JSON.stringify({
-      featureId: 'clglc6t620000mx0g5ladrfnq',
+      featureId: 'clgy8w0ic0000l308i5x38znf',
       message: 'Chat Completion',
       traceId,
       input: messages
