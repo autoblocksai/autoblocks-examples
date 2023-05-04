@@ -3,7 +3,7 @@ import { classNames } from '~/utils/classNames';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Avatar } from '~/components/Avatar';
 import { createId } from '@paralleldrive/cuid2';
-import * as crypto from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 
 enum MessageTypesEnum {
   AI = 'AI',
@@ -42,7 +42,7 @@ export default function Chat() {
       content: aiMessages[0].text,
     },
   ]);
-  const [traceId] = useState(crypto.randomUUID());
+  const [traceId] = useState(uuidv4());
   const [currentMessage, setCurrentMessage] = useState('');
   useEffect(() => {
     if (chatboxRef.current && currentMessage === '') {

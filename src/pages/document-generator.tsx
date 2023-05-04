@@ -1,17 +1,17 @@
 import { HandThumbDownIcon, HandThumbUpIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
-import * as crypto from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function DocumentGenerator() {
   const [input, setInput] = useState('');
   const [document, setDocument] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [traceId, setTraceId] = useState(crypto.randomUUID());
+  const [traceId, setTraceId] = useState(uuidv4());
 
   const onSubmit = async () => {
     setDocument('');
     setIsLoading(true);
-    const newTraceId = crypto.randomUUID();
+    const newTraceId = uuidv4();
     setTraceId(newTraceId);
     const res = await fetch('/api/document-generator', {
       method: 'POST',
