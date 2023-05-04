@@ -7,7 +7,7 @@ export const Nav = () => {
         <Link href="/chat">Chat Example</Link>
       </li>
       <li>
-        <Link href="/auto-assign">Auto Assign Example</Link>
+        <Link href="/document-generator">Document Generator</Link>
       </li>
     </ul>
   );

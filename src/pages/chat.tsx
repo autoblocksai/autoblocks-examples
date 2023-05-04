@@ -42,7 +42,7 @@ export default function Chat() {
       content: aiMessages[0].text,
     },
   ]);
-  const [traceId] = useState(createId());
+  const [traceId] = useState(crypto.randomUUID());
   const [currentMessage, setCurrentMessage] = useState('');
   useEffect(() => {
     if (chatboxRef.current && currentMessage === '') {
@@ -104,9 +104,8 @@ export default function Chat() {
     }
   };
   return (
-    <main className="flex flex-col items-center p-8">
+    <main className="flex flex-col items-center">
       <h1 className="text-2xl mb-4">Autoblocks Chat Example</h1>
-      <Nav />
       <div className="max-w-6xl w-full mx-auto">
         <div
           className="border-2 border-black rounded-t-lg border-b-0 p-4 h-[600px] flex flex-col space-y-4 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
