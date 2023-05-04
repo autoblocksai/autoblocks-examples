@@ -1,5 +1,6 @@
 import { HandThumbDownIcon, HandThumbUpIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
+import * as crypto from 'crypto';
 
 export default function DocumentGenerator() {
   const [input, setInput] = useState('');

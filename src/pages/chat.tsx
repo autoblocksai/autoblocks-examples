@@ -2,8 +2,8 @@ import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
 import { classNames } from '~/utils/classNames';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Avatar } from '~/components/Avatar';
-import { Nav } from '~/components/Nav';
 import { createId } from '@paralleldrive/cuid2';
+import * as crypto from 'crypto';
 
 enum MessageTypesEnum {
   AI = 'AI',
