@@ -7,6 +7,9 @@ const configuration = new Configuration({
 
 export const openai = new OpenAIApi(configuration);
 
+const autoblocksUrl = 'https://ingest-event.autoblocks.ai';
+const feature = 'Document Generator';
+
 const systemPrompt = `
 You are a helpful assistant.
 You answer questions about a software product named Acme.
@@ -28,16 +31,16 @@ export default async function handler(
     return res.status(400).json({ error: 'Missing traceId' });
   }
 
-  await fetch('https://api.autoblocks.ai/v1/events/user-input', {
+  await fetch(autoblocksUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
     },
     body: JSON.stringify({
-      featureId: 'clgy8w0ic0000l308i5x38znf',
-      message: 'User Message',
-      input: userInput,
+      feature,
+      message: 'Chat User Message',
+      userInput,
       traceId,
     }),
   });
@@ -58,14 +61,14 @@ export default async function handler(
     !openAIResponse.data.choices ||
     !openAIResponse.data.choices[0]?.message
   ) {
-    await fetch('https://api.autoblocks.ai/v1/events', {
+    await fetch(autoblocksUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
       },
       body: JSON.stringify({
-        featureId: 'clgy8w0ic0000l308i5x38znf',
+        feature,
         message: 'No response from OpenAI',
         traceId,
       }),
@@ -74,14 +77,14 @@ export default async function handler(
   }
   const openAIResponseMessage = openAIResponse.data.choices[0].message;
 
-  await fetch('https://api.autoblocks.ai/v1/events/llm', {
+  await fetch(autoblocksUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
     },
     body: JSON.stringify({
-      featureId: 'clgy8w0ic0000l308i5x38znf',
+      feature,
       message: 'Chat Completion',
       traceId,
       input: messages
