@@ -97,9 +97,7 @@ export default async function handler(
       feature,
       message: 'Document Generator Output',
       traceId,
-      input: messages
-        .map((message) => `${message.role}: ${message.content}`)
-        .join('\n'),
+      input: messages,
       output: openAIResponseMessage.content,
       model: 'gpt-3.5-turbo',
       temperature: '1',
