@@ -43,6 +43,7 @@ export default function Chat() {
     },
   ]);
   const [traceId] = useState(uuidv4());
+  const [apiKey, setApiKey] = useState('');
   const [currentMessage, setCurrentMessage] = useState('');
   useEffect(() => {
     if (chatboxRef.current && currentMessage === '') {
@@ -72,6 +73,7 @@ export default function Chat() {
           userInput: usersMessage,
           pastMessages: openAIMessages,
           traceId,
+          apiKey,
         }),
       });
       const { message } = await res.json();
@@ -106,6 +108,24 @@ export default function Chat() {
   return (
     <main className="flex flex-col items-center">
       <h1 className="text-2xl mb-4">Autoblocks Chat Example</h1>
+      <div className="flex gap-2 items-center mb-4">
+        <div className="whitespace-nowrap">Autoblocks API Key:</div>
+        <input
+          type="text"
+          className="block w-[315px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          value={apiKey}
+          onChange={(ev) => setApiKey(ev.currentTarget.value)}
+        />
+      </div>
+      <div className="flex gap-2 items-center mb-4">
+        <div className="whitespace-nowrap">Trace ID (auto generated):</div>
+        <input
+          type="text"
+          className="block w-[315px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          value={traceId}
+          readOnly
+        />
+      </div>
       <div className="max-w-6xl w-full mx-auto">
         <div
           className="border-2 border-black rounded-t-lg border-b-0 p-4 h-[600px] flex flex-col space-y-4 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"

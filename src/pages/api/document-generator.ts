@@ -23,19 +23,22 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { userInput, traceId } = JSON.parse(req.body);
+  const { userInput, traceId, apiKey } = JSON.parse(req.body);
   if (!userInput) {
     return res.status(400).json({ error: 'Missing user input' });
   }
   if (!traceId) {
     return res.status(400).json({ error: 'Missing traceId' });
   }
+  if (!apiKey) {
+    return res.status(400).json({ error: 'Missing API Key' });
+  }
 
   await fetch(autoblocksUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       message: 'Document Generator User Input',
@@ -71,7 +74,7 @@ export default async function handler(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         feature,
@@ -88,7 +91,7 @@ export default async function handler(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       feature,

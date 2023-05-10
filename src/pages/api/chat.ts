@@ -8,7 +8,7 @@ const configuration = new Configuration({
 export const openai = new OpenAIApi(configuration);
 
 const autoblocksUrl = 'https://ingest-event.autoblocks.ai';
-const feature = 'Document Generator';
+const feature = 'Chat';
 
 const systemPrompt = `
 You are a helpful assistant.
@@ -20,7 +20,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { userInput, pastMessages, traceId } = JSON.parse(req.body);
+  const { userInput, pastMessages, traceId, apiKey } = JSON.parse(req.body);
   if (!userInput) {
     return res.status(400).json({ error: 'Missing user input' });
   }
@@ -30,12 +30,15 @@ export default async function handler(
   if (!traceId) {
     return res.status(400).json({ error: 'Missing traceId' });
   }
+  if (!apiKey) {
+    return res.status(400).json({ error: 'Missing API Key' });
+  }
 
   await fetch(autoblocksUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       feature,
@@ -65,7 +68,7 @@ export default async function handler(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         feature,
@@ -81,15 +84,13 @@ export default async function handler(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.AUTOBLOCKS_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       feature,
       message: 'Chat Completion',
       traceId,
-      input: messages
-        .map((message) => `${message.role}: ${message.content}`)
-        .join('\n'),
+      input: messages,
       output: openAIResponseMessage.content,
       model: 'gpt-3.5-turbo',
       temperature: '1',

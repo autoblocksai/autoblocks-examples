@@ -7,6 +7,7 @@ export default function DocumentGenerator() {
   const [document, setDocument] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [traceId, setTraceId] = useState(uuidv4());
+  const [apiKey, setApiKey] = useState('');
 
   const onSubmit = async () => {
     setDocument('');
@@ -18,6 +19,7 @@ export default function DocumentGenerator() {
       body: JSON.stringify({
         userInput: input,
         traceId: newTraceId,
+        apiKey,
       }),
     });
     const { message } = await res.json();
@@ -26,8 +28,12 @@ export default function DocumentGenerator() {
   };
 
   const onThumbUp = async () => {
-    await fetch('/api/send-event', {
+    await fetch('https://ingest-event.autoblocks.ai', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
       body: JSON.stringify({
         traceId,
         userFeedback: 'APPROVE',
@@ -38,8 +44,12 @@ export default function DocumentGenerator() {
   };
 
   const onThumbDown = async () => {
-    await fetch('/api/send-event', {
+    await fetch('https://ingest-event.autoblocks.ai', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
       body: JSON.stringify({
         traceId,
         userFeedback: 'DISAPPROVE',
@@ -50,8 +60,12 @@ export default function DocumentGenerator() {
   };
 
   const onSave = async () => {
-    await fetch('/api/send-event', {
+    await fetch('https://ingest-event.autoblocks.ai', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
       body: JSON.stringify({
         traceId,
         message: 'Document Saved',
@@ -63,6 +77,24 @@ export default function DocumentGenerator() {
   return (
     <main className="flex flex-col items-center">
       <h1 className="text-2xl mb-4">Autoblocks Document Generator Example</h1>
+      <div className="flex gap-2 items-center mb-4">
+        <div className="whitespace-nowrap">Autoblocks API Key:</div>
+        <input
+          type="text"
+          className="block w-[315px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          value={apiKey}
+          onChange={(ev) => setApiKey(ev.currentTarget.value)}
+        />
+      </div>
+      <div className="flex gap-2 items-center mb-4">
+        <div className="whitespace-nowrap">Trace ID (auto generated):</div>
+        <input
+          type="text"
+          className="block w-[315px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          value={traceId}
+          readOnly
+        />
+      </div>
       <div className="flex flex-col w-full max-w-4xl px-8">
         <div className="flex gap-2">
           <input
