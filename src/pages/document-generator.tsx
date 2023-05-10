@@ -78,7 +78,7 @@ export default function DocumentGenerator() {
     <main className="flex flex-col items-center">
       <h1 className="text-2xl mb-4">Autoblocks Document Generator Example</h1>
       <div className="flex gap-2 items-center mb-4">
-        <div className="whitespace-nowrap">Autoblocks API Key:</div>
+        <div className="whitespace-nowrap">Autoblocks API Key (required):</div>
         <input
           type="text"
           className="block w-[315px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -95,7 +95,11 @@ export default function DocumentGenerator() {
           readOnly
         />
       </div>
-      <div className="flex flex-col w-full max-w-4xl px-8">
+      <div
+        className={`flex flex-col w-full max-w-4xl px-8 ${
+          apiKey === '' ? 'opacity-25 pointer-events-none' : ''
+        }`}
+      >
         <div className="flex gap-2">
           <input
             type="email"
