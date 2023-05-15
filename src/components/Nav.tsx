@@ -9,6 +9,9 @@ export const Nav = () => {
       <li>
         <Link href="/document-generator">Document Generator</Link>
       </li>
+      <li>
+        <Link href="/playground">Playground</Link>
+      </li>
     </ul>
   );
 };
