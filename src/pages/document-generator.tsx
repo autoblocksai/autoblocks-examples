@@ -36,9 +36,8 @@ export default function DocumentGenerator() {
       },
       body: JSON.stringify({
         traceId,
-        userFeedback: 'APPROVE',
-        message: 'User Feedback',
-        feature: 'Document Generator',
+        message: 'user.feedback.approve',
+        feature: 'DOCUMENT_GENERATOR',
       }),
     });
   };
@@ -52,9 +51,8 @@ export default function DocumentGenerator() {
       },
       body: JSON.stringify({
         traceId,
-        userFeedback: 'DISAPPROVE',
-        message: 'User Feedback',
-        feature: 'Document Generator',
+        message: 'user.feedback.disapprove',
+        feature: 'DOCUMENT_GENERATOR',
       }),
     });
   };
@@ -68,8 +66,8 @@ export default function DocumentGenerator() {
       },
       body: JSON.stringify({
         traceId,
-        message: 'Document Saved',
-        feature: 'Document Generator',
+        message: 'user.saved',
+        feature: 'DOCUMENT_GENERATOR',
       }),
     });
   };

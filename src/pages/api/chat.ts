@@ -8,7 +8,7 @@ const configuration = new Configuration({
 export const openai = new OpenAIApi(configuration);
 
 const autoblocksUrl = 'https://ingest-event.autoblocks.ai';
-const feature = 'Chat';
+const feature = 'CHATBOT';
 
 const systemPrompt = `
 You are a helpful assistant.
@@ -42,7 +42,7 @@ export default async function handler(
     },
     body: JSON.stringify({
       feature,
-      message: 'Chat User Message',
+      message: 'user.message',
       userInput,
       traceId,
     }),
@@ -72,7 +72,7 @@ export default async function handler(
       },
       body: JSON.stringify({
         feature,
-        message: 'No response from OpenAI',
+        message: 'foundation-model.error',
         traceId,
       }),
     });
@@ -88,7 +88,7 @@ export default async function handler(
     },
     body: JSON.stringify({
       feature,
-      message: 'Chat Completion',
+      message: 'foundation-model.response',
       traceId,
       input: messages,
       output: openAIResponseMessage.content,

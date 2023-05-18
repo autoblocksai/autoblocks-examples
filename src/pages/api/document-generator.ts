@@ -12,7 +12,7 @@ const configuration = new Configuration({
 export const openai = new OpenAIApi(configuration);
 
 const autoblocksUrl = 'https://ingest-event.autoblocks.ai';
-const feature = 'Document Generator';
+const feature = 'DOCUMENT_GENERATOR';
 
 const systemPrompt = `
 You are a helpful assistant that writes business documents.
@@ -41,10 +41,9 @@ export default async function handler(
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      message: 'Document Generator User Input',
+      message: 'user.input',
       feature,
       userInput,
-      eventType: 'USER_INPUT',
       traceId,
     }),
   });
@@ -78,9 +77,8 @@ export default async function handler(
       },
       body: JSON.stringify({
         feature,
-        message: 'No response from OpenAI',
+        message: 'foundation-model.error',
         traceId,
-        error: 'TRUE',
       }),
     });
     return res.status(500).json({ error: 'No response from OpenAI' });
@@ -95,7 +93,7 @@ export default async function handler(
     },
     body: JSON.stringify({
       feature,
-      message: 'Document Generator Output',
+      message: 'foundation-model.response',
       traceId,
       input: messages,
       output: openAIResponseMessage.content,
