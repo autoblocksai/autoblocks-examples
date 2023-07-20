@@ -37,7 +37,9 @@ export default function DocumentGenerator() {
       body: JSON.stringify({
         traceId,
         message: 'user.feedback.approve',
-        feature: 'DOCUMENT_GENERATOR',
+        properties: {
+          feature: 'DOCUMENT_GENERATOR',
+        },
       }),
     });
   };
@@ -52,7 +54,9 @@ export default function DocumentGenerator() {
       body: JSON.stringify({
         traceId,
         message: 'user.feedback.disapprove',
-        feature: 'DOCUMENT_GENERATOR',
+        properties: {
+          feature: 'DOCUMENT_GENERATOR',
+        },
       }),
     });
   };
@@ -67,7 +71,9 @@ export default function DocumentGenerator() {
       body: JSON.stringify({
         traceId,
         message: 'user.saved',
-        feature: 'DOCUMENT_GENERATOR',
+        properties: {
+          feature: 'DOCUMENT_GENERATOR',
+        },
       }),
     });
   };

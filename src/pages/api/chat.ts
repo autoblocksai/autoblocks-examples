@@ -41,10 +41,12 @@ export default async function handler(
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      feature,
       message: 'user.message',
-      userInput,
       traceId,
+      properties: {
+        feature,
+        userInput,
+      },
     }),
   });
 
@@ -71,9 +73,11 @@ export default async function handler(
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        feature,
         message: 'foundation-model.error',
         traceId,
+        properties: {
+          feature,
+        },
       }),
     });
     return res.status(500).json({ error: 'No response from OpenAI' });
@@ -87,15 +91,16 @@ export default async function handler(
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      feature,
       message: 'foundation-model.response',
       traceId,
-      input: messages,
-      output: openAIResponseMessage.content,
-      model: 'gpt-3.5-turbo',
-      temperature: '1',
-      provider: 'OPENAI',
-      params: {},
+      properties: {
+        feature,
+        input: messages,
+        output: openAIResponseMessage.content,
+        model: 'gpt-3.5-turbo',
+        temperature: '1',
+        provider: 'OPENAI',
+      },
     }),
   });
 
