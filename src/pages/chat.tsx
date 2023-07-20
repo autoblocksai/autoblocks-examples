@@ -109,7 +109,9 @@ export default function Chat() {
     <main className="flex flex-col items-center">
       <h1 className="text-2xl mb-4">Autoblocks Chat Example</h1>
       <div className="flex gap-2 items-center mb-4">
-        <div className="whitespace-nowrap">Autoblocks API Key (required):</div>
+        <div className="whitespace-nowrap">
+          Autoblocks Ingestion Key (required):
+        </div>
         <input
           type="text"
           className="block w-[315px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
