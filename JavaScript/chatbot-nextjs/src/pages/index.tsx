@@ -146,6 +146,7 @@ export default function Chat() {
                 dateTime: new Date().getTime(),
               },
             ]);
+            setGaveFeedback(false);
           }}
         >
           Reset
