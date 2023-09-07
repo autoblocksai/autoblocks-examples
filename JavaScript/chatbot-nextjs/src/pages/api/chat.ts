@@ -1,14 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
+import { AutoblocksTracer } from '@autoblocks/client';
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-export const openai = new OpenAIApi(configuration);
-
-const autoblocksUrl = 'https://ingest-event.autoblocks.ai';
-const feature = 'CHATBOT';
 
 const systemPrompt = `
 You are a helpful assistant.
@@ -16,11 +12,13 @@ You answer questions about a software product named Acme.
 You can make up answers.
 Sometimes you do not know the answer.
 `;
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { userInput, pastMessages, traceId, apiKey } = JSON.parse(req.body);
+  const { userInput, pastMessages, traceId, autoblocksIngestionKey } =
+    JSON.parse(req.body);
   if (!userInput) {
     return res.status(400).json({ error: 'Missing user input' });
   }
@@ -30,81 +28,53 @@ export default async function handler(
   if (!traceId) {
     return res.status(400).json({ error: 'Missing traceId' });
   }
-  if (!apiKey) {
-    return res.status(400).json({ error: 'Missing API Key' });
+  if (!autoblocksIngestionKey) {
+    return res.status(400).json({ error: 'Missing Autoblocks Ingestion Key' });
   }
 
-  await fetch(autoblocksUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
+  // Substitute this for process.env.AUTOBLOCKS_INGESTION_KEY in a production environment
+  // You can also initialize this outside of the handler in that case
+  const tracer = new AutoblocksTracer(autoblocksIngestionKey, {
+    traceId,
+    properties: {
+      provider: 'openai',
     },
-    body: JSON.stringify({
-      message: 'user.message',
-      traceId,
-      properties: {
-        feature,
-        userInput,
-      },
-    }),
   });
 
-  const messages = [
-    { role: 'system', content: systemPrompt },
-    ...pastMessages,
-    { role: 'user', content: userInput },
-  ];
-
-  const openAIResponse = await openai.createChatCompletion({
+  const requestParams = {
     model: 'gpt-3.5-turbo',
-    messages,
+    messages: [
+      { role: 'system', content: systemPrompt },
+      ...pastMessages,
+      { role: 'user', content: userInput },
+    ],
     temperature: 1,
+  };
+
+  await tracer.sendEvent('ai.request', {
+    properties: requestParams,
   });
 
-  if (
-    !openAIResponse.data.choices ||
-    !openAIResponse.data.choices[0]?.message
-  ) {
-    await fetch(autoblocksUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        message: 'foundation-model.error',
-        traceId,
-        properties: {
-          feature,
-        },
-      }),
-    });
-    return res.status(500).json({ error: 'No response from OpenAI' });
-  }
-  const openAIResponseMessage = openAIResponse.data.choices[0].message;
-
-  await fetch(autoblocksUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      message: 'foundation-model.response',
-      traceId,
+  try {
+    const now = Date.now();
+    const response = await openai.chat.completions.create(requestParams);
+    await tracer.sendEvent('ai.response', {
       properties: {
-        feature,
-        input: messages,
-        output: openAIResponseMessage.content,
-        model: 'gpt-3.5-turbo',
-        temperature: '1',
-        provider: 'OPENAI',
+        response,
+        latencyMs: Date.now() - now,
       },
-    }),
-  });
-
-  return res.status(200).json({
-    message: openAIResponseMessage.content,
-  });
+    });
+    return res.status(200).json({
+      message: response.choices[0].message.content,
+    });
+  } catch (error) {
+    await tracer.sendEvent('ai.error', {
+      properties: {
+        error,
+      },
+    });
+    return res.status(500).json({
+      error: 'Internal Server Error',
+    });
+  }
 }
