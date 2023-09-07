@@ -1,38 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <img src="https://app.autoblocks.ai/images/logo.png" width="300px">
+</p>
 
-## Getting Started
+# Chatbot Autoblocks Example
 
-First, run the development server:
+## Quick Start
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Example chatbot using [Autoblocks](https://www.autoblocks.ai).
+
+View deployed app at https://chatbot-example.autoblocks.ai
+
+### Install Dependencies
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Sign up for Autoblocks
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Sign up for an Autoblocks account at https://app.autoblocks.ai and grab your ingestion key from [settings](https://app.autoblocks.ai/settings/api-keys).
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Set environment variables
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Create a `.env` file in the `chatbot-nextjs` directory with the following environment variables:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+OPENAI_API_KEY=<your-api-key>
+AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+```
 
-## Learn More
+### Run the app
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visit http://localhost:3000 to see the app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### View logs in Autoblocks
 
-## Deploy on Vercel
+As you interact with the app, you will see traces appear in the Autoblocks explore page.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Autoblocks Explore](https://github.com/autoblocksai/novel-autoblocks-example/blob/main/novel-autoblocks-example.png?raw=true)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## More Information
+
+For more information on how to use Autoblocks, visit the [Autoblocks documentation](https://docs.autoblocks.ai/).
+
+For more information on how to use Novel, visit the [Novel repository](https://github.com/steven-tey/novel).
