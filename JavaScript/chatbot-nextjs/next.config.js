@@ -4,15 +4,9 @@ const removeImports = require('next-remove-imports')();
 const nextConfig = removeImports({
   experimental: { esmExternals: true },
   reactStrictMode: true,
-  /* eslint-disable-next-line */
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/document-generator',
-        permanent: false,
-      },
-    ];
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, child_process: false };
+    return config;
   },
 });
 

@@ -4,6 +4,8 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Avatar } from '~/components/Avatar';
 import { createId } from '@paralleldrive/cuid2';
 import { v4 as uuidv4 } from 'uuid';
+import { AutoblocksTracer } from '@autoblocks/client';
+import Link from 'next/link';
 
 enum MessageTypesEnum {
   AI = 'AI',
@@ -27,6 +29,7 @@ const aiMessages = [
 
 export default function Chat() {
   const chatboxRef = useRef<HTMLDivElement>(null);
+  const [gaveFeedback, setGaveFeedback] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -34,16 +37,8 @@ export default function Chat() {
       dateTime: new Date().getTime(),
     },
   ]);
-  const [openAIMessages, setOpenAIMessages] = useState<
-    { role: 'user' | 'assistant'; content: string }[]
-  >([
-    {
-      role: 'assistant',
-      content: aiMessages[0].text,
-    },
-  ]);
-  const [traceId] = useState(uuidv4());
-  const [apiKey, setApiKey] = useState('');
+  const [traceId, setTraceId] = useState(uuidv4());
+  const [autoblocksIngestionKey, setAutoblocksIngestionKey] = useState('');
   const [currentMessage, setCurrentMessage] = useState('');
   useEffect(() => {
     if (chatboxRef.current && currentMessage === '') {
@@ -54,6 +49,7 @@ export default function Chat() {
   const onAsk = async () => {
     setIsLoading(true);
     try {
+      const pastMessages = [...messages];
       const usersMessage = currentMessage;
       setMessages((prevMessages) => {
         return [
@@ -71,9 +67,12 @@ export default function Chat() {
         method: 'POST',
         body: JSON.stringify({
           userInput: usersMessage,
-          pastMessages: openAIMessages,
+          pastMessages: pastMessages.map((message) => ({
+            role: message.type === MessageTypesEnum.AI ? 'assistant' : 'user',
+            content: message.text,
+          })),
           traceId,
-          apiKey,
+          autoblocksIngestionKey,
         }),
       });
       const { message } = await res.json();
@@ -88,35 +87,42 @@ export default function Chat() {
           },
         ];
       });
-      setOpenAIMessages((prevMessages) => {
-        return [
-          ...prevMessages,
-          {
-            role: 'user',
-            content: usersMessage,
-          },
-          {
-            role: 'assistant',
-            content: message,
-          },
-        ];
-      });
     } finally {
       setIsLoading(false);
     }
   };
+
+  const onFeedback = async (feedback: 'positive' | 'negative') => {
+    const tracer = new AutoblocksTracer(autoblocksIngestionKey, {
+      traceId,
+    });
+    await tracer.sendEvent('user.feedback', {
+      properties: {
+        feedback,
+      },
+    });
+    setGaveFeedback(true);
+  };
+
   return (
-    <main className="flex flex-col items-center">
-      <h1 className="text-2xl mb-4">Autoblocks Chat Example</h1>
-      <div className="flex gap-2 items-center mb-4">
+    <main className="flex flex-col items-center mt-8">
+      <h1 className="text-2xl mb-4">Autoblocks Chatbot Example</h1>
+      <Link
+        href="https://app.autoblocks.ai/settings/api-keys"
+        target="_blank"
+        className="text-blue-600 hover:underline"
+      >
+        {'Get your ingestion key ->'}
+      </Link>
+      <div className="flex gap-2 items-center mb-4 mt-1">
         <div className="whitespace-nowrap">
           Autoblocks Ingestion Key (required):
         </div>
         <input
           type="text"
           className="block w-[315px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          value={apiKey}
-          onChange={(ev) => setApiKey(ev.currentTarget.value)}
+          value={autoblocksIngestionKey}
+          onChange={(ev) => setAutoblocksIngestionKey(ev.currentTarget.value)}
         />
       </div>
       <div className="flex gap-2 items-center mb-4">
@@ -128,9 +134,27 @@ export default function Chat() {
           readOnly
         />
       </div>
+      <div className="mb-4">
+        <button
+          type="button"
+          className="rounded-md bg-orange-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          onClick={() => {
+            setTraceId(uuidv4());
+            setMessages([
+              {
+                ...aiMessages[0],
+                dateTime: new Date().getTime(),
+              },
+            ]);
+            setGaveFeedback(false);
+          }}
+        >
+          Reset
+        </button>
+      </div>
       <div
         className={`max-w-6xl w-full mx-auto ${
-          apiKey === '' ? 'opacity-25 pointer-events-none' : ''
+          autoblocksIngestionKey === '' ? 'opacity-25 pointer-events-none' : ''
         }`}
       >
         <div
@@ -180,6 +204,18 @@ export default function Chat() {
           </button>
         </div>
       </div>
+      {autoblocksIngestionKey && (
+        <div className="mt-4">
+          {gaveFeedback ? (
+            <div>Thanks for your feedback!</div>
+          ) : (
+            <div className="flex flex-col gap-2 items-center">
+              <div className="text-lg">Was this chatbot helpful?</div>
+              <FeedbackButtons onClick={onFeedback} />
+            </div>
+          )}
+        </div>
+      )}
     </main>
   );
 }
@@ -238,4 +274,25 @@ function Message({
   );
 }
 
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+function FeedbackButtons(props: {
+  onClick: (feedback: 'positive' | 'negative') => void;
+}) {
+  return (
+    <span className="isolate inline-flex rounded-md shadow-sm">
+      <button
+        type="button"
+        onClick={() => props.onClick('positive')}
+        className="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+      >
+        Yes
+      </button>
+      <button
+        type="button"
+        onClick={() => props.onClick('negative')}
+        className="relative -ml-px inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+      >
+        No
+      </button>
+    </span>
+  );
+}
