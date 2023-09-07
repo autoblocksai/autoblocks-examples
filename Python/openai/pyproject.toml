@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "python-openai-autoblocks-example"
+version = "0.1.0"
+description = ""
+authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+openai = "^0.28.0"
+autoblocksai = "^0.0.8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
