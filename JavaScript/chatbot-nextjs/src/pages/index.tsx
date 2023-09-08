@@ -221,7 +221,7 @@ export default function Chat() {
       <div className="fixed top-2 right-2">
         <div className="flex gap-2">
           <LinkButton href="https://app.autoblocks.ai">App</LinkButton>
-          <LinkButton href="https://app.autoblocks.ai">Docs</LinkButton>
+          <LinkButton href="https://docs.autoblocks.ai">Docs</LinkButton>
         </div>
       </div>
     </>
