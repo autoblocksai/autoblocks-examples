@@ -28,9 +28,10 @@ request_params = dict(
 )
 
 trace_id = str(uuid.uuid4())
+
 tracer = AutoblocksTracer(
     os.environ["AUTOBLOCKS_INGESTION_KEY"],
-    trace_id=str(uuid.uuid4()),
+    trace_id=trace_id,
     properties=dict(
         provider="openai"
     )
@@ -50,7 +51,6 @@ def main():
             properties=dict(
                 response=openai_response,
                 latency=(time.time() - start_time) * 1000,
-                provider="openai"
             )
         )
     except Exception as error:
@@ -59,9 +59,10 @@ def main():
             properties=dict(
                 error_message=str(error),
                 stacktrace=traceback.format_exc(),
-                provider="openai"
             )
         )
+
+    print(f"View your trace: https://app.autoblocks.ai/explore/trace/{trace_id}")
 
 
 if __name__ == "__main__":
