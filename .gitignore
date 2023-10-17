@@ -42,3 +42,6 @@ __pycache__/
 .idea/
 
 *.pyc
+
+.yalc/
+*yalc.lock
