@@ -1,0 +1,19 @@
+{
+  "name": "langchain-autoblocks-example",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "dotenv -e .env -- node ./src/index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@autoblocks/client": "^0.0.12",
+    "dotenv-cli": "^7.3.0",
+    "langchain": "^0.0.166"
+  }
+}
