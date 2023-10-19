@@ -20,7 +20,7 @@ Sign up for an Autoblocks account at https://app.autoblocks.ai and grab your ing
 
 ### Set environment variables
 
-Create a `.env` file in the same directory as this README with the following environment variables:
+Create a `.env` file in this directory with the following environment variables:
 
 ```
 OPENAI_API_KEY=<your-api-key>

@@ -1,13 +1,12 @@
 {
-  "name": "openai-autoblocks-example",
+  "name": "openai-automated-autoblocks-example",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "type": "module",
   "main": "src/index.js",
   "scripts": {
     "start": "dotenv -e .env -- node ./src/index.js"
   },
-  "author": "Adam Nolte",
   "license": "MIT",
   "dependencies": {
     "@autoblocks/client": "^0.0.14",

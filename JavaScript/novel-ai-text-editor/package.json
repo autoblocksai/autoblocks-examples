@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@autoblocks/client": "^0.0.7",
+    "@autoblocks/client": "^0.0.14",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -19,7 +19,7 @@
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
     "novel": "^0.1.19",
-    "openai": "^4.4.0",
+    "openai": "^4.6.0",
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",

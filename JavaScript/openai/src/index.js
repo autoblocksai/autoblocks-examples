@@ -11,6 +11,7 @@ const ab = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
   // These apply to every call of ab.sendEvent() so we don't have to repeat them
   traceId,
   properties: {
+    provider: 'openai',
     source: 'NODE_EXAMPLE',
   },
 });
@@ -41,10 +42,7 @@ async function run() {
   };
 
   await ab.sendEvent('ai.request', {
-    properties: {
-      ...openAIRequest,
-      provider: 'openai',
-    },
+    properties: openAIRequest,
   });
 
   try {
@@ -53,7 +51,6 @@ async function run() {
     await ab.sendEvent('ai.response', {
       properties: {
         response,
-        provider: 'openai',
         latency: Date.now() - now,
       },
     });
@@ -61,7 +58,6 @@ async function run() {
     await ab.sendEvent('ai.error', {
       properties: {
         error,
-        provider: 'openai',
       },
     });
   }
