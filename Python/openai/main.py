@@ -1,12 +1,16 @@
 import os
-import uuid
-import traceback
 import time
+import traceback
+import uuid
 
+import dotenv
 import openai
 from autoblocks.tracer import AutoblocksTracer
 
+dotenv.load_dotenv()
+
 openai.api_key = os.environ["OPENAI_API_KEY"]
+
 messages = [
     {
         "role": "system",
@@ -27,11 +31,9 @@ request_params = dict(
     n=1
 )
 
-trace_id = str(uuid.uuid4())
-
 tracer = AutoblocksTracer(
     os.environ["AUTOBLOCKS_INGESTION_KEY"],
-    trace_id=trace_id,
+    trace_id=str(uuid.uuid4()),
     properties=dict(
         provider="openai"
     )
@@ -57,12 +59,15 @@ def main():
         tracer.send_event(
             "ai.error",
             properties=dict(
-                error_message=str(error),
-                stacktrace=traceback.format_exc(),
+                error=dict(
+                    type=type(error).__name__,
+                    message=str(error),
+                    stacktrace=traceback.format_exc(),
+                ),
             )
         )
 
-    print(f"View your trace: https://app.autoblocks.ai/explore/trace/{trace_id}")
+    print(f"View your trace: https://app.autoblocks.ai/explore/trace/{tracer.trace_id}")
 
 
 if __name__ == "__main__":

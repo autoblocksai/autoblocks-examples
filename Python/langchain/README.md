@@ -2,9 +2,9 @@
   <img src="https://app.autoblocks.ai/images/logo.png" width="300px">
 </p>
 
-# Python OpenAI Autoblocks Example
+# Python Langchain Autoblocks Example
 
-Example Python and OpenAI application using [Autoblocks](https://www.autoblocks.ai).
+Example script using [Autoblocks](https://www.autoblocks.ai) to trace Langchain pipelines.
 
 ## Setup
 
@@ -31,7 +31,7 @@ OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 ```
 
-## Run the app
+## Run the script
 
 ```bash
 poetry run python main.py
@@ -39,7 +39,7 @@ poetry run python main.py
 
 ## View logs in Autoblocks
 
-After you run the app, you will see a link to view the trace in your console. You can also navigate directly to the [explore page](https://app.autoblocks.ai/explore) to see the trace.
+Go to the [explore page](https://app.autoblocks.ai/explore) to see the trace.
 
 ## More Information
 
