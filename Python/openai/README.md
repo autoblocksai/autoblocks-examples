@@ -8,19 +8,23 @@ Example Python and OpenAI application using [Autoblocks](https://www.autoblocks.
 
 ## Setup
 
-* Install [`pyenv`](https://github.com/pyenv/pyenv)
-  * Install python 3.11: `pyenv install 3.11`
-* Install [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv)
-* Install [`poetry`](https://python-poetry.org/docs/#installation)
-* Create a virtualenv: `pyenv virtualenv 3.11 python-openai-autoblocks-example`
-  * Activate the virtualenv: `pyenv activate python-openai-autoblocks-example`
-* Install dependencies: `poetry install`
+### Install `poetry`
+
+https://python-poetry.org/docs/#installation
+
+### Install dependencies:
+
+```bash
+poetry install
+```
 
 ## Sign up for Autoblocks
 
 Sign up for an Autoblocks account at https://app.autoblocks.ai and grab your ingestion key from [settings](https://app.autoblocks.ai/settings/api-keys).
 
 ## Set environment variables
+
+Create a `.env` file in this directory with the following environment variables:
 
 ```
 OPENAI_API_KEY=<your-api-key>
