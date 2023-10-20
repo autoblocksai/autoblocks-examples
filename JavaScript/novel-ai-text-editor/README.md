@@ -17,11 +17,9 @@
 </p>
 <!-- banner end -->
 
-# Novel Autoblocks Example
+# Novel Example
 
-Example Next.js application using [Novel](https://github.com/steven-tey/novel) and [Autoblocks](https://www.autoblocks.ai).
-
-Based on [novella](https://github.com/steven-tey/novella).
+Example Next.js application using [Novel](https://github.com/steven-tey/novel). Based on [novella](https://github.com/steven-tey/novella).
 
 ## Copy the root `.env` file to this directory
 

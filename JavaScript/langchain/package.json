@@ -1,6 +1,6 @@
 {
   "name": "langchain",
-  "description": "Automatic tracing of LangChain",
+  "description": "Automatic tracing of a LangChain pipeline",
   "version": "0.0.0",
   "private": true,
   "engines": {

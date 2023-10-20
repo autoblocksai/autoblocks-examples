@@ -10,8 +10,6 @@
   <a href="https://www.autoblocks.ai/">Home</a>
 </p>
 
-# Autoblocks Examples
-
 This repository contains examples of how to use Autoblocks with various frameworks, libraries, and languages.
 
 ## Getting started
@@ -52,7 +50,3 @@ All examples will pull environment variables from this file!
 | [langchain](/Python/langchain)         | Automatic tracing of LangChain |
 | [openai-manual](/Python/openai-manual) | Manual tracing of openai calls |
 <!-- Python end -->
-
-## More Information
-
-For more information on how to use Autoblocks, visit the [Autoblocks documentation](https://docs.autoblocks.ai/).

@@ -17,6 +17,11 @@
 </p>
 <!-- banner end -->
 
+# Chatbot Example
+This is a Next.js app that uses openai and Autoblocks to power and monitor a chatbot.
+
+View the deployed application at https://chatbot-example.autoblocks.ai
+
 ## Copy the root `.env` file to this directory
 
 ```bash
