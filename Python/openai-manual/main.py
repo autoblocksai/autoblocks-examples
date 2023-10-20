@@ -41,6 +41,7 @@ tracer = AutoblocksTracer(
 
 
 def main():
+    raise Exception('oops')
     tracer.send_event(
         "ai.request",
         properties=request_params
