@@ -11,6 +11,24 @@ const makeMarkdownTable = (headers, rows) => {
   }).join('\n');
 };
 
+// Text we add to the top of each individual README
+const BANNER = `<p align="center">
+  <img src="https://app.autoblocks.ai/images/logo.png" width="300px">
+</p>
+
+<p align="center">
+  <a href="https://docs.autoblocks.ai/">Documentation</a>
+  |
+  <a href="https://app.autoblocks.ai/">Application</a>
+  |
+  <a href="https://www.autoblocks.ai/">Home</a>
+</p>
+
+<p align="center">
+  :bangbang:
+  Make sure you've read the <a href="/README.md#getting-started">getting started</a> section in the main README.
+</p>`;
+
 (async function () {
   let readme = await fs.readFile('README.md', 'utf-8');
 
@@ -35,6 +53,21 @@ const makeMarkdownTable = (headers, rows) => {
 
       // Add name and description to table
       rows.push([`[${project}](/${section}/${project})`, description]);
+
+      // Add banner to top of README
+      let projectReadme = await fs.readFile(`${section}/${project}/README.md`, 'utf-8');
+
+      // Find start and end of banner in project README
+      const startComment = '<!-- banner start -->';
+      const endComment = '<!-- banner end -->';
+      const startIdx = projectReadme.indexOf(startComment) + startComment.length;
+      const endIdx = projectReadme.indexOf(endComment);
+
+      // Replace the content between the comments with the banner
+      projectReadme = `${projectReadme.slice(0, startIdx)}\n${BANNER}\n${projectReadme.slice(endIdx)}`;
+      
+      // Write the new project README
+      await fs.writeFile(`${section}/${project}/README.md`, projectReadme);
     }
 
     const table = makeMarkdownTable(headers, rows);
