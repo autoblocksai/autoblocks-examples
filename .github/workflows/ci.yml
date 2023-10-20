@@ -115,8 +115,7 @@ jobs:
       - test-python
       - test-javascript
 
-    if: always() && contains(needs.*.result, 'failure')
-    # if: always() && contains(needs.*.result, 'failure') && github.event_name == 'schedule'
+    if: always() && contains(needs.*.result, 'failure') && github.event_name == 'schedule'
 
     runs-on: ubuntu-latest
 
