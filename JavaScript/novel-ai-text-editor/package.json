@@ -1,6 +1,7 @@
 {
-  "name": "novel-autoblocks-example",
-  "version": "0.1.0",
+  "name": "novel-ai-text-editor",
+  "description": "A Next.js app that uses [Novel](https://github.com/steven-tey/novel) and Autoblocks to power an AI-enabled text editor",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

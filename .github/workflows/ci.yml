@@ -1,0 +1,134 @@
+name: CI
+
+on:
+  push:
+  schedule:
+    # Every day at ~7:17am Chicago time.
+    #
+    # Using a non-zero minute offset since GitHub Actions suggests
+    # running jobs at a random minute to avoid overloading their
+    # servers.
+    #
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    - cron: "17 12 * * *"
+
+jobs:
+  test-table-of-contents-up-to-date:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Make table of contents
+        run: node tools/make-toc.js
+
+      - name: Ensure table of contents is up to date
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+              echo "::error::The table of contents is out of date. Please run 'node tools/make-toc.js' and commit the changes."
+          else
+              echo "Table of contents is up to date!"
+          fi
+
+  test-python:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project:
+          - Python/langchain
+          - Python/openai-manual
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_INGESTION_KEY }}" >> .env
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+
+      - name: Install poetry
+        run: curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Check pyproject.toml & poetry.lock are in sync
+        run: poetry lock --check
+        working-directory: ${{ matrix.project }}
+
+      - name: Install dependencies
+        run: poetry install
+        working-directory: ${{ matrix.project }}
+
+      - name: Run script
+        run: poetry run python main.py
+        working-directory: ${{ matrix.project }}
+
+  test-javascript:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project:
+          # - JavaScript/chatbot-nextjs
+          - JavaScript/langchain
+          # - JavaScript/novel-ai-text-editor
+          - JavaScript/openai-automated
+          - JavaScript/openai-manual
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_INGESTION_KEY }}" >> .env
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ matrix.project }}
+
+      - name: Run script
+        run: npm run start
+        working-directory: ${{ matrix.project }}
+
+  notify:
+    needs:
+      - test-python
+      - test-javascript
+
+    if: always() && contains(needs.*.result, 'failure')
+    # if: always() && contains(needs.*.result, 'failure') && github.event_name == 'schedule'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": ":warning:  Workflow `${{ github.workflow }}` in repository `${{ github.repository }}` failed. <${{ env.run-url }}|Logs>"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+          run-url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

@@ -2,7 +2,7 @@ import dotenv
 from autoblocks.vendor.langchain import AutoblocksCallbackHandler
 from langchain.llms import OpenAI
 
-dotenv.load_dotenv()
+dotenv.load_dotenv("../../.env")
 
 
 if __name__ == "__main__":

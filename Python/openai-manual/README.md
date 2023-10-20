@@ -16,4 +16,4 @@ poetry run python main.py
 
 ## View logs in Autoblocks
 
-Go to the [explore page](https://app.autoblocks.ai/explore) to see the trace.
+After you run the script, you will see a link to view the trace in your console. You can also navigate directly to the [explore page](https://app.autoblocks.ai/explore) to see the trace.
