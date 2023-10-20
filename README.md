@@ -36,7 +36,7 @@ All examples will pull environment variables from this file!
 | Name                                                     | Description                                                                                                            |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | [chatbot-nextjs](/JavaScript/chatbot-nextjs)             | A Next.js app that uses openai and Autoblocks to power and monitor a chatbot                                           |
-| [langchain](/JavaScript/langchain)                       | Automatic tracing of LangChain                                                                                         |
+| [langchain](/JavaScript/langchain)                       | Automatic tracing of a LangChain pipeline                                                                              |
 | [novel-ai-text-editor](/JavaScript/novel-ai-text-editor) | A Next.js app that uses [Novel](https://github.com/steven-tey/novel) and Autoblocks to power an AI-enabled text editor |
 | [openai-automated](/JavaScript/openai-automated)         | Automatic tracing of openai calls                                                                                      |
 | [openai-manual](/JavaScript/openai-manual)               | Manual tracing of openai calls                                                                                         |
@@ -47,8 +47,8 @@ All examples will pull environment variables from this file!
 > **_NOTE:_** All Python examples require [`poetry`](https://python-poetry.org/docs/#installation) to be installed.
 
 <!-- Python start -->
-| Name                                   | Description                    |
-| -------------------------------------- | ------------------------------ |
-| [langchain](/Python/langchain)         | Automatic tracing of LangChain |
-| [openai-manual](/Python/openai-manual) | Manual tracing of openai calls |
+| Name                                   | Description                               |
+| -------------------------------------- | ----------------------------------------- |
+| [langchain](/Python/langchain)         | Automatic tracing of a LangChain pipeline |
+| [openai-manual](/Python/openai-manual) | Manual tracing of openai calls            |
 <!-- Python end -->
