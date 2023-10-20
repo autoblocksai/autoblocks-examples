@@ -19,12 +19,7 @@ This repository contains examples of how to use Autoblocks with various framewor
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
 - Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
-
-## Create your `.env` file
-
-Create a `.env` file at the root of this repository with the following environment variables:
-
-> **_TIP:_** Run `cp .env.example .env` for extra quick setup.
+- Create a `.env` file at the root of this repository with the following environment variables (**TIP**: Run `cp .env.example .env` for extra quick setup)
 
 ```
 OPENAI_API_KEY=<your-api-key>
