@@ -10,7 +10,9 @@
   <a href="https://www.autoblocks.ai/">Home</a>
 </p>
 
-This repository contains examples of how to use Autoblocks with various frameworks, libraries, and languages.
+<p align="center">
+  This repository contains examples of how to use Autoblocks with various frameworks, libraries, and languages.
+</p>
 
 ## Getting started
 
