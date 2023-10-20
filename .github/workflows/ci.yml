@@ -32,6 +32,7 @@ jobs:
         run: |
           if [[ -n $(git status --porcelain) ]]; then
               echo "::error::The table of contents is out of date. Please run 'node tools/make-toc.js' and commit the changes."
+              exit 1
           else
               echo "Table of contents is up to date!"
           fi
