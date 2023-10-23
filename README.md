@@ -47,8 +47,9 @@ All examples will pull environment variables from this file!
 > **_NOTE:_** All Python examples require [`poetry`](https://python-poetry.org/docs/#installation) to be installed.
 
 <!-- Python start -->
-| Name                                   | Description                               |
-| -------------------------------------- | ----------------------------------------- |
-| [langchain](/Python/langchain)         | Automatic tracing of a LangChain pipeline |
-| [openai-manual](/Python/openai-manual) | Manual tracing of openai calls            |
+| Name                                         | Description                               |
+| -------------------------------------------- | ----------------------------------------- |
+| [langchain](/Python/langchain)               | Automatic tracing of a LangChain pipeline |
+| [openai-automated](/Python/openai-automated) | Automatic tracing of openai calls         |
+| [openai-manual](/Python/openai-manual)       | Manual tracing of openai calls            |
 <!-- Python end -->
