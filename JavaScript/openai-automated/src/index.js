@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { traceOpenAI } from '@autoblocks/client';
+import { traceOpenAI } from '@autoblocks/client/openai';
 
 async function main() {
   await traceOpenAI();
