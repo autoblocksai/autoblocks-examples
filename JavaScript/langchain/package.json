@@ -1,5 +1,6 @@
 {
-  "name": "langchain-autoblocks-example",
+  "name": "langchain",
+  "description": "Automatic tracing of a LangChain pipeline",
   "version": "0.0.0",
   "private": true,
   "engines": {
@@ -7,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    "start": "dotenv -e .env -- node ./src/index.js"
+    "start": "dotenv -e ../../.env -- node ./src/index.js"
   },
   "author": "",
   "license": "MIT",

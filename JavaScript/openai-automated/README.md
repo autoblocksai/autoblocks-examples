@@ -17,18 +17,18 @@
 </p>
 <!-- banner end -->
 
-## Install dependencies
+## Install Dependencies
 
-```bash
-poetry install
+```
+npm install
 ```
 
 ## Run the script
 
-```bash
-poetry run python main.py
+```
+npm run start
 ```
 
-## View logs in Autoblocks
+## View trace in Autoblocks
 
 Go to the [explore page](https://app.autoblocks.ai/explore) to see the trace.

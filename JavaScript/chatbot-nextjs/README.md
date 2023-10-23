@@ -1,50 +1,49 @@
+<!-- banner start -->
 <p align="center">
   <img src="https://app.autoblocks.ai/images/logo.png" width="300px">
 </p>
 
-# Chatbot Autoblocks Example
+<p align="center">
+  <a href="https://docs.autoblocks.ai/">Documentation</a>
+  |
+  <a href="https://app.autoblocks.ai/">Application</a>
+  |
+  <a href="https://www.autoblocks.ai/">Home</a>
+</p>
 
-## Quick Start
+<p align="center">
+  :bangbang:
+  Make sure you've read the <a href="/README.md#getting-started">getting started</a> section in the main README.
+</p>
+<!-- banner end -->
 
-Example chatbot using [Autoblocks](https://www.autoblocks.ai).
+# Chatbot Example
+This is a Next.js app that uses openai and Autoblocks to power and monitor a chatbot.
 
-View deployed app at https://chatbot-example.autoblocks.ai
+View the deployed application at https://chatbot-example.autoblocks.ai
 
-### Install Dependencies
+## Copy the root `.env` file to this directory
 
+```bash
+cp ../../.env .
 ```
+
+## Install dependencies
+
+```bash
 npm install
 ```
 
-### Sign up for Autoblocks
+## Run the app
 
-Sign up for an Autoblocks account at https://app.autoblocks.ai and grab your ingestion key from [settings](https://app.autoblocks.ai/settings/api-keys).
-
-### Set environment variables
-
-Create a `.env` file in the `chatbot-nextjs` directory with the following environment variables:
-
-```
-OPENAI_API_KEY=<your-api-key>
-AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
-```
-
-### Run the app
-
-```
+```bash
 npm run dev
 ```
 
 Visit http://localhost:3000 to see the app.
 
-### View logs in Autoblocks
+## View logs in Autoblocks
 
-As you interact with the app, you will see traces appear in the Autoblocks explore page.
+As you interact with the app, you will see traces appear in the Autoblocks [explore page](https://app.autoblocks.ai/explore).
 
 ![Autoblocks Explore](https://github.com/autoblocksai/novel-autoblocks-example/blob/main/novel-autoblocks-example.png?raw=true)
-
-## More Information
-
-For more information on how to use Autoblocks, visit the [Autoblocks documentation](https://docs.autoblocks.ai/).
-
-For more information on how to use Novel, visit the [Novel repository](https://github.com/steven-tey/novel).

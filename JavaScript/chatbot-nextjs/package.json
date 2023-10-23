@@ -1,6 +1,7 @@
 {
-  "name": "autoblocks-examples",
-  "version": "0.1.0",
+  "name": "chatbot-nextjs",
+  "description": "A Next.js app that uses openai and Autoblocks to power and monitor a chatbot",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

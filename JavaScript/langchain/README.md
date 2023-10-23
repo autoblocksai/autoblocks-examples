@@ -1,42 +1,34 @@
+<!-- banner start -->
 <p align="center">
   <img src="https://app.autoblocks.ai/images/logo.png" width="300px">
 </p>
 
-# Langchain Autoblocks Example
+<p align="center">
+  <a href="https://docs.autoblocks.ai/">Documentation</a>
+  |
+  <a href="https://app.autoblocks.ai/">Application</a>
+  |
+  <a href="https://www.autoblocks.ai/">Home</a>
+</p>
 
-Example using [Autoblocks](https://www.autoblocks.ai) and [Langchain JS](https://js.langchain.com/docs/get_started/introduction).
+<p align="center">
+  :bangbang:
+  Make sure you've read the <a href="/README.md#getting-started">getting started</a> section in the main README.
+</p>
+<!-- banner end -->
 
-## Quick Start
-
-### Install Dependencies
+## Install dependencies
 
 ```
 npm install
 ```
 
-### Sign up for Autoblocks
-
-Sign up for an Autoblocks account at https://app.autoblocks.ai and grab your ingestion key from [settings](https://app.autoblocks.ai/settings/api-keys).
-
-### Set environment variables
-
-Create a `.env` file in this directory with the following environment variables:
-
-```
-OPENAI_API_KEY=<your-api-key>
-AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
-```
-
-### Run the script
+## Run the script
 
 ```
 npm run start
 ```
 
-### View logs in Autoblocks
+## View logs in Autoblocks
 
 After you run the script, you can find the trace on the [explore page](https://app.autoblocks.ai/explore).
-
-## More Information
-
-For more information on how to use Autoblocks, visit the [Autoblocks documentation](https://docs.autoblocks.ai/).
