@@ -1,13 +1,28 @@
+<!-- banner start -->
 <p align="center">
   <img src="https://app.autoblocks.ai/images/logo.png" width="300px">
 </p>
 
 <p align="center">
+  📚
   <a href="https://docs.autoblocks.ai/">Documentation</a>
-  |
+  &nbsp;
+  •
+  &nbsp;
+  🖥️
   <a href="https://app.autoblocks.ai/">Application</a>
-  |
+  &nbsp;
+  •
+  &nbsp;
+  🏠
   <a href="https://www.autoblocks.ai/">Home</a>
+</p>
+<!-- banner end -->
+
+<p align="center">
+  <a href="https://github.com/autoblocksai/autoblocks-examples/actions/workflows/ci.yml">
+    <img src="https://github.com/autoblocksai/autoblocks-examples/actions/workflows/ci.yml/badge.svg?branch=main">
+  </a>
 </p>
 
 <p align="center">
