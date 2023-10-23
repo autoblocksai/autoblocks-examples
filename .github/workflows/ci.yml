@@ -45,6 +45,7 @@ jobs:
         project:
           - Python/langchain
           - Python/openai-manual
+          - Python/openai-automated
 
     steps:
       - name: Checkout repository
