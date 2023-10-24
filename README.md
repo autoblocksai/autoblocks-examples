@@ -34,8 +34,10 @@
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
 - Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
-- Create a `.env` file at the root of this repository with the following environment variables (**Tip**: Run `cp .env.example .env` for extra quick setup)
+- Create a file named `.env` at the root of this repository and include the following environment variables
+  - **Tip**: Run `cp .env.example .env` for extra quick setup
 
+`.env`
 ```
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
@@ -45,7 +47,7 @@ All examples will pull environment variables from this file!
 
 ## JavaScript
 
-> **_NOTE:_** All JavaScript examples require `npm` and `node` >= 16 to be installed.
+> **_NOTE:_** All JavaScript examples require `npm` and `node >= 16` to be installed.
 
 <!-- JavaScript start -->
 | Name                                                     | Description                                                                                                            |
