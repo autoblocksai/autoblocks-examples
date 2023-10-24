@@ -34,7 +34,7 @@
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
 - Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
-- Create a `.env` file at the root of this repository with the following environment variables
+- Create a file named `.env` at the root of this repository and include the following environment variables
   - **Tip**: Run `cp .env.example .env` for extra quick setup
 
 `.env`
