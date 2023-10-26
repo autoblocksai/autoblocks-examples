@@ -34,7 +34,7 @@ AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 ```
 <!-- getting started end -->
 
-## Install dependencies:
+## Install dependencies
 
 ```bash
 poetry install
