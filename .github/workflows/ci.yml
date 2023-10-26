@@ -13,7 +13,7 @@ on:
     - cron: "17 12 * * *"
 
 jobs:
-  test-table-of-contents-up-to-date:
+  test-readmes-up-to-date:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,16 +25,16 @@ jobs:
         with:
           node-version: 20
 
-      - name: Make table of contents
-        run: node tools/make-toc.js
+      - name: Make READMEs
+        run: node tools/make-readmes.js
 
-      - name: Ensure table of contents is up to date
+      - name: Ensure READMEs are up to date
         run: |
           if [[ -n $(git status --porcelain) ]]; then
-              echo "::error::The table of contents is out of date. Please run 'node tools/make-toc.js' and commit the changes."
+              echo "::error::The READMEs are out of date. Please run 'node tools/make-readmes.js' and commit the changes."
               exit 1
           else
-              echo "Table of contents is up to date!"
+              echo "READMEs are up to date!"
           fi
 
   test-python:
@@ -46,6 +46,11 @@ jobs:
           - Python/langchain
           - Python/openai-manual
           - Python/openai-automated
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ matrix.project }}
 
     steps:
       - name: Checkout repository
@@ -67,15 +72,12 @@ jobs:
 
       - name: Check pyproject.toml & poetry.lock are in sync
         run: poetry lock --check
-        working-directory: ${{ matrix.project }}
 
       - name: Install dependencies
         run: poetry install
-        working-directory: ${{ matrix.project }}
 
       - name: Run script
         run: poetry run python main.py
-        working-directory: ${{ matrix.project }}
 
   test-javascript:
     runs-on: ubuntu-latest
@@ -88,6 +90,11 @@ jobs:
           # - JavaScript/novel-ai-text-editor
           - JavaScript/openai-automated
           - JavaScript/openai-manual
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ matrix.project }}
 
     steps:
       - name: Checkout repository
@@ -106,11 +113,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ${{ matrix.project }}
 
       - name: Run script
         run: npm run start
-        working-directory: ${{ matrix.project }}
 
   notify:
     needs:

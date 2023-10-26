@@ -5,7 +5,7 @@ from langchain.chains import SimpleSequentialChain
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 
-dotenv.load_dotenv("../../.env")
+dotenv.load_dotenv(".env")
 
 
 if __name__ == "__main__":

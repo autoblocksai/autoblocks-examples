@@ -14,7 +14,10 @@ const makeMarkdownTable = (headers, rows) => {
 const replaceContentBetweenComments = ({ content, startComment, endComment, replacement }) => {
   const startIdx = content.indexOf(startComment) + startComment.length;
   const endIdx = content.indexOf(endComment);
-  return `${content.slice(0, startIdx)}\n${replacement}\n${content.slice(endIdx)}`;
+  if (startIdx !== -1 && endIdx !== -1) {
+    return `${content.slice(0, startIdx)}\n${replacement}\n${content.slice(endIdx)}`;
+  }
+  return content;
 };
 
 // Banner we add to the top of each README
@@ -37,14 +40,25 @@ const BANNER = `<p align="center">
   <a href="https://www.autoblocks.ai/">Home</a>
 </p>`;
 
-// Reminder we add below the banner to each individual project README
-const GETTING_STARTED_REMINDER = `<p align="center">
-  :bangbang:
-  Make sure you've read the <a href="/README.md#getting-started">getting started</a> section in the main README.
-</p>`;
-
 const BANNER_START_COMMENT = '<!-- banner start -->';
 const BANNER_END_COMMENT = '<!-- banner end -->';
+
+// Getting started checklist we add to each individual project README
+const GETTING_STARTED = `## Getting started
+
+- Sign up for an Autoblocks account at https://app.autoblocks.ai
+- Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
+- Grab your OpenAI API key from https://platform.openai.com/account/api-keys
+- Create a file named \`.env\` in this folder and include the following environment variables:
+
+\`.env\`
+\`\`\`
+OPENAI_API_KEY=<your-api-key>
+AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+\`\`\``;
+
+const GETTING_STARTED_START_COMMENT = '<!-- getting started start -->';
+const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
 
 (async function () {
   let readme = await fs.readFile('README.md', 'utf-8');
@@ -73,12 +87,19 @@ const BANNER_END_COMMENT = '<!-- banner end -->';
 
       let projectReadme = await fs.readFile(`${section}/${project}/README.md`, 'utf-8');
       
-      // Add banner + getting started reminder to top of project README
+      // Add banner to top of project README
       projectReadme = replaceContentBetweenComments({
         content: projectReadme,
         startComment: BANNER_START_COMMENT,
         endComment: BANNER_END_COMMENT,
-        replacement: [BANNER, GETTING_STARTED_REMINDER].join('\n'),
+        replacement: BANNER,
+      });
+      // Add getting started checklist to project README
+      projectReadme = replaceContentBetweenComments({
+        content: projectReadme,
+        startComment: GETTING_STARTED_START_COMMENT,
+        endComment: GETTING_STARTED_END_COMMENT,
+        replacement: GETTING_STARTED,
       });
 
       // Write the new project README

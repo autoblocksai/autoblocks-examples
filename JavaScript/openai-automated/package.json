@@ -6,7 +6,7 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "start": "dotenv -e ../../.env -- node ./src/index.js"
+    "start": "dotenv -e .env -- node ./src/index.js"
   },
   "license": "MIT",
   "dependencies": {

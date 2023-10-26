@@ -17,11 +17,22 @@
   🏠
   <a href="https://www.autoblocks.ai/">Home</a>
 </p>
-<p align="center">
-  :bangbang:
-  Make sure you've read the <a href="/README.md#getting-started">getting started</a> section in the main README.
-</p>
 <!-- banner end -->
+
+<!-- getting started start -->
+## Getting started
+
+- Sign up for an Autoblocks account at https://app.autoblocks.ai
+- Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
+- Grab your OpenAI API key from https://platform.openai.com/account/api-keys
+- Create a file named `.env` in this folder and include the following environment variables:
+
+`.env`
+```
+OPENAI_API_KEY=<your-api-key>
+AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+```
+<!-- getting started end -->
 
 ## Install dependencies:
 
