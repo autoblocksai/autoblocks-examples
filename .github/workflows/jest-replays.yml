@@ -1,6 +1,16 @@
 name: Autoblocks Replays
 
-on: push
+on:
+  push:
+  schedule:
+    # Every day at ~7:27am Chicago time.
+    #
+    # Using a non-zero minute offset since GitHub Actions suggests
+    # running jobs at a random minute to avoid overloading their
+    # servers.
+    #
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    - cron: '27 12 * * *'
 
 jobs:
   autoblocks-replays:

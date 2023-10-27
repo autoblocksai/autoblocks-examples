@@ -122,3 +122,4 @@ This kind of snapshot / stability testing is important to run over LLM outputs o
 ### 5. Run the tests in CI
 
 See the [GitHub Action](/.github/workflows/jest-replays.yml) workflow associated with this project. This ensures we run replays on every pull request.
+The results of these replays will be under the GitHub tab on the [replays](https://app.autoblocks.ai/replays) page.
