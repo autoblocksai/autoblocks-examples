@@ -9,6 +9,11 @@ jobs:
   autoblocks-replays:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        shell: bash
+        working-directory: JavaScript/jest-replays
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
