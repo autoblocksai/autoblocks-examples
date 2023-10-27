@@ -119,7 +119,6 @@ Clicking into **View Differences**, I could see that the response now included a
 
 This kind of snapshot / stability testing is important to run over LLM outputs on every pull request so that you can catch regressions before they go to production.
 
-### 5. Run the tests in CI
+### 5. Run the replays in GitHub Actions
 
-See the [GitHub Action](/.github/workflows/jest-replays.yml) workflow associated with this project. This ensures we run replays on every pull request.
-The results of these replays will be under the GitHub tab on the [replays](https://app.autoblocks.ai/replays) page.
+See the [Autoblocks Replays GitHub Action](/.github/workflows/autoblocks-replays.yml) workflow; this workflow runs replays on every pull request and also on a schedule. The results of these replays will be under the GitHub tab on the [replays](https://app.autoblocks.ai/replays) page.
