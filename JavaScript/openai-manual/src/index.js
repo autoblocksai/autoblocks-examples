@@ -62,7 +62,7 @@ async function run() {
   }
 
   console.log(
-    `Finished running example. View the trace at https://app.autoblocks.ai/explore/trace/${traceId}`,
+    `Finished running example. View the trace at https://app.autoblocks.ai/explore/trace/${tracer.traceId}`,
   );
 }
 
