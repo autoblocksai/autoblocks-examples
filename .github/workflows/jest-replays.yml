@@ -1,9 +1,6 @@
 name: Autoblocks Replays
 
-on:
-  push:
-    paths:
-      - 'JavaScript/jest-replays/**'
+on: push
 
 jobs:
   autoblocks-replays:
