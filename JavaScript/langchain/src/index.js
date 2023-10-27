@@ -1,8 +1,8 @@
 import { AutoblocksCallbackHandler } from '@autoblocks/client/langchain';
-import { OpenAI } from "langchain/llms/openai";
-import { DynamicTool } from "langchain/tools";
-import { Calculator } from "langchain/tools/calculator";
-import { initializeAgentExecutorWithOptions } from "langchain/agents";
+import { OpenAI } from 'langchain/llms/openai';
+import { DynamicTool } from 'langchain/tools';
+import { Calculator } from 'langchain/tools/calculator';
+import { initializeAgentExecutorWithOptions } from 'langchain/agents';
 
 const main = async () => {
   const model = new OpenAI({ temperature: 0 });
@@ -23,12 +23,12 @@ const main = async () => {
   const handler = new AutoblocksCallbackHandler();
   const output = await executor.run(
     "What is today's date? What is that date divided by 2?",
-    { callbacks: [handler]
-  });
+    { callbacks: [handler] },
+  );
 
   console.log(`Output: ${output}`);
   console.log('\n');
-  console.log('View your trace: https://app.autoblocks.ai/explore')
-}
+  console.log('View your trace: https://app.autoblocks.ai/explore');
+};
 
 main();

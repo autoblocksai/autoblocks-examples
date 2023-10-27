@@ -34,6 +34,7 @@
 > **_NOTE:_** All JavaScript examples require `npm` and `node >= 16` to be installed.
 
 <!-- JavaScript start -->
+
 | Name                                                     | Description                                                                                                            |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | [chatbot-nextjs](/JavaScript/chatbot-nextjs)             | A Next.js app that uses openai and Autoblocks to power and monitor a chatbot                                           |
@@ -41,6 +42,7 @@
 | [novel-ai-text-editor](/JavaScript/novel-ai-text-editor) | A Next.js app that uses [Novel](https://github.com/steven-tey/novel) and Autoblocks to power an AI-enabled text editor |
 | [openai-automated](/JavaScript/openai-automated)         | Automatic tracing of openai calls                                                                                      |
 | [openai-manual](/JavaScript/openai-manual)               | Manual tracing of openai calls                                                                                         |
+
 <!-- JavaScript end -->
 
 ## Python
@@ -48,9 +50,11 @@
 > **_NOTE:_** All Python examples require [`poetry`](https://python-poetry.org/docs/#installation) to be installed.
 
 <!-- Python start -->
+
 | Name                                         | Description                               |
 | -------------------------------------------- | ----------------------------------------- |
 | [langchain](/Python/langchain)               | Automatic tracing of a LangChain pipeline |
 | [openai-automated](/Python/openai-automated) | Automatic tracing of openai calls         |
 | [openai-manual](/Python/openai-manual)       | Manual tracing of openai calls            |
+
 <!-- Python end -->

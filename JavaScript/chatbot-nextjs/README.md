@@ -26,6 +26,7 @@ This is a Next.js app that uses openai and Autoblocks to power and monitor a cha
 View the deployed application at https://chatbot-example.autoblocks.ai
 
 <!-- getting started start -->
+
 ## Getting started
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
@@ -33,11 +34,11 @@ View the deployed application at https://chatbot-example.autoblocks.ai
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
 - Create a file named `.env` in this folder and include the following environment variables:
 
-`.env`
 ```
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 ```
+
 <!-- getting started end -->
 
 ## Install dependencies

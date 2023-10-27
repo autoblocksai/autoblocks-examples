@@ -251,7 +251,7 @@ function Message({
         <div
           className={classNames(
             'order-2',
-            showAvatar ? 'visible' : 'invisible'
+            showAvatar ? 'visible' : 'invisible',
           )}
         >
           <Avatar firstName={'Adam'} lastName={'Nolte'} />
@@ -273,7 +273,7 @@ function Message({
       <div
         className={classNames(
           'text-2xl order-1',
-          showAvatar ? 'visible' : 'invisible'
+          showAvatar ? 'visible' : 'invisible',
         )}
       >
         🤖

@@ -33,7 +33,7 @@ async function main() {
   await openai.chat.completions.create(openAIRequest);
   console.log('Finished calling OpenAI');
 
-  console.log('View the trace at https://app.autoblocks.ai/explore')
+  console.log('View the trace at https://app.autoblocks.ai/explore');
 }
 
 main();

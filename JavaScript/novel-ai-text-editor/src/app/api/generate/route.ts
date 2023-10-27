@@ -16,7 +16,7 @@ export async function POST(req: Request): Promise<Response> {
       'Missing OPENAI_API_KEY – make sure to add it to your .env file.',
       {
         status: 400,
-      }
+      },
     );
   }
   // Start the timer for duration tracking till the end of the stream

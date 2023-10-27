@@ -6,16 +6,27 @@ const makeMarkdownTable = (headers, rows) => {
   }, []);
   const headerSeparator = columnWidths.map((width) => '-'.repeat(width));
   const table = [headers, headerSeparator, ...rows];
-  return table.map((row) => {
-    return `| ${row.map((cell, i) => cell.padEnd(columnWidths[i])).join(' | ')} |`;
-  }).join('\n');
+  return table
+    .map((row) => {
+      return `| ${row
+        .map((cell, i) => cell.padEnd(columnWidths[i]))
+        .join(' | ')} |`;
+    })
+    .join('\n');
 };
 
-const replaceContentBetweenComments = ({ content, startComment, endComment, replacement }) => {
+const replaceContentBetweenComments = ({
+  content,
+  startComment,
+  endComment,
+  replacement,
+}) => {
   const startIdx = content.indexOf(startComment) + startComment.length;
   const endIdx = content.indexOf(endComment);
   if (startIdx !== -1 && endIdx !== -1) {
-    return `${content.slice(0, startIdx)}\n${replacement}\n${content.slice(endIdx)}`;
+    return `${content.slice(0, startIdx)}\n${replacement}\n${content.slice(
+      endIdx,
+    )}`;
   }
   return content;
 };
@@ -44,18 +55,19 @@ const BANNER_START_COMMENT = '<!-- banner start -->';
 const BANNER_END_COMMENT = '<!-- banner end -->';
 
 // Getting started checklist we add to each individual project README
-const GETTING_STARTED = `## Getting started
+const GETTING_STARTED = `
+## Getting started
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
 - Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
 - Create a file named \`.env\` in this folder and include the following environment variables:
 
-\`.env\`
 \`\`\`
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
-\`\`\``;
+\`\`\`
+`;
 
 const GETTING_STARTED_START_COMMENT = '<!-- getting started start -->';
 const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
@@ -74,19 +86,28 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
 
       if (section === 'JavaScript') {
         // Get description from package.json
-        const packageJson = await fs.readFile(`${section}/${project}/package.json`, 'utf-8');
+        const packageJson = await fs.readFile(
+          `${section}/${project}/package.json`,
+          'utf-8',
+        );
         description = JSON.parse(packageJson).description;
       } else if (section === 'Python') {
         // Get description from pyproject.toml
-        const pyprojectToml = await fs.readFile(`${section}/${project}/pyproject.toml`, 'utf-8');
+        const pyprojectToml = await fs.readFile(
+          `${section}/${project}/pyproject.toml`,
+          'utf-8',
+        );
         description = pyprojectToml.match(/description = "(.*)"/)[1];
       }
 
       // Add name and description to table
       rows.push([`[${project}](/${section}/${project})`, description]);
 
-      let projectReadme = await fs.readFile(`${section}/${project}/README.md`, 'utf-8');
-      
+      let projectReadme = await fs.readFile(
+        `${section}/${project}/README.md`,
+        'utf-8',
+      );
+
       // Add banner to top of project README
       projectReadme = replaceContentBetweenComments({
         content: projectReadme,
@@ -111,7 +132,7 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
       content: readme,
       startComment: `<!-- ${section} start -->`,
       endComment: `<!-- ${section} end -->`,
-      replacement: makeMarkdownTable(headers, rows),
+      replacement: '\n' + makeMarkdownTable(headers, rows) + '\n',
     });
   }
 

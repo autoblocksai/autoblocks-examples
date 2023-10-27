@@ -14,12 +14,9 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 messages = [
     {
         "role": "system",
-        "content": "You are a helpful assistant. You answer questions about a software product named Acme."
+        "content": "You are a helpful assistant. You answer questions about a software product named Acme.",
     },
-    {
-        "role": "user",
-        "content": "How do I sign up?"
-    }
+    {"role": "user", "content": "How do I sign up?"},
 ]
 request_params = dict(
     model="gpt-3.5-turbo",
@@ -28,23 +25,18 @@ request_params = dict(
     top_p=1,
     frequency_penalty=0,
     presence_penalty=0,
-    n=1
+    n=1,
 )
 
 tracer = AutoblocksTracer(
     os.environ["AUTOBLOCKS_INGESTION_KEY"],
     trace_id=str(uuid.uuid4()),
-    properties=dict(
-        provider="openai"
-    )
+    properties=dict(provider="openai"),
 )
 
 
 def main():
-    tracer.send_event(
-        "ai.request",
-        properties=request_params
-    )
+    tracer.send_event("ai.request", properties=request_params)
     try:
         start_time = time.time()
         openai_response = openai.ChatCompletion.create(**request_params)
@@ -53,7 +45,7 @@ def main():
             properties=dict(
                 response=openai_response,
                 latency=(time.time() - start_time) * 1000,
-            )
+            ),
         )
     except Exception as error:
         tracer.send_event(
@@ -64,7 +56,7 @@ def main():
                     message=str(error),
                     stacktrace=traceback.format_exc(),
                 ),
-            )
+            ),
         )
 
     print(f"View your trace: https://app.autoblocks.ai/explore/trace/{tracer.trace_id}")
