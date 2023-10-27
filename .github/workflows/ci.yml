@@ -92,9 +92,8 @@ jobs:
     strategy:
       matrix:
         project:
-          # - JavaScript/chatbot-nextjs
+          - JavaScript/jest-replays
           - JavaScript/langchain
-          # - JavaScript/novel-ai-text-editor
           - JavaScript/openai-automated
           - JavaScript/openai-manual
 

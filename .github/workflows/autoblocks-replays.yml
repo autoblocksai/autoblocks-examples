@@ -1,0 +1,43 @@
+name: Autoblocks Replays
+
+on:
+  push:
+  schedule:
+    # Every day at ~7:27am Chicago time.
+    #
+    # Using a non-zero minute offset since GitHub Actions suggests
+    # running jobs at a random minute to avoid overloading their
+    # servers.
+    #
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    - cron: '27 12 * * *'
+
+jobs:
+  autoblocks-replays:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: JavaScript/jest-replays
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_REPLAY_INGESTION_KEY }}" >> .env
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run script
+        run: npm run start
