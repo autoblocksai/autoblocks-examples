@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "pytest-replays"
+description = "Run Autoblocks Replays from within a pytest test suite"
+version = "0.0.0"
+authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+openai = "^0.28.0"
+autoblocksai = "^0.0.11"
+python-dotenv = "^1.0.0"
+pytest = "^7.4.3"

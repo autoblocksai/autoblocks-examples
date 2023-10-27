@@ -1,7 +1,7 @@
 {
   "name": "jest-replays",
   "version": "0.0.0",
-  "description": "Run Autoblocks replays from within a jest test suite",
+  "description": "Run Autoblocks Replays from within a jest test suite",
   "type": "module",
   "scripts": {
     "start": "AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest"
