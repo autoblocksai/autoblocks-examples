@@ -18,12 +18,9 @@ def main():
         messages=[
             {
                 "role": "system",
-                "content": "You are a helpful assistant. You answer questions about a software product named Acme."
+                "content": "You are a helpful assistant. You answer questions about a software product named Acme.",
             },
-            {
-                "role": "user",
-                "content": "How do I sign up?"
-            }
+            {"role": "user", "content": "How do I sign up?"},
         ],
         model="gpt-3.5-turbo",
         temperature=0.7,

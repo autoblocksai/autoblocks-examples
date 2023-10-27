@@ -24,6 +24,7 @@
 Example Next.js application using [Novel](https://github.com/steven-tey/novel). Based on [novella](https://github.com/steven-tey/novella).
 
 <!-- getting started start -->
+
 ## Getting started
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
@@ -32,10 +33,12 @@ Example Next.js application using [Novel](https://github.com/steven-tey/novel). 
 - Create a file named `.env` in this folder and include the following environment variables:
 
 `.env`
+
 ```
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 ```
+
 <!-- getting started end -->
 
 ## Install Dependencies

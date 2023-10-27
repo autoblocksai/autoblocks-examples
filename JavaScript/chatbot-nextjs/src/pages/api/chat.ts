@@ -15,7 +15,7 @@ Sometimes you do not know the answer.
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const { userInput, pastMessages, traceId, autoblocksIngestionKey } =
     JSON.parse(req.body);

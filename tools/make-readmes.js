@@ -6,16 +6,27 @@ const makeMarkdownTable = (headers, rows) => {
   }, []);
   const headerSeparator = columnWidths.map((width) => '-'.repeat(width));
   const table = [headers, headerSeparator, ...rows];
-  return table.map((row) => {
-    return `| ${row.map((cell, i) => cell.padEnd(columnWidths[i])).join(' | ')} |`;
-  }).join('\n');
+  return table
+    .map((row) => {
+      return `| ${row
+        .map((cell, i) => cell.padEnd(columnWidths[i]))
+        .join(' | ')} |`;
+    })
+    .join('\n');
 };
 
-const replaceContentBetweenComments = ({ content, startComment, endComment, replacement }) => {
+const replaceContentBetweenComments = ({
+  content,
+  startComment,
+  endComment,
+  replacement,
+}) => {
   const startIdx = content.indexOf(startComment) + startComment.length;
   const endIdx = content.indexOf(endComment);
   if (startIdx !== -1 && endIdx !== -1) {
-    return `${content.slice(0, startIdx)}\n${replacement}\n${content.slice(endIdx)}`;
+    return `${content.slice(0, startIdx)}\n${replacement}\n${content.slice(
+      endIdx,
+    )}`;
   }
   return content;
 };
@@ -74,19 +85,28 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
 
       if (section === 'JavaScript') {
         // Get description from package.json
-        const packageJson = await fs.readFile(`${section}/${project}/package.json`, 'utf-8');
+        const packageJson = await fs.readFile(
+          `${section}/${project}/package.json`,
+          'utf-8',
+        );
         description = JSON.parse(packageJson).description;
       } else if (section === 'Python') {
         // Get description from pyproject.toml
-        const pyprojectToml = await fs.readFile(`${section}/${project}/pyproject.toml`, 'utf-8');
+        const pyprojectToml = await fs.readFile(
+          `${section}/${project}/pyproject.toml`,
+          'utf-8',
+        );
         description = pyprojectToml.match(/description = "(.*)"/)[1];
       }
 
       // Add name and description to table
       rows.push([`[${project}](/${section}/${project})`, description]);
 
-      let projectReadme = await fs.readFile(`${section}/${project}/README.md`, 'utf-8');
-      
+      let projectReadme = await fs.readFile(
+        `${section}/${project}/README.md`,
+        'utf-8',
+      );
+
       // Add banner to top of project README
       projectReadme = replaceContentBetweenComments({
         content: projectReadme,
