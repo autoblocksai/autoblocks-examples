@@ -1,0 +1,15 @@
+{
+  "name": "spans",
+  "version": "0.0.0",
+  "description": "Establish parent / child relationships between your events with the `spanId` and `parentSpanId` properties",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "dotenv -e .env -- node ./src/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@autoblocks/client": "^0.0.15",
+    "dotenv-cli": "^7.3.0"
+  }
+}
