@@ -55,18 +55,19 @@ const BANNER_START_COMMENT = '<!-- banner start -->';
 const BANNER_END_COMMENT = '<!-- banner end -->';
 
 // Getting started checklist we add to each individual project README
-const GETTING_STARTED = `## Getting started
+const GETTING_STARTED = `
+## Getting started
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
 - Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
 - Create a file named \`.env\` in this folder and include the following environment variables:
 
-\`.env\`
 \`\`\`
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
-\`\`\``;
+\`\`\`
+`;
 
 const GETTING_STARTED_START_COMMENT = '<!-- getting started start -->';
 const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
@@ -131,7 +132,7 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
       content: readme,
       startComment: `<!-- ${section} start -->`,
       endComment: `<!-- ${section} end -->`,
-      replacement: makeMarkdownTable(headers, rows),
+      replacement: '\n' + makeMarkdownTable(headers, rows) + '\n',
     });
   }
 

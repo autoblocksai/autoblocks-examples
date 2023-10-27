@@ -34,8 +34,6 @@ View the deployed application at https://chatbot-example.autoblocks.ai
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
 - Create a file named `.env` in this folder and include the following environment variables:
 
-`.env`
-
 ```
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
