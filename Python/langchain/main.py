@@ -1,39 +1,44 @@
 import dotenv
 from autoblocks.vendor.langchain import AutoblocksCallbackHandler
-from langchain.chains import LLMChain
-from langchain.chains import SimpleSequentialChain
+from langchain.agents import AgentType
+from langchain.agents import initialize_agent
+from langchain.chains import LLMMathChain
 from langchain.llms import OpenAI
-from langchain.prompts import PromptTemplate
+from langchain.tools import Tool
+from langchain.tools import tool
+from datetime import datetime
 
 dotenv.load_dotenv(".env")
 
 
+@tool
+def todays_date(*args, **kwargs) -> int:
+    """Returns today's date"""
+    return datetime.now().day
+
+
 if __name__ == "__main__":
-    # This is an LLMChain to write a synopsis given a title of a play.
-    synopsis_llm = OpenAI(temperature=0.7)
-    synopsis_template = """You are a playwright. Given the title of a play, it is your job to write a synopsis for that title.
-
-Title: {title}
-Playwright: This is a synopsis for the above play:"""
-    synopsis_prompt_template = PromptTemplate(input_variables=["title"], template=synopsis_template)
-    synopsis_chain = LLMChain(llm=synopsis_llm, prompt=synopsis_prompt_template)
-
-    # This is an LLMChain to write a review of a play given a synopsis.
-    review_llm = OpenAI(temperature=0.7)
-    review_template = """You are a play critic from the New York Times. Given the synopsis of a play, it is your job to write a review for that play.
-
-Play Synopsis:
-{synopsis}
-Review from a New York Times play critic of the above play:"""
-    review_prompt_template = PromptTemplate(input_variables=["synopsis"], template=review_template)
-    review_chain = LLMChain(llm=review_llm, prompt=review_prompt_template)
-
-    # This is the overall chain where we run these two chains in sequence.
-    overall_chain = SimpleSequentialChain(chains=[synopsis_chain, review_chain])
-
-    # Run the chain
+    llm = OpenAI(temperature=0)
+    llm_math_chain = LLMMathChain.from_llm(llm)
+    tools = [
+        Tool.from_function(
+            func=llm_math_chain.run,
+            name="Calculator",
+            description="useful for when you need to answer questions about math",
+        ),
+        todays_date,
+    ]
+    agent = initialize_agent(
+        tools,
+        llm,
+        agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+    )
     handler = AutoblocksCallbackHandler()
-    review = overall_chain.run("Tragedy at sunset on the beach", callbacks=[handler])
+    output = agent.run(
+        "What is today's date? What is that date divided by 2?",
+        callbacks=[handler],
+    )
 
-    print("Review:")
-    print(review)
+    print(f"Output: {output}")
+    print()
+    print("View your trace: https://app.autoblocks.ai/explore")

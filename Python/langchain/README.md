@@ -46,6 +46,14 @@ poetry install
 poetry run python main.py
 ```
 
-## View logs in Autoblocks
+## View the trace in Autoblocks
 
-Go to the [explore page](https://app.autoblocks.ai/explore) to see the trace.
+Go to the [explore page](https://app.autoblocks.ai/explore). When you find the trace, switch to the Trace Tree view to
+see a tree of all the spans in the trace.
+
+The first span that is selected will show you the overall question and answer of the LangChain pipeline, but you can also
+drill into individual spans by clicking on them to understand how LangChain is working under the hood.
+
+![explore-trace-top-level-span](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/941c09b7-86e9-4e0b-9df4-2a9be0b32771)
+
+![explore-teace-nested-span](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/99f02ba9-c3ea-4645-aa9d-17f6d83be790)
