@@ -54,6 +54,6 @@ see a tree of all the spans in the trace.
 The first span that is selected will show you the overall question and answer of the LangChain pipeline, but you can also
 drill into individual spans by clicking on them to understand how LangChain is working under the hood.
 
-![screencapture-localhost-3000-explore-trace-d7dd9939-fc26-4995-93a2-d6f47ef5d19a-2023-10-26-18_35_27](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/590e232a-eeaf-46a1-b9e3-3c0a8648234b)
+![explore-trace-top-level-span](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/590e232a-eeaf-46a1-b9e3-3c0a8648234b)
 
-![screencapture-localhost-3000-explore-trace-d7dd9939-fc26-4995-93a2-d6f47ef5d19a-2023-10-26-18_35_45](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/b32d7776-8378-49cc-a866-7ba6bd08f5e5)
+![explore-trace-nested-span](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/b32d7776-8378-49cc-a866-7ba6bd08f5e5)
