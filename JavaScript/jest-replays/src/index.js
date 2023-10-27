@@ -1,70 +1,66 @@
-import crypto from 'crypto';
-import OpenAI from 'openai';
-import { AutoblocksTracer } from '@autoblocks/client';
+const crypto = require('crypto');
+const OpenAI = require('openai');
+const { AutoblocksTracer } = require('@autoblocks/client');
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const traceId = crypto.randomUUID();
-const ab = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
-  // These apply to every call of ab.sendEvent() so we don't have to repeat them
-  traceId,
+const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
   properties: {
     provider: 'openai',
-    source: 'NODE_EXAMPLE',
   },
 });
 
-async function run() {
-  console.log('Running example...');
+const run = async ({ input, traceId }) => {
+  // Set the traceId to the one given, or fall back to a random UUID.
+  // When we call this function from the test suite we will pass in a
+  // traceId so that it is stable across replay runs, but in production
+  // we'll only pass in an input, like run({ input }), so that we generate
+  // a random traceId while in production.
+  tracer.setTraceId(traceId || crypto.randomUUID());
 
-  const openAIRequest = {
+  const request = {
     model: 'gpt-3.5-turbo',
     messages: [
       {
         role: 'system',
         content:
-          'You are a helpful assistant.' +
-          'You answer questions about a software product named Acme.',
+          'You are a helpful assistant. ' +
+          'You answer questions about a software product named Acme. ' +
+          'Your answers should be in a friendly tone and include a bulleted or numbered list where appopriate. ' +
+          'You should also include a link to the relevant page in the Acme documentation.',
       },
       {
         role: 'user',
-        content: 'How do I sign up?',
+        content: input,
       },
     ],
-    temperature: 0.7,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
-    stream: false,
-    n: 1,
+    temperature: 0.3,
   };
 
-  await ab.sendEvent('ai.request', {
-    properties: openAIRequest,
+  await tracer.sendEvent('ai.request', {
+    properties: request,
   });
 
   try {
     const now = Date.now();
-    const response = await openai.chat.completions.create(openAIRequest);
-    await ab.sendEvent('ai.response', {
+    const response = await openai.chat.completions.create(request);
+    await tracer.sendEvent('ai.response', {
       properties: {
         response,
-        latency: Date.now() - now,
+        latencyMs: Date.now() - now,
       },
     });
+    return response.choices[0].message.content;
   } catch (error) {
-    await ab.sendEvent('ai.error', {
+    await tracer.sendEvent('ai.error', {
       properties: {
         error,
       },
     });
+    throw error;
   }
+};
 
-  console.log(
-    `Finished running example. View the trace at https://app.autoblocks.ai/explore/trace/${traceId}`,
-  );
-}
-
-run();
+module.exports = { run };
