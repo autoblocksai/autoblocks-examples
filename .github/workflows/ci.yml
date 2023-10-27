@@ -96,6 +96,7 @@ jobs:
           - JavaScript/langchain
           - JavaScript/openai-automated
           - JavaScript/openai-manual
+          - JavaScript/spans
 
     defaults:
       run:

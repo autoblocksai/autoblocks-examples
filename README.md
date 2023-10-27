@@ -43,6 +43,7 @@
 | [novel-ai-text-editor](/JavaScript/novel-ai-text-editor) | A Next.js app that uses [Novel](https://github.com/steven-tey/novel) and Autoblocks to power an AI-enabled text editor |
 | [openai-automated](/JavaScript/openai-automated)         | Automatic tracing of openai calls                                                                                      |
 | [openai-manual](/JavaScript/openai-manual)               | Manual tracing of openai calls                                                                                         |
+| [spans](/JavaScript/spans)                               | Establish parent / child relationships between your events with the `spanId` and `parentSpanId` properties             |
 
 <!-- JavaScript end -->
 
