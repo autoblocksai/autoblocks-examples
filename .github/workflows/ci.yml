@@ -124,6 +124,24 @@ jobs:
       - name: Run script
         run: npm run start
 
+  # This allows us to have one required status check on the "test" job
+  # since it's not feasible to maintain required status checks on each
+  # job in the matrixes above.
+  test:
+    needs:
+      - test-python
+      - test-javascript
+
+    if: always()
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: |
+          echo "::error::One of the jobs failed or was cancelled."
+          exit 1
+
   notify:
     needs:
       - test-python
