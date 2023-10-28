@@ -95,6 +95,7 @@ jobs:
           - JavaScript/jest-replays
           - JavaScript/langchain
           - JavaScript/openai-automated
+          - JavaScript/openai-automated-ts
           - JavaScript/openai-manual
           - JavaScript/spans
 
