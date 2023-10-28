@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-openai-autoblocks-example"
+name = "langchain-example"
 version = "0.0.0"
 description = "Automatic tracing of a LangChain pipeline"
 authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]

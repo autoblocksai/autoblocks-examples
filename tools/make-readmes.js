@@ -55,7 +55,9 @@ const BANNER_START_COMMENT = '<!-- banner start -->';
 const BANNER_END_COMMENT = '<!-- banner end -->';
 
 // Getting started checklist we add to each individual project README
-const GETTING_STARTED = `
+const makeGettingStartedChecklist = (includeOpenAI) => {
+  if (includeOpenAI) {
+    return `
 ## Getting started
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
@@ -68,6 +70,20 @@ OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 \`\`\`
 `;
+  } else {
+    return `
+## Getting started
+
+- Sign up for an Autoblocks account at https://app.autoblocks.ai
+- Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
+- Create a file named \`.env\` in this folder and include the following environment variables:
+
+\`\`\`
+AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+\`\`\`
+`;
+  }
+};
 
 const GETTING_STARTED_START_COMMENT = '<!-- getting started start -->';
 const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
@@ -83,6 +99,7 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
 
     for (const project of projects) {
       let description;
+      let includeOpenAIInGettingStartedChecklist = false;
 
       if (section === 'JavaScript') {
         // Get description from package.json
@@ -91,6 +108,11 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
           'utf-8',
         );
         description = JSON.parse(packageJson).description;
+
+        // Check if openai is a dependency
+        if (packageJson.includes('openai')) {
+          includeOpenAIInGettingStartedChecklist = true;
+        }
       } else if (section === 'Python') {
         // Get description from pyproject.toml
         const pyprojectToml = await fs.readFile(
@@ -98,6 +120,11 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
           'utf-8',
         );
         description = pyprojectToml.match(/description = "(.*)"/)[1];
+
+        // Check if openai is a dependency
+        if (pyprojectToml.includes('openai')) {
+          includeOpenAIInGettingStartedChecklist = true;
+        }
       }
 
       // Add name and description to table
@@ -120,7 +147,9 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
         content: projectReadme,
         startComment: GETTING_STARTED_START_COMMENT,
         endComment: GETTING_STARTED_END_COMMENT,
-        replacement: GETTING_STARTED,
+        replacement: makeGettingStartedChecklist(
+          includeOpenAIInGettingStartedChecklist,
+        ),
       });
 
       // Write the new project README
