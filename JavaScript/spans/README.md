@@ -19,6 +19,8 @@
 </p>
 <!-- banner end -->
 
+<!-- getting started start -->
+
 ## Getting started
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
@@ -28,6 +30,8 @@
 ```
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 ```
+
+<!-- getting started end -->
 
 ## Creating spans
 

@@ -15,6 +15,7 @@
   "dependencies": {
     "@autoblocks/client": "^0.0.15",
     "dotenv-cli": "^7.3.0",
-    "langchain": "^0.0.173"
+    "langchain": "^0.0.173",
+    "openai": "^4.14.1"
   }
 }
