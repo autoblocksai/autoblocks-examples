@@ -48,7 +48,7 @@ ingestion key: https://app.autoblocks.ai/settings/api-keys
 
 ### 2. Set an `AUTOBLOCKS_REPLAY_ID`
 
-This is already set up in this example via the `start` script in [`package.json`](./package.json):
+This is already set up in this example via the `test` script in [`package.json`](./package.json):
 
 ```json
   "scripts": {
