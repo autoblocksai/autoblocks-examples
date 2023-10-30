@@ -37,7 +37,7 @@ AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 
 ## Replays
 
-This project shows how you can run Autoblocks Replays via your [Jest](https://jestjs.io/) test suite. Follow the steps below to get started.
+This project shows how you can run Autoblocks Replays via your [pytest](https://docs.pytest.org/en/7.4.x/) test suite. Follow the steps below to get started.
 
 ### 1. Use your replay key
 
