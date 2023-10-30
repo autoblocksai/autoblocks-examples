@@ -7,7 +7,7 @@ const openai = new OpenAI({
 });
 
 const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
-  // These apply to every call of ab.sendEvent() so we don't have to repeat them
+  // These apply to every call of tracer.sendEvent() so we don't have to repeat them
   traceId: crypto.randomUUID(),
   properties: {
     provider: 'openai',
@@ -17,6 +17,9 @@ const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
 
 async function run() {
   console.log('Running example...');
+
+  // Use a spanId to group together the request + response/error events
+  const spanId = crypto.randomUUID();
 
   const openAIRequest = {
     model: 'gpt-3.5-turbo',
@@ -41,7 +44,7 @@ async function run() {
   };
 
   await tracer.sendEvent('ai.request', {
-    properties: openAIRequest,
+    properties: { ...openAIRequest, spanId },
   });
 
   try {
@@ -51,12 +54,14 @@ async function run() {
       properties: {
         response,
         latency: Date.now() - now,
+        spanId,
       },
     });
   } catch (error) {
     await tracer.sendEvent('ai.error', {
       properties: {
         error,
+        spanId,
       },
     });
   }
