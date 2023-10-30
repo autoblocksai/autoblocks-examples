@@ -4,7 +4,8 @@
   "description": "Run Autoblocks Replays from within a jest test suite",
   "type": "module",
   "scripts": {
-    "start": "AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest"
+    "start": "dotenv -e .env -- node ./src/index.js",
+    "test": "AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest"
   },
   "license": "MIT",
   "dependencies": {

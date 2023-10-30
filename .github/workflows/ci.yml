@@ -53,6 +53,7 @@ jobs:
           - Python/langchain
           - Python/openai-manual
           - Python/openai-automated
+          - Python/pytest-replays
 
     defaults:
       run:

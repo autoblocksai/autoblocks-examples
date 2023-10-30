@@ -52,7 +52,7 @@ This is already set up in this example via the `start` script in [`package.json`
 
 ```json
   "scripts": {
-    "start": "AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest"
+    "test": "AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest"
   },
 ```
 
@@ -64,10 +64,10 @@ First install the dependencies:
 npm install
 ```
 
-Then run `npm start` (which runs the Jest test suite):
+Then run the tests:
 
 ```
-npm start
+npm test
 ```
 
 Within the test suite, you should see a link printed to the console that will take you to the replay in the Autoblocks UI:
