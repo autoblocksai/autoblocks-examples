@@ -30,7 +30,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Make READMEs
         run: node tools/make-readmes.js
@@ -65,15 +65,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create .env file
-        run: |
-          touch .env
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_INGESTION_KEY }}" >> .env
+        uses: ./.github/actions/create-env-file
 
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
-          python-version: 3.11
+          python-version: '3.11'
 
       - name: Install poetry
         run: curl -sSL https://install.python-poetry.org | python3 -
@@ -110,10 +107,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create .env file
-        run: |
-          touch .env
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_INGESTION_KEY }}" >> .env
+        uses: ./.github/actions/create-env-file
 
       - name: Setup Node
         uses: actions/setup-node@v3
