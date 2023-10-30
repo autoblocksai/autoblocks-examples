@@ -1,8 +1,12 @@
 name: Create .env file
 
 inputs:
-  use-replay-key:
-    default: false
+  openai-api-key:
+    required: true
+    type: string
+  autoblocks-ingestion-key:
+    required: true
+    type: string
 
 runs:
   using: composite
@@ -11,13 +15,5 @@ runs:
     - name: Create .env file
       run: |
         touch .env
-
-        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-
-        if [ "${{ inputs.use-replay-key }}" = "true" ]; then
-          echo "Using replay key"
-          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_REPLAY_INGESTION_KEY }}" >> .env
-        else
-          echo "Using production key"
-          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_INGESTION_KEY }}" >> .env
-        fi
+        echo "OPENAI_API_KEY=${{ inputs.openai-api-key }}" >> .env
+        echo "AUTOBLOCKS_INGESTION_KEY=${{ inputs.autoblocks-ingestion-key }}" >> .env

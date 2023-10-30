@@ -66,6 +66,9 @@ jobs:
 
       - name: Create .env file
         uses: ./.github/actions/create-env-file
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          autoblocks-ingestion-key: ${{ secrets.AUTOBLOCKS_INGESTION_KEY }}
 
       - name: Setup Python
         uses: actions/setup-python@v3
@@ -108,11 +111,14 @@ jobs:
 
       - name: Create .env file
         uses: ./.github/actions/create-env-file
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          autoblocks-ingestion-key: ${{ secrets.AUTOBLOCKS_INGESTION_KEY }}
 
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
