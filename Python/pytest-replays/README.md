@@ -63,19 +63,19 @@ poetry run pytest --autoblocks
 Within the test suite, you should see a link printed to the console that will take you to the replay in the Autoblocks UI:
 
 ```
-➜ poetry run pytest --autoblocks
-================================================================================================================= test session starts ==================================================================================================================
+➜  poetry run pytest --autoblocks
+=========================================== test session starts ============================================
 platform darwin -- Python 3.11.4, pytest-7.4.3, pluggy-1.3.0
 rootdir: /Users/nicole/autoblocks/autoblocks-examples/Python/pytest-replays
 plugins: anyio-4.0.0, autoblocksai-0.0.11
 collected 3 items
 
-test_main.py ...                                                                                                                                                                                                                                 [100%]
+test_main.py ...                                                                                     [100%]
 
-============================================================================================================== Autoblocks Replay Results ===============================================================================================================
-View your replay: https://app.autoblocks.ai/replays/local/run/nicole-pytest-20231030-112255
-========================================================================================================================================================================================================================================================
-================================================================================================================== 3 passed in 17.44s ==================================================================================================================
+======================================== Autoblocks Replay Results =========================================
+View your replay: https://app.autoblocks.ai/replays/local/run/nicole-pytest-20231030-122752
+============================================================================================================
+============================================ 3 passed in 16.65s ============================================
 ```
 
 Run the tests a few times so that you generate multiple replays (your first replay won't have any baseline to compare against!).
