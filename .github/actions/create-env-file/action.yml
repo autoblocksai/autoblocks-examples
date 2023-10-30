@@ -13,6 +13,7 @@ runs:
 
   steps:
     - name: Create .env file
+      shell: bash
       run: |
         touch .env
         echo "OPENAI_API_KEY=${{ inputs.openai-api-key }}" >> .env
