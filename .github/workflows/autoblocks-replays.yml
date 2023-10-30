@@ -26,10 +26,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create .env file
-        uses: ./.github/actions/create-env-file
-        with:
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          autoblocks-ingestion-key: ${{ secrets.AUTOBLOCKS_REPLAY_INGESTION_KEY }}
+        run: |
+          touch .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_REPLAY_INGESTION_KEY }}" >> .env
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -55,10 +55,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create .env file
-        uses: ./.github/actions/create-env-file
-        with:
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          autoblocks-ingestion-key: ${{ secrets.AUTOBLOCKS_REPLAY_INGESTION_KEY }}
+        run: |
+          touch .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_REPLAY_INGESTION_KEY }}" >> .env
 
       - name: Setup Python
         uses: actions/setup-python@v4
