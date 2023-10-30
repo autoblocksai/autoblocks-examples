@@ -65,3 +65,10 @@ def run(content: str, trace_id: Optional[str] = None):
                 ),
             ),
         )
+
+
+if __name__ == "__main__":
+    # Simulate running the `run` function in a production setting,
+    # i.e. without passing in a trace_id from a test case (one will
+    # be auto-generated).
+    run(content="How do I sign up?")
