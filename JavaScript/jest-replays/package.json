@@ -1,10 +1,10 @@
 {
   "name": "jest-replays",
   "version": "0.0.0",
-  "description": "Run Autoblocks replays from within a jest test suite",
-  "type": "module",
+  "description": "Run Autoblocks Replays from within a jest test suite",
   "scripts": {
-    "start": "AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest"
+    "start": "dotenv -e .env -- node ./src/index.js",
+    "test": "AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest"
   },
   "license": "MIT",
   "dependencies": {

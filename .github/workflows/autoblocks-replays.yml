@@ -13,7 +13,7 @@ on:
     - cron: '27 12 * * *'
 
 jobs:
-  autoblocks-replays:
+  autoblocks-replays-js:
     runs-on: ubuntu-latest
 
     defaults:
@@ -34,10 +34,42 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run script
-        run: npm run start
+      - name: Run tests
+        run: npm run test
+
+  autoblocks-replays-py:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: Python/pytest-replays
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "AUTOBLOCKS_INGESTION_KEY=${{ secrets.AUTOBLOCKS_REPLAY_INGESTION_KEY }}" >> .env
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install poetry
+        run: curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run tests
+        run: poetry run pytest --autoblocks

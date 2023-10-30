@@ -30,7 +30,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Make READMEs
         run: node tools/make-readmes.js
@@ -53,6 +53,7 @@ jobs:
           - Python/langchain
           - Python/openai-manual
           - Python/openai-automated
+          - Python/pytest-replays
 
     defaults:
       run:
@@ -72,7 +73,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
-          python-version: 3.11
+          python-version: '3.11'
 
       - name: Install poetry
         run: curl -sSL https://install.python-poetry.org | python3 -
@@ -117,7 +118,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci

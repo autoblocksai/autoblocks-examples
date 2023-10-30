@@ -37,7 +37,7 @@ AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 
 ## Replays
 
-This project shows how you can run Autoblocks Replays via your [Jest](https://jestjs.io/) test suite. Follow the steps below to get started.
+This project shows how you can run Autoblocks Replays via your [pytest](https://docs.pytest.org/en/7.4.x/) test suite. Follow the steps below to get started.
 
 ### 1. Use your replay key
 
@@ -46,57 +46,41 @@ ingestion key: https://app.autoblocks.ai/settings/api-keys
 
 > **_NOTE:_** This means you need to make very few code changes to your production code to get started with Autoblocks Replays. You simply need to swap out an environment variable.
 
-### 2. Set an `AUTOBLOCKS_REPLAY_ID`
-
-This is already set up in this example via the `test` script in [`package.json`](./package.json):
-
-```json
-  "scripts": {
-    "test": "AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest"
-  },
-```
-
-### 3. Run the tests
+### 2. Run the tests
 
 First install the dependencies:
 
 ```
-npm install
+poetry install
 ```
 
-Then run the tests:
+Then run the test suite with Autoblocks Replays enabled:
 
 ```
-npm test
+poetry run pytest --autoblocks
 ```
 
 Within the test suite, you should see a link printed to the console that will take you to the replay in the Autoblocks UI:
 
 ```
-> jest-replays@0.0.0 start
-> AUTOBLOCKS_REPLAY_ID=$(date +%Y%m%d-%H%M%S) dotenv -e .env -- jest
+➜  poetry run pytest --autoblocks
+=========================================== test session starts ============================================
+platform darwin -- Python 3.11.4, pytest-7.4.3, pluggy-1.3.0
+rootdir: /Users/nicole/autoblocks/autoblocks-examples/Python/pytest-replays
+plugins: anyio-4.0.0, autoblocksai-0.0.11
+collected 3 items
 
-  console.log
-    View your replay at https://app.autoblocks.ai/replays/local/20231027-112722
+test_main.py ...                                                                                     [100%]
 
-      at Object.log (test/index.spec.js:13:13)
-
- PASS  test/index.spec.js (13.689 s)
-  run
-    ✓ should return a response for "How do I sign up?" (4344 ms)
-    ✓ should return a response for "How many pricing plans do you have?" (6913 ms)
-    ✓ should return a response for "What is your refund policy?" (2237 ms)
-
-Test Suites: 1 passed, 1 total
-Tests:       3 passed, 3 total
-Snapshots:   0 total
-Time:        13.71 s, estimated 20 s
-Ran all test suites.
+======================================== Autoblocks Replay Results =========================================
+View your replay: https://app.autoblocks.ai/replays/local/run/nicole-pytest-20231030-122752
+============================================================================================================
+============================================ 3 passed in 16.65s ============================================
 ```
 
 Run the tests a few times so that you generate multiple replays (your first replay won't have any baseline to compare against!).
 
-### 4. View the replays in the Autoblocks UI
+### 3. View the replays in the Autoblocks UI
 
 The link will take you to the replay UI where you can see at-a-glance differences between the replay runs over the three test cases. There are four main columns:
 
@@ -119,6 +103,6 @@ Clicking into **View Differences**, I could see that the response now included a
 
 This kind of snapshot / stability testing is important to run over LLM outputs on every pull request so that you can catch regressions before they go to production.
 
-### 5. Run the replays in GitHub Actions
+### 4. Run the replays in GitHub Actions
 
 See the [Autoblocks Replays GitHub Action](/.github/workflows/autoblocks-replays.yml) workflow; this workflow runs replays on every pull request and also on a schedule. The results of these replays will be under the GitHub tab on the [replays](https://app.autoblocks.ai/replays) page.

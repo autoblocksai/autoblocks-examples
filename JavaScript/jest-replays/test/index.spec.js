@@ -1,4 +1,4 @@
-const { run } = require('../src/index');
+const { run } = require('../src/run');
 
 jest.setTimeout(60000);
 
