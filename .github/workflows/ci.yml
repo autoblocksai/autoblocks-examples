@@ -12,6 +12,12 @@ on:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
     - cron: '17 12 * * *'
 
+# Cancel in progress runs of this workflow when we push changes to the branch
+# https://docs.github.com/en/actions/using-jobs/using-concurrency#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
