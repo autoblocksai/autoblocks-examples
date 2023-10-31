@@ -2,6 +2,9 @@ name: CI
 
 on:
   push:
+  merge_group:
+    types:
+      - checks_requested
   schedule:
     # Every day at ~7:17am Chicago time.
     #
