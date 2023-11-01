@@ -17,7 +17,7 @@ const main = async () => {
   ];
 
   const executor = await initializeAgentExecutorWithOptions(tools, model, {
-    agentType: 'structured-chat-zero-shot-react-description',
+    agentType: 'zero-shot-react-description',
   });
 
   const handler = new AutoblocksCallbackHandler();
