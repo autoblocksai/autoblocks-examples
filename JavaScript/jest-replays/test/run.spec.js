@@ -26,9 +26,7 @@ describe('run', () => {
       // If the input is too long to use as an identifier, we could
       // also update testCases to be a list of objects where one
       // field is the name of the test case and the other is the input.
-      const traceId = input;
-
-      await run({ input, traceId });
+      await run({ input, traceId: input });
     });
   });
 });
