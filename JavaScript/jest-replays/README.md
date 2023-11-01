@@ -113,7 +113,7 @@ In one of my runs, I could see that the difference score was pretty high for the
 
 ![replay-summary](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/cb99858a-8f94-4bd9-b8b4-893e32097642)
 
-Clicking into **View Differences**, I could see that the response now included an apology about not being able to answer questions about refunds, even though it did previously:
+Clicking into **View Differences**, you can see that the response now included an apology about not being able to answer questions about refunds, even though it did previously:
 
 ![replay-differences](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/53b33ed5-fe8e-44cf-ac07-c2f315ecb4b9)
 

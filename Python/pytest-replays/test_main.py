@@ -3,9 +3,9 @@ import pytest
 from main import run
 
 test_cases = [
-    "How do I sign up?",
-    "How many pricing plans do you have?",
-    "What is your refund policy?",
+    "Where can I find your privacy policy?",
+    "Are you SOC2 compliant?",
+    "How many users do you have?",
 ]
 
 
@@ -16,7 +16,4 @@ def test_main(content: str):
     # If the input is too long to use as an identifier, we could
     # also update test_cases to be a list of dictionaries where one
     # field is the name of the test case and the other is the input.
-
-    # Also prefix the trace_id with 'pytest -' since we're running jest
-    # replays on the same branch and need to avoid conflicts in trace IDs.
-    run(content=content, trace_id=f"pytest - {content}")
+    run(content=content, trace_id=content)

@@ -26,10 +26,7 @@ describe('run', () => {
       // If the input is too long to use as an identifier, we could
       // also update testCases to be a list of objects where one
       // field is the name of the test case and the other is the input.
-
-      // Also prefix the traceId with 'jest -' since we're running pytest
-      // replays on the same branch and need to avoid conflicts in traceIds.
-      await run({ input, traceId: `jest - ${input}` });
+      await run({ input, traceId: input });
     });
   });
 });

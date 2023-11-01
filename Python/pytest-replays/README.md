@@ -93,13 +93,17 @@ The link will take you to the replay UI where you can see at-a-glance difference
 - **Difference Scores**: For properties that we've detected to be LLM outputs, this column will show you a difference score between the value from the baseline run and the current run
 - **Evals**: The results of your [Autoblocks Evaluators](https://docs.autoblocks.ai/features/evaluators)
 
-In one of my runs, I could see that the difference score was pretty high for the `"What is your refund policy?"` test case:
+In one of my runs, I could see that the difference score was relatively high for the `"How many users do you have?"` test case:
 
-![replay-summary](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/cb99858a-8f94-4bd9-b8b4-893e32097642)
+![replay-summary](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/05902f3d-e004-4532-8889-a155a6e9ee7d)
 
-Clicking into **View Differences**, I could see that the response now included an apology about not being able to answer questions about refunds, even though it did previously:
+Clicking into **View Differences**, you can see that the response was somewhat different compared to the previous run:
 
-![replay-differences](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/53b33ed5-fe8e-44cf-ac07-c2f315ecb4b9)
+![replay-differences](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/01cddea3-18fb-48e0-a552-712af5e996ac)
+
+It also received a "Friendly" label this time around from the "Friendly" evaluator, whereas it did not receive that label on the last run.
+
+![friendly-evaluator](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/b9a0b6c4-af08-437f-9154-895a01a333bd)
 
 This kind of snapshot / stability testing is important to run over LLM outputs on every pull request so that you can catch regressions before they go to production.
 
