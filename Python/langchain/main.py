@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import dotenv
 from autoblocks.vendor.langchain import AutoblocksCallbackHandler
 from langchain.agents import AgentType
@@ -6,13 +8,12 @@ from langchain.chains import LLMMathChain
 from langchain.llms import OpenAI
 from langchain.tools import Tool
 from langchain.tools import tool
-from datetime import datetime
 
 dotenv.load_dotenv(".env")
 
 
 @tool
-def todays_date(*args, **kwargs) -> int:
+def todays_date(args) -> int:
     """Returns today's date"""
     return datetime.now().day
 
@@ -31,7 +32,7 @@ if __name__ == "__main__":
     agent = initialize_agent(
         tools,
         llm,
-        agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     )
     handler = AutoblocksCallbackHandler()
     output = agent.run(
