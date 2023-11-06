@@ -18,10 +18,10 @@ const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
 async function run() {
   console.log('Running example...');
 
-  // Use a spanId to group together the request + response/error events
+  // Use a span ID to group together the request + response/error events
   const spanId = crypto.randomUUID();
 
-  const openAIRequest = {
+  const params = {
     model: 'gpt-3.5-turbo',
     messages: [
       {
@@ -44,26 +44,28 @@ async function run() {
   };
 
   await tracer.sendEvent('ai.request', {
-    properties: { ...openAIRequest, spanId },
+    spanId,
+    properties: params,
   });
 
   try {
     const now = Date.now();
-    const response = await openai.chat.completions.create(openAIRequest);
+    const response = await openai.chat.completions.create(params);
     await tracer.sendEvent('ai.response', {
+      spanId,
       properties: {
         response,
         latency: Date.now() - now,
-        spanId,
       },
     });
   } catch (error) {
     await tracer.sendEvent('ai.error', {
+      spanId,
       properties: {
         error,
-        spanId,
       },
     });
+    throw error;
   }
 
   console.log(

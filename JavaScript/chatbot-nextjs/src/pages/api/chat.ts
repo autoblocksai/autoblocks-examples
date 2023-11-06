@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import OpenAI from 'openai';
 import { AutoblocksTracer } from '@autoblocks/client';
@@ -41,7 +42,10 @@ export default async function handler(
     },
   });
 
-  const requestParams = {
+  // Use a span ID to group together the request + response/error events
+  const spanId = crypto.randomUUID();
+
+  const params = {
     model: 'gpt-3.5-turbo',
     messages: [
       { role: 'system', content: systemPrompt },
@@ -52,13 +56,15 @@ export default async function handler(
   };
 
   await tracer.sendEvent('ai.request', {
-    properties: requestParams,
+    spanId,
+    properties: params,
   });
 
   try {
     const now = Date.now();
-    const response = await openai.chat.completions.create(requestParams);
+    const response = await openai.chat.completions.create(params);
     await tracer.sendEvent('ai.response', {
+      spanId,
       properties: {
         response,
         latencyMs: Date.now() - now,
@@ -69,6 +75,7 @@ export default async function handler(
     });
   } catch (error) {
     await tracer.sendEvent('ai.error', {
+      spanId,
       properties: {
         error,
       },
