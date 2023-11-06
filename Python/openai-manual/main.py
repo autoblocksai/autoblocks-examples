@@ -62,7 +62,7 @@ def main():
                 ),
             ),
         )
-        raise error
+        raise
 
     print(f"View your trace: https://app.autoblocks.ai/explore/trace/{tracer.trace_id}")
 

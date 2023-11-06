@@ -70,7 +70,7 @@ def run(content: str, trace_id: Optional[str] = None):
                 ),
             ),
         )
-        raise error
+        raise
 
 
 if __name__ == "__main__":
