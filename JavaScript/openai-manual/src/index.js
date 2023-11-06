@@ -21,7 +21,7 @@ async function run() {
   // Use a span ID to group together the request + response/error events
   const spanId = crypto.randomUUID();
 
-  const openAIRequest = {
+  const params = {
     model: 'gpt-3.5-turbo',
     messages: [
       {
@@ -45,12 +45,12 @@ async function run() {
 
   await tracer.sendEvent('ai.request', {
     spanId,
-    properties: openAIRequest,
+    properties: params,
   });
 
   try {
     const now = Date.now();
-    const response = await openai.chat.completions.create(openAIRequest);
+    const response = await openai.chat.completions.create(params);
     await tracer.sendEvent('ai.response', {
       spanId,
       properties: {
@@ -65,6 +65,7 @@ async function run() {
         error,
       },
     });
+    throw error;
   }
 
   console.log(

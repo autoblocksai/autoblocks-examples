@@ -29,7 +29,7 @@ def run(content: str, trace_id: Optional[str] = None):
     # Use a span ID to group together the request + response/error events
     span_id = str(uuid.uuid4())
 
-    request = dict(
+    params = dict(
         model="gpt-3.5-turbo",
         messages=[
             {
@@ -44,11 +44,11 @@ def run(content: str, trace_id: Optional[str] = None):
         temperature=0.3,
     )
 
-    tracer.send_event("ai.request", span_id=span_id, properties=request)
+    tracer.send_event("ai.request", span_id=span_id, properties=params)
 
     try:
         start_time = time.time()
-        response = openai.ChatCompletion.create(**request)
+        response = openai.ChatCompletion.create(**params)
         tracer.send_event(
             "ai.response",
             span_id=span_id,
@@ -70,6 +70,7 @@ def run(content: str, trace_id: Optional[str] = None):
                 ),
             ),
         )
+        raise error
 
 
 if __name__ == "__main__":

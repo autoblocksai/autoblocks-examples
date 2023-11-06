@@ -9,7 +9,7 @@ async function main() {
 
   const openai = new OpenAI();
 
-  const openAIRequest: ChatCompletionCreateParamsNonStreaming = {
+  const params: ChatCompletionCreateParamsNonStreaming = {
     model: 'gpt-3.5-turbo',
     messages: [
       {
@@ -32,7 +32,7 @@ async function main() {
   };
 
   console.log('Calling OpenAI...');
-  await openai.chat.completions.create(openAIRequest);
+  await openai.chat.completions.create(params);
   console.log('Finished calling OpenAI!');
 
   console.log('View the trace at https://app.autoblocks.ai/explore');
