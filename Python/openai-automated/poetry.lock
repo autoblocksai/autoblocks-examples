@@ -174,18 +174,17 @@ tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pyte
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.11"
-description = ""
+version = "0.0.13"
+description = "Python client for Autoblocks"
 optional = false
 python-versions = ">=3.8.1,<4.0.0"
 files = [
-    {file = "autoblocksai-0.0.11-py3-none-any.whl", hash = "sha256:4a35dfb4531f73008e89921cd26c35a37023d69af24f6261a75eb37a979a297f"},
-    {file = "autoblocksai-0.0.11.tar.gz", hash = "sha256:41239fbde45a1f6a7f1f3ba51d066eaacbb6af6a4997417248e93cc8ba91c058"},
+    {file = "autoblocksai-0.0.13-py3-none-any.whl", hash = "sha256:f5918d18c46131a2a477b1507715210bf2b5a1630b2a3de4a5db15f8a16a8c83"},
+    {file = "autoblocksai-0.0.13.tar.gz", hash = "sha256:8dfb3ad606fe8c740216e242112fe1de69ab88329661c972e06c7345df1fa179"},
 ]
 
 [package.dependencies]
-httpx = ">=0.24.0,<0.25.0"
-wrapt = ">=1.15.0,<2.0.0"
+httpx = ">=0.24.0"
 
 [[package]]
 name = "certifi"
@@ -820,4 +819,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "2fcae737115683a651b04a0a2e7bff2f8d621dc343e8fcefb1f05c46c5bdc032"
+content-hash = "c9191440491e4bcc771d8bc166b118a34f82f22fe247ae2b8bc3dc7cc56eb349"
