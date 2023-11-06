@@ -19,12 +19,15 @@ tracer = AutoblocksTracer(
 
 
 def run(content: str, trace_id: Optional[str] = None):
-    # Set the traceId to the one given, or fall back to a random UUID.
+    # Set the trace ID to the one given, or fall back to a random UUID.
     # When we call this function from the test suite we will pass in a
     # trace_id so that it is stable across replay runs, but in production
     # we'll only pass in the content, like run(content), so that we generate
     # a random trace_id while in production.
     tracer.set_trace_id(trace_id or str(uuid.uuid4()))
+
+    # Use a span ID to group together the request + response/error events
+    span_id = str(uuid.uuid4())
 
     request = dict(
         model="gpt-3.5-turbo",
@@ -41,13 +44,14 @@ def run(content: str, trace_id: Optional[str] = None):
         temperature=0.3,
     )
 
-    tracer.send_event("ai.request", properties=request)
+    tracer.send_event("ai.request", span_id=span_id, properties=request)
 
     try:
         start_time = time.time()
         response = openai.ChatCompletion.create(**request)
         tracer.send_event(
             "ai.response",
+            span_id=span_id,
             properties=dict(
                 response=response,
                 latency_ms=(time.time() - start_time) * 1000,
@@ -57,6 +61,7 @@ def run(content: str, trace_id: Optional[str] = None):
     except Exception as error:
         tracer.send_event(
             "ai.error",
+            span_id=span_id,
             properties=dict(
                 error=dict(
                     type=type(error).__name__,

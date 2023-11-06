@@ -36,12 +36,16 @@ tracer = AutoblocksTracer(
 
 
 def main():
-    tracer.send_event("ai.request", properties=request_params)
+    # Use a span ID to group together the request + response/error events
+    span_id = str(uuid.uuid4())
+
+    tracer.send_event("ai.request", span_id=span_id, properties=request_params)
     try:
         start_time = time.time()
         openai_response = openai.ChatCompletion.create(**request_params)
         tracer.send_event(
             "ai.response",
+            span_id=span_id,
             properties=dict(
                 response=openai_response,
                 latency=(time.time() - start_time) * 1000,
@@ -50,6 +54,7 @@ def main():
     except Exception as error:
         tracer.send_event(
             "ai.error",
+            span_id=span_id,
             properties=dict(
                 error=dict(
                     type=type(error).__name__,

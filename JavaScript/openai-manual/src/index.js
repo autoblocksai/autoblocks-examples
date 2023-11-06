@@ -18,7 +18,7 @@ const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
 async function run() {
   console.log('Running example...');
 
-  // Use a spanId to group together the request + response/error events
+  // Use a span ID to group together the request + response/error events
   const spanId = crypto.randomUUID();
 
   const openAIRequest = {
@@ -44,24 +44,25 @@ async function run() {
   };
 
   await tracer.sendEvent('ai.request', {
-    properties: { ...openAIRequest, spanId },
+    spanId,
+    properties: openAIRequest,
   });
 
   try {
     const now = Date.now();
     const response = await openai.chat.completions.create(openAIRequest);
     await tracer.sendEvent('ai.response', {
+      spanId,
       properties: {
         response,
         latency: Date.now() - now,
-        spanId,
       },
     });
   } catch (error) {
     await tracer.sendEvent('ai.error', {
+      spanId,
       properties: {
         error,
-        spanId,
       },
     });
   }

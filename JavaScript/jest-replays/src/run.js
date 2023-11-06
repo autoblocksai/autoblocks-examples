@@ -20,6 +20,9 @@ const run = async ({ input, traceId }) => {
   // a random traceId while in production.
   tracer.setTraceId(traceId || crypto.randomUUID());
 
+  // Use a span ID to group together the request + response/error events
+  const spanId = crypto.randomUUID();
+
   const request = {
     model: 'gpt-3.5-turbo',
     messages: [
@@ -40,6 +43,7 @@ const run = async ({ input, traceId }) => {
   };
 
   await tracer.sendEvent('ai.request', {
+    spanId,
     properties: request,
   });
 
@@ -47,6 +51,7 @@ const run = async ({ input, traceId }) => {
     const now = Date.now();
     const response = await openai.chat.completions.create(request);
     await tracer.sendEvent('ai.response', {
+      spanId,
       properties: {
         response,
         latencyMs: Date.now() - now,
@@ -55,6 +60,7 @@ const run = async ({ input, traceId }) => {
     return response.choices[0].message.content;
   } catch (error) {
     await tracer.sendEvent('ai.error', {
+      spanId,
       properties: {
         error,
       },
