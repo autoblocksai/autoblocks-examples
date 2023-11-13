@@ -5,7 +5,9 @@ import dotenv
 dotenv.load_dotenv(".env")
 
 from autoblocks.vendor.openai import trace_openai
-import openai
+from openai import OpenAI
+
+client = OpenAI()
 
 
 def main():
@@ -14,7 +16,7 @@ def main():
     print("Automatically tracing all calls to OpenAI...")
 
     print("Calling OpenAI...")
-    openai.ChatCompletion.create(
+    client.chat.completions.create(
         messages=[
             {
                 "role": "system",

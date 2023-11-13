@@ -8,8 +8,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-autoblocksai = "^0.0.13"
+autoblocksai = "^0.0.14"
 python-dotenv = "^1.0.0"
-openai = "^0.28.1"
+openai = "0.28.1"
 numexpr = "^2.8.7"
-langchain = "^0.0.330"
+langchain = "^0.0.335"

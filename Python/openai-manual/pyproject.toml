@@ -8,6 +8,6 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-openai = "^0.28.0"
-autoblocksai = "^0.0.13"
+openai = "^1.0.0"
+autoblocksai = "^0.0.14"
 python-dotenv = "^1.0.0"
