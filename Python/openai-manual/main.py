@@ -4,12 +4,12 @@ import traceback
 import uuid
 
 import dotenv
-import openai
 from autoblocks.tracer import AutoblocksTracer
+from openai import OpenAI
 
 dotenv.load_dotenv(".env")
 
-openai.api_key = os.environ["OPENAI_API_KEY"]
+client = OpenAI()
 
 params = dict(
     model="gpt-3.5-turbo",
@@ -41,7 +41,7 @@ def main():
     tracer.send_event("ai.request", span_id=span_id, properties=params)
     try:
         start_time = time.time()
-        openai_response = openai.ChatCompletion.create(**params)
+        openai_response = client.chat.completions.create(**params)
         tracer.send_event(
             "ai.response",
             span_id=span_id,

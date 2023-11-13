@@ -5,12 +5,12 @@ import uuid
 from typing import Optional
 
 import dotenv
-import openai
 from autoblocks.tracer import AutoblocksTracer
+from openai import OpenAI
 
 dotenv.load_dotenv(".env")
 
-openai.api_key = os.environ["OPENAI_API_KEY"]
+client = OpenAI()
 
 tracer = AutoblocksTracer(
     os.environ["AUTOBLOCKS_INGESTION_KEY"],
@@ -48,7 +48,7 @@ def run(content: str, trace_id: Optional[str] = None):
 
     try:
         start_time = time.time()
-        response = openai.ChatCompletion.create(**params)
+        response = client.chat.completions.create(**params)
         tracer.send_event(
             "ai.response",
             span_id=span_id,
