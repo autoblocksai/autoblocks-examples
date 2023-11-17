@@ -1,0 +1,25 @@
+{
+  "name": "prompt-sdk",
+  "version": "0.0.0",
+  "description": "Automated prompt versioning with the prompt SDK",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npm run gen && dotenv -e .env -- tsx ./src/index.ts",
+    "gen": "autoblocks prompts generate",
+    "gen:watch": "nodemon --quiet --watch prompt-templates --ext \"*\" --exec \"npm run gen\""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@autoblocks/client": "^0.0.20",
+    "@types/node": "^20.9.1",
+    "dotenv-cli": "^7.3.0",
+    "nodemon": "^3.0.1",
+    "openai": "^4.6.0",
+    "tsx": "^4.1.3",
+    "typescript": "^5.2.2"
+  },
+  "autoblocks": {
+    "templatesDirectory": "prompt-templates"
+  }
+}
