@@ -44,6 +44,7 @@
 | [openai-automated](/JavaScript/openai-automated)         | Automatic tracing of openai calls                                                                                      |
 | [openai-automated-ts](/JavaScript/openai-automated-ts)   | Automatic tracing of openai calls in a TypeScript application                                                          |
 | [openai-manual](/JavaScript/openai-manual)               | Manual tracing of openai calls                                                                                         |
+| [prompt-sdk](/JavaScript/prompt-sdk)                     | Automated prompt versioning with the prompt SDK                                                                        |
 | [spans](/JavaScript/spans)                               | Establish parent / child relationships between your events with the `spanId` and `parentSpanId` properties             |
 
 <!-- JavaScript end -->

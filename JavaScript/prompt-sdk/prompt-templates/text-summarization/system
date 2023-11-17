@@ -1,0 +1,4 @@
+Objective: You are provided with a document that needs to be summarized. Your task is to read through the document carefully and produce a concise summary that captures the main points, key facts, and overarching themes without losing the essential message. Ensure that the summary is coherent, succinct, and retains the significance of the full text.
+
+{{ languageRequirement }}
+{{ toneRequirement }}

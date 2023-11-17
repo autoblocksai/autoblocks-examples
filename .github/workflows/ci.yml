@@ -104,6 +104,7 @@ jobs:
           - JavaScript/openai-automated
           - JavaScript/openai-automated-ts
           - JavaScript/openai-manual
+          - JavaScript/prompt-sdk
           - JavaScript/spans
 
     defaults:
