@@ -35,10 +35,16 @@ AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 
 <!-- getting started end -->
 
-## Install Dependencies
+## Install dependencies
 
 ```
 npm install
+```
+
+## Start the template watcher
+
+```
+npm run get:watch
 ```
 
 ## Run the script
@@ -46,3 +52,30 @@ npm install
 ```
 npm run start
 ```
+
+## View the prompts in Autoblocks
+
+You should see the prompt tracking ID (`feature-a`) at https://app.autoblocks.ai/prompts.
+Click on the tracking ID to view its history.
+At this point it should only have one version.
+
+## Make a change to one of the templates
+
+Make a change to one of the templates in the [`prompt-templates`](./prompt-templates/) folder.
+For example, update [`common/language`](./prompt-templates/common/language) to say:
+
+```
+ALWAYS respond in {{ language }}.
+```
+
+## Run the script
+
+Run the script again:
+
+```
+npm run start
+```
+
+After running the script, you should see a new version at https://app.autoblocks.ai/prompts/feature-a.
+
+![new-version](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/9c3a3c0b-1984-4cf6-8461-32ab9d2f18b6)
