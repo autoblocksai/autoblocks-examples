@@ -2,8 +2,9 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
-      # - id: trailing-whitespace
-      # - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        exclude: ^JavaScript/prompt-sdk/prompt-templates/
       - id: check-yaml
 
   - repo: https://github.com/psf/black
