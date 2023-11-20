@@ -44,7 +44,7 @@ npm install
 ## Start the template watcher
 
 ```
-npm run get:watch
+npm run gen:watch
 ```
 
 ## Run the script
