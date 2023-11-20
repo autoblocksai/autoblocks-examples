@@ -4,6 +4,7 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
+        exclude: ^JavaScript/prompt-sdk/prompt-templates/
       - id: check-yaml
 
   - repo: https://github.com/psf/black
