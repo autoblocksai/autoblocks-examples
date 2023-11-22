@@ -1,5 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "timezone": "America/Chicago",
   "extends": ["group:all", "schedule:weekly"],
   "reviewers": ["team:engineering"]
 }
