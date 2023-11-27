@@ -13,9 +13,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@autoblocks/client": "^0.0.20",
+    "@autoblocks/client": "^0.0.21",
     "dotenv-cli": "^7.3.0",
-    "langchain": "^0.0.194",
+    "langchain": "^0.0.196",
     "openai": "^4.14.1"
   }
 }
