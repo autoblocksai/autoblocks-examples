@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
+    "jsx": "react-jsx",
+    "jsxImportSource": "ai-jsx"
+  },
+  "include": ["src/**/*"]
+}
