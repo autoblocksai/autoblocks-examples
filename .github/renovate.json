@@ -1,6 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "timezone": "America/Chicago",
-  "extends": ["group:all", "schedule:weekly"],
-  "reviewers": ["team:engineering"]
+  "reviewers": ["team:engineering"],
+  "packageRules": [
+    {
+      "groupName": "all non-major dependencies",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "extends": ["schedule:weekly"],
+      "excludePackagePrefixes": ["@autoblocks/"],
+      "excludePackageNames": ["autoblocksai"]
+    }
+  ]
 }
