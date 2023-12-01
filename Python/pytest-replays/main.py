@@ -6,6 +6,7 @@ from typing import Optional
 
 import dotenv
 from autoblocks.tracer import AutoblocksTracer
+from autoblocks.vendor.openai import serialize_completion
 from openai import OpenAI
 
 dotenv.load_dotenv(".env")
@@ -48,16 +49,16 @@ def run(content: str, trace_id: Optional[str] = None):
 
     try:
         start_time = time.time()
-        response = client.chat.completions.create(**params)
+        completion = client.chat.completions.create(**params)
         tracer.send_event(
             "ai.response",
             span_id=span_id,
             properties=dict(
-                response=response,
+                response=serialize_completion(completion),
                 latency_ms=(time.time() - start_time) * 1000,
             ),
         )
-        return response.choices[0].message
+        return completion.choices[0].message
     except Exception as error:
         tracer.send_event(
             "ai.error",

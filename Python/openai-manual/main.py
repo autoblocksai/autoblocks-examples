@@ -5,6 +5,7 @@ import uuid
 
 import dotenv
 from autoblocks.tracer import AutoblocksTracer
+from autoblocks.vendor.openai import serialize_completion
 from openai import OpenAI
 
 dotenv.load_dotenv(".env")
@@ -41,12 +42,12 @@ def main():
     tracer.send_event("ai.request", span_id=span_id, properties=params)
     try:
         start_time = time.time()
-        openai_response = client.chat.completions.create(**params)
+        completion = client.chat.completions.create(**params)
         tracer.send_event(
             "ai.response",
             span_id=span_id,
             properties=dict(
-                response=openai_response,
+                response=serialize_completion(completion),
                 latency=(time.time() - start_time) * 1000,
             ),
         )
