@@ -1,7 +1,11 @@
 {
   "name": "prompt-sdk",
-  "version": "0.0.0",
   "description": "Automated prompt versioning with the prompt SDK",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "npm run gen && dotenv -e .env -- tsx ./src/index.ts",
     "gen": "autoblocks prompts generate",

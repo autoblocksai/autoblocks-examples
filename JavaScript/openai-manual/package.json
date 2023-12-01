@@ -1,7 +1,11 @@
 {
   "name": "openai-manual",
-  "version": "0.0.0",
   "description": "Manual tracing of openai calls",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "type": "module",
   "main": "src/index.js",
   "scripts": {

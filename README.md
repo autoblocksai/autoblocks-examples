@@ -31,7 +31,7 @@
 
 ## JavaScript
 
-> **_NOTE:_** All JavaScript examples require `npm` and `node >= 16` to be installed.
+> **_NOTE:_** All JavaScript examples require `npm` and `node >= 18` to be installed.
 
 <!-- JavaScript start -->
 
