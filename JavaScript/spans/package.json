@@ -1,7 +1,11 @@
 {
   "name": "spans",
-  "version": "0.0.0",
   "description": "Establish parent / child relationships between your events with the `spanId` and `parentSpanId` properties",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "type": "module",
   "main": "src/index.js",
   "scripts": {

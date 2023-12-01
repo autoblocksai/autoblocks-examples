@@ -3,6 +3,9 @@
   "description": "Automatic tracing of openai calls in a TypeScript application",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "type": "module",
   "main": "dist/index.js",
   "scripts": {

@@ -3,6 +3,9 @@
   "description": "A Next.js app that uses openai and Autoblocks to power and monitor a chatbot",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

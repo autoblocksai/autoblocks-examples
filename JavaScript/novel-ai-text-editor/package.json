@@ -3,6 +3,9 @@
   "description": "A Next.js app that uses [Novel](https://github.com/steven-tey/novel) and Autoblocks to power an AI-enabled text editor",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
