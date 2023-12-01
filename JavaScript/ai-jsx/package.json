@@ -1,0 +1,18 @@
+{
+  "name": "ai-jsx",
+  "version": "0.0.0",
+  "description": "Automated tracing and prompt versioning with Autoblocks' [AI.JSX](https://docs.ai-jsx.com/aboutAIJSX) integration",
+  "scripts": {
+    "start": "dotenv -e .env -- tsx ./src/index.tsx"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@autoblocks/client": "^0.0.22",
+    "@types/node": "^20.9.1",
+    "ai-jsx": "^0.28.2",
+    "dotenv-cli": "^7.3.0",
+    "openai": "^4.6.0",
+    "tsx": "^4.1.3",
+    "typescript": "^5.2.2"
+  }
+}

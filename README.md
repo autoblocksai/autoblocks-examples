@@ -37,6 +37,7 @@
 
 | Name                                                     | Description                                                                                                            |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| [ai-jsx](/JavaScript/ai-jsx)                             | Automated tracing and prompt versioning with Autoblocks' [AI.JSX](https://docs.ai-jsx.com/aboutAIJSX) integration      |
 | [chatbot-nextjs](/JavaScript/chatbot-nextjs)             | A Next.js app that uses openai and Autoblocks to power and monitor a chatbot                                           |
 | [jest-replays](/JavaScript/jest-replays)                 | Run Autoblocks Replays from within a jest test suite                                                                   |
 | [langchain](/JavaScript/langchain)                       | Automatic tracing of a LangChain pipeline                                                                              |
