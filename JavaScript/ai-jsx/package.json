@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@autoblocks/client": "^0.0.24",
+    "@autoblocks/client": "^0.0.25",
     "@types/node": "^20.9.1",
     "ai-jsx": "^0.28.2",
     "dotenv-cli": "^7.3.0",
