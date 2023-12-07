@@ -9,6 +9,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 openai = "^1.0.0"
-autoblocksai = "^0.0.17"
+autoblocksai = "^0.0.18"
 python-dotenv = "^1.0.0"
 wrapt = "^1.15.0"
