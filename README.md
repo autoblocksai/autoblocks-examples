@@ -56,11 +56,12 @@
 
 <!-- Python start -->
 
-| Name                                         | Description                                            |
-| -------------------------------------------- | ------------------------------------------------------ |
-| [langchain](/Python/langchain)               | Automatic tracing of a LangChain pipeline              |
-| [openai-automated](/Python/openai-automated) | Automatic tracing of openai calls                      |
-| [openai-manual](/Python/openai-manual)       | Manual tracing of openai calls                         |
-| [pytest-replays](/Python/pytest-replays)     | Run Autoblocks Replays from within a pytest test suite |
+| Name                                         | Description                                                                         |
+| -------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [flask](/Python/flask)                       | Autoblocks tracing within a [Flask](https://flask.palletsprojects.com/) application |
+| [langchain](/Python/langchain)               | Automatic tracing of a LangChain pipeline                                           |
+| [openai-automated](/Python/openai-automated) | Automatic tracing of openai calls                                                   |
+| [openai-manual](/Python/openai-manual)       | Manual tracing of openai calls                                                      |
+| [pytest-replays](/Python/pytest-replays)     | Run Autoblocks Replays from within a pytest test suite                              |
 
 <!-- Python end -->
