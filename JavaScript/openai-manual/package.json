@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@autoblocks/client": "^0.0.27",
+    "@autoblocks/client": "^0.0.28",
     "dotenv-cli": "^7.3.0",
     "openai": "^4.6.0"
   }
