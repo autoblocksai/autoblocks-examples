@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "flask-tracer"
+description = "Autoblocks tracing within a [Flask](https://flask.palletsprojects.com/) application"
+version = "0.0.0"
+authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "myapp"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+autoblocksai = "^0.0.20"
+python-dotenv = "^1.0.0"
+flask = "^3.0.0"
