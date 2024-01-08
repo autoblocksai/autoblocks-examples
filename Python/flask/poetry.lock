@@ -24,21 +24,17 @@ trio = ["trio (>=0.23)"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.0"
+version = "0.0.20"
 description = "Python client for Autoblocks"
 optional = false
-python-versions = "^3.8.1"
-files = []
-develop = false
+python-versions = ">=3.8.1,<4.0.0"
+files = [
+    {file = "autoblocksai-0.0.20-py3-none-any.whl", hash = "sha256:be047505e079c0e7476415a7b31a7ab0a52949906ab3a1bc730471be17b70572"},
+    {file = "autoblocksai-0.0.20.tar.gz", hash = "sha256:d62ae2c80fb5d4da7a5c55bcd3757bd9ca54b4b5ab0f320aeb73dd15be5e8481"},
+]
 
 [package.dependencies]
 httpx = ">=0.24.0"
-
-[package.source]
-type = "git"
-url = "https://github.com/autoblocksai/python-sdk.git"
-reference = "c73df2a91a53ae894f0bd6771ce1cc620f97b914"
-resolved_reference = "c73df2a91a53ae894f0bd6771ce1cc620f97b914"
 
 [[package]]
 name = "blinker"
@@ -368,4 +364,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "6684aa04cbcd8c510b0b98aa387898d873bee44c0acb05d0fa642222a7d6dadc"
+content-hash = "1f324711b87abb7452f9e1768a1f37c04d9f61c2b219225085180a1aa58f6354"

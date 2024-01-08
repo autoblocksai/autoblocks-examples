@@ -9,6 +9,6 @@ packages = [{include = "myapp"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-autoblocksai = { git = "https://github.com/autoblocksai/python-sdk.git", rev = "c73df2a91a53ae894f0bd6771ce1cc620f97b914" }
+autoblocksai = "^0.0.20"
 python-dotenv = "^1.0.0"
 flask = "^3.0.0"
