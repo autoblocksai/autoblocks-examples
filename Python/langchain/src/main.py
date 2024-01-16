@@ -18,7 +18,7 @@ def todays_date(args) -> int:
     return datetime.now().day
 
 
-if __name__ == "__main__":
+def main():
     llm = OpenAI(temperature=0)
     llm_math_chain = LLMMathChain.from_llm(llm)
     tools = [
