@@ -8,7 +8,7 @@ from autoblocks.tracer import AutoblocksTracer
 from autoblocks.vendor.openai import serialize_completion
 from openai import OpenAI
 
-dotenv.load_dotenv("../.env")
+dotenv.load_dotenv(".env")
 
 client = OpenAI()
 

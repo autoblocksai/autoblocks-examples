@@ -5,10 +5,10 @@ from autoblocks.tracer import AutoblocksTracer
 from autoblocks.vendor.openai import serialize_completion
 from openai import OpenAI
 
-from prompt_sdk_headless.prompts import TextSummarizationMinorVersion
-from prompt_sdk_headless.prompts import TextSummarizationPromptManager
+from src.prompts import TextSummarizationMinorVersion
+from src.prompts import TextSummarizationPromptManager
 
-dotenv.load_dotenv("../.env")
+dotenv.load_dotenv(".env")
 
 openai = OpenAI()
 manager = TextSummarizationPromptManager(TextSummarizationMinorVersion.v0)

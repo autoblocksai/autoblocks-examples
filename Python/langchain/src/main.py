@@ -9,7 +9,7 @@ from langchain.llms import OpenAI
 from langchain.tools import Tool
 from langchain.tools import tool
 
-dotenv.load_dotenv("../.env")
+dotenv.load_dotenv(".env")
 
 
 @tool
