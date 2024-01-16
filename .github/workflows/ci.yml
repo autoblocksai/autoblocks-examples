@@ -97,7 +97,7 @@ jobs:
         run: poetry install
 
       - name: Run script
-        run: poetry run python main.py
+        run: poetry run start
 
   test-javascript:
     runs-on: ubuntu-latest

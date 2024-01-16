@@ -12,3 +12,6 @@ openai = "^1.0.0"
 autoblocksai = "^0.0.20"
 python-dotenv = "^1.0.0"
 wrapt = "^1.15.0"
+
+[tool.poetry.scripts]
+start = "main:main"

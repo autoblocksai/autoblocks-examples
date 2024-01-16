@@ -44,7 +44,7 @@ poetry install
 ## Run the script
 
 ```bash
-poetry run python main.py
+poetry run start
 ```
 
 ## View the trace in Autoblocks
