@@ -8,7 +8,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
+const tracer = new AutoblocksTracer({
   traceId: crypto.randomUUID(),
 });
 

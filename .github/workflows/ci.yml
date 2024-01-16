@@ -20,6 +20,7 @@ concurrency:
 
 env:
   AUTOBLOCKS_TRACER_THROW_ON_ERROR: '1'
+  AUTOBLOCKS_API_KEY: ${{ secrets.AUTOBLOCKS_API_KEY }}
 
 jobs:
   pre-commit:
@@ -109,7 +110,8 @@ jobs:
           - JavaScript/openai-automated
           - JavaScript/openai-automated-ts
           - JavaScript/openai-manual
-          - JavaScript/prompt-sdk
+          - JavaScript/prompt-sdk-headless
+          - JavaScript/prompt-sdk-local
           - JavaScript/spans
 
     defaults:
