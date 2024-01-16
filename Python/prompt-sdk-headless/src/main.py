@@ -8,7 +8,7 @@ from openai import OpenAI
 from prompt_sdk_headless.prompts import TextSummarizationMinorVersion
 from prompt_sdk_headless.prompts import TextSummarizationPromptManager
 
-dotenv.load_dotenv(".env")
+dotenv.load_dotenv("../.env")
 
 openai = OpenAI()
 manager = TextSummarizationPromptManager(TextSummarizationMinorVersion.v0)

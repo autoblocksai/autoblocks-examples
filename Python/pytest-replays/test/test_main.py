@@ -1,6 +1,6 @@
 import pytest
 
-from main import run
+from src.main import run
 
 test_cases = [
     "Where can I find your privacy policy?",

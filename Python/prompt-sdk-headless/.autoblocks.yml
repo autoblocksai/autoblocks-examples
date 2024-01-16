@@ -1,6 +1,6 @@
 autogenerate:
   prompts:
-    outfile: prompt_sdk_headless/prompts.py
+    outfile: src/prompts.py
 
     prompts:
       - id: text-summarization

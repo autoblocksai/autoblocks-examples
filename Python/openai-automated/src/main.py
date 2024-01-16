@@ -2,7 +2,7 @@ import dotenv
 
 # Environment variables need to be loaded before we import
 # trace_openai and openai
-dotenv.load_dotenv(".env")
+dotenv.load_dotenv("../.env")
 
 from autoblocks.vendor.openai import trace_openai
 from openai import OpenAI

@@ -5,6 +5,7 @@ description = "Automatic tracing of a LangChain pipeline"
 authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
 license = "MIT"
 readme = "README.md"
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -15,4 +16,4 @@ numexpr = "^2.8.7"
 langchain = "^0.1.0"
 
 [tool.poetry.scripts]
-start = "main:main"
+start = "src.main:main"
