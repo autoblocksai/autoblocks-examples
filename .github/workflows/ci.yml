@@ -62,8 +62,9 @@ jobs:
       matrix:
         project:
           - Python/langchain
-          - Python/openai-manual
           - Python/openai-automated
+          - Python/openai-manual
+          - Python/prompt-sdk-headless
           - Python/pytest-replays
 
     defaults:

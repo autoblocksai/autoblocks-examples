@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "prompt-sdk-headless"
+description = "Safely integrate prompts managed in the Autoblocks platform into your application"
+version = "0.0.0"
+authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+openai = "^1.0.0"
+autoblocksai = { git = "https://github.com/autoblocksai/python-sdk.git", rev = "36e3f322749f7158aec2646e3ea0a162a12439e2" }
+python-dotenv = "^1.0.0"
+pydantic = "^2.5.3"
+
+[tool.poetry.scripts]
+start = "prompt_sdk_headless.main:main"
