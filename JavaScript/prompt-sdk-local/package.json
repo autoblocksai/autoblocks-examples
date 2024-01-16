@@ -1,6 +1,6 @@
 {
-  "name": "prompt-sdk",
-  "description": "Automated prompt versioning with the prompt SDK",
+  "name": "prompt-sdk-local",
+  "description": "Automated prompt versioning and typesafe prompt building with the local prompt SDK",
   "version": "0.0.0",
   "private": true,
   "engines": {
