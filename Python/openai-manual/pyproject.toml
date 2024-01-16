@@ -9,5 +9,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 openai = "^1.0.0"
-autoblocksai = "^0.0.20"
+# autoblocksai = "^0.0.20"
+autoblocksai = { git = "https://github.com/autoblocksai/python-sdk.git", rev = "8ce3263eaff6d43727c01c7a906fd60c09d704fa" }
 python-dotenv = "^1.0.0"
