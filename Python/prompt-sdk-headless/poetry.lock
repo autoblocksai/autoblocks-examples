@@ -34,23 +34,19 @@ trio = ["trio (<0.22)"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.0"
+version = "0.0.21"
 description = "Python client for Autoblocks"
 optional = false
-python-versions = "^3.8.1"
-files = []
-develop = false
+python-versions = ">=3.8.1,<4.0.0"
+files = [
+    {file = "autoblocksai-0.0.21-py3-none-any.whl", hash = "sha256:b1e87ea0cade445d196571fdfe1e1a1ab9d7b7cf3f5a0531b144ee09ed2a1f1f"},
+    {file = "autoblocksai-0.0.21.tar.gz", hash = "sha256:ffaceaf25b3419ea118c60a4f28ad847b9c6df59b68faa8fb7b0ed36bf39e2bb"},
+]
 
 [package.dependencies]
 click = ">=8.0.0"
 httpx = ">=0.24.0"
 pyyaml = ">=6.0"
-
-[package.source]
-type = "git"
-url = "https://github.com/autoblocksai/python-sdk.git"
-reference = "36e3f322749f7158aec2646e3ea0a162a12439e2"
-resolved_reference = "36e3f322749f7158aec2646e3ea0a162a12439e2"
 
 [[package]]
 name = "certifi"
@@ -446,4 +442,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "9566bd10d63a54587685f3d51147eee0d9425f410119d7e394197681a8d037fc"
+content-hash = "2ea7ec56a524bccc44b1196ba45a8bc807b7ae7a9e221df36c1608b36e22bef0"
