@@ -66,7 +66,3 @@ def main():
         raise
 
     print(f"View your trace: https://app.autoblocks.ai/explore/trace/{tracer.trace_id}")
-
-
-if __name__ == "__main__":
-    main()

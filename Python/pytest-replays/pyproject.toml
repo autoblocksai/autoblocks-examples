@@ -5,6 +5,7 @@ version = "0.0.0"
 authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
 license = "MIT"
 readme = "README.md"
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -13,3 +14,6 @@ autoblocksai = "^0.0.20"
 python-dotenv = "^1.0.0"
 pytest = "^7.4.3"
 wrapt = "^1.15.0"
+
+[tool.poetry.scripts]
+start = "src.main:main"

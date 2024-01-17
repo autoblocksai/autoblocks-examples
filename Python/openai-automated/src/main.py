@@ -29,7 +29,3 @@ def main():
     )
     print("Finished calling OpenAI")
     print("View the trace at https://app.autoblocks.ai/explore")
-
-
-if __name__ == "__main__":
-    main()

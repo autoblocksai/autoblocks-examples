@@ -35,10 +35,39 @@ AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
 
 <!-- getting started end -->
 
+## Create a prompt
+
+Go to https://app.autoblocks.ai/prompts and click on Create Prompt.
+
+![example-prompt](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/acb7e17c-d09b-4ec0-9069-133bb50533e9)
+
+Create a prompt like this and deploy it.
+
+## Set your API key
+
+Then, get your API key from [here](https://app.autoblocks.ai/settings/api-keys) and set it as an environment variable:
+
+```bash
+export AUTOBLOCKS_API_KEY=...
+```
+
+## Create your `.autoblocks.yml` file
+
+This file instructs the CLI which prompts and which of their versions
+to autogenerate code for. One has already been created for you in [`./.autoblocks.yml`](./.autoblocks.yml).
+
 ## Install dependencies
 
 ```bash
 poetry install
+```
+
+## Autogenerate classes
+
+This CLI will autogenerate classes for you to use to interact with the prompts you've created in the UI.
+
+```
+poetry run autoblocks prompts generate
 ```
 
 ## Run the script
@@ -46,7 +75,3 @@ poetry install
 ```bash
 poetry run start
 ```
-
-## View logs in Autoblocks
-
-After you run the script, you will see a link to view the trace in your console. You can also navigate directly to the [explore page](https://app.autoblocks.ai/explore) to see the trace.
