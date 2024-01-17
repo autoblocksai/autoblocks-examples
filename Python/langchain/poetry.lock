@@ -185,17 +185,19 @@ tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pyte
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.20"
+version = "0.0.21"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = ">=3.8.1,<4.0.0"
 files = [
-    {file = "autoblocksai-0.0.20-py3-none-any.whl", hash = "sha256:be047505e079c0e7476415a7b31a7ab0a52949906ab3a1bc730471be17b70572"},
-    {file = "autoblocksai-0.0.20.tar.gz", hash = "sha256:d62ae2c80fb5d4da7a5c55bcd3757bd9ca54b4b5ab0f320aeb73dd15be5e8481"},
+    {file = "autoblocksai-0.0.21-py3-none-any.whl", hash = "sha256:b1e87ea0cade445d196571fdfe1e1a1ab9d7b7cf3f5a0531b144ee09ed2a1f1f"},
+    {file = "autoblocksai-0.0.21.tar.gz", hash = "sha256:ffaceaf25b3419ea118c60a4f28ad847b9c6df59b68faa8fb7b0ed36bf39e2bb"},
 ]
 
 [package.dependencies]
+click = ">=8.0.0"
 httpx = ">=0.24.0"
+pyyaml = ">=6.0"
 
 [[package]]
 name = "certifi"
@@ -291,6 +293,20 @@ files = [
     {file = "charset_normalizer-3.2.0-cp39-cp39-win_amd64.whl", hash = "sha256:7095f6fbfaa55defb6b733cfeb14efaae7a29f0b59d8cf213be4e7ca0b857b80"},
     {file = "charset_normalizer-3.2.0-py3-none-any.whl", hash = "sha256:8e098148dd37b4ce3baca71fb394c81dc5d9c7728c95df695d2dca218edf40e6"},
 ]
+
+[[package]]
+name = "click"
+version = "8.1.7"
+description = "Composable command line interface toolkit"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28"},
+    {file = "click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
 name = "colorama"
@@ -1402,4 +1418,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "20ee2b61912c3e55ccd63aa6120eb45a23e52382e544a939c8cd266f0ebdf569"
+content-hash = "dcf1c470ac9e0f2df6da7ad88e4a69a12678b477cd2028ca33f95144cbc45b7f"
