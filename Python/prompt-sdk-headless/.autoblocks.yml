@@ -5,4 +5,4 @@ autogenerate:
     prompts:
       - id: text-summarization
         major_versions:
-          - 1
+          - 2

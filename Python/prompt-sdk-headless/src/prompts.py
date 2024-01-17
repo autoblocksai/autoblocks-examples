@@ -25,7 +25,7 @@ class TextSummarizationParams(FrozenModel):
 class TextSummarizationTemplateRenderer(TemplateRenderer):
     __name_mapper__ = {
         "document": "document",
-        "language": "language",
+        "lang": "lang",
         "languageRequirement": "language_requirement",
         "tone": "tone",
         "toneRequirement": "tone_requirement",
@@ -56,11 +56,11 @@ class TextSummarizationTemplateRenderer(TemplateRenderer):
     def util_language(
         self,
         *,
-        language: str,
+        lang: str,
     ) -> str:
         return self._render(
             "util/language",
-            language=language,
+            lang=lang,
         )
 
     def util_tone(
@@ -86,7 +86,6 @@ class TextSummarizationExecutionContext(
 
 class TextSummarizationMinorVersion(Enum):
     v0 = "0"
-    v1 = "1"
     LATEST = "latest"
 
 
@@ -97,5 +96,5 @@ class TextSummarizationPromptManager(
     ],
 ):
     __prompt_id__ = "text-summarization"
-    __prompt_major_version__ = "1"
+    __prompt_major_version__ = "2"
     __execution_context_class__ = TextSummarizationExecutionContext

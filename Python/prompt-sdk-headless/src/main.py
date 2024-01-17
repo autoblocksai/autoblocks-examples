@@ -26,7 +26,7 @@ def main():
                     role="system",
                     content=prompt.render.system(
                         language_requirement=prompt.render.util_language(
-                            language="Spanish",
+                            lang="Spanish",
                         ),
                         tone_requirement=prompt.render.util_tone(
                             tone="formal",
