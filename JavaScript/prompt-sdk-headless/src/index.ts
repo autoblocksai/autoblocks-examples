@@ -9,7 +9,7 @@ const openai = new OpenAI();
 const manager = new AutoblocksPromptManager({
   id: 'text-summarization',
   version: {
-    major: '1',
+    major: '2',
     minor: '0',
   },
 });
@@ -34,7 +34,7 @@ async function run() {
               languageRequirement: prompt.render({
                 template: 'util/language',
                 params: {
-                  language: 'Spanish',
+                  lang: 'Spanish',
                 },
               }),
               toneRequirement: prompt.render({
