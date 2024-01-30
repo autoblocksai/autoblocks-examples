@@ -12,7 +12,7 @@ python = "^3.9"
 openai = "^1.0.0"
 autoblocksai = "^0.0.22"
 python-dotenv = "^1.0.0"
-pytest = "^7.4.3"
+pytest = "^8.0.0"
 wrapt = "^1.15.0"
 
 [tool.poetry.scripts]
