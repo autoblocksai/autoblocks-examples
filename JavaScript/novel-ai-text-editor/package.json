@@ -13,7 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@autoblocks/client": "^0.0.30",
+    "@autoblocks/client": "^0.0.31",
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
