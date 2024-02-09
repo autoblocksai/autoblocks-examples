@@ -21,6 +21,7 @@ def main():
         params = dict(
             model=prompt.params.model,
             temperature=prompt.params.temperature,
+            max_tokens=prompt.params.max_tokens,
             messages=[
                 dict(
                     role="system",
