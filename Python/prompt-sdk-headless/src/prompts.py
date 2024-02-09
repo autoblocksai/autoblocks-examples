@@ -4,6 +4,7 @@
 
 from enum import Enum
 from typing import List  # noqa: F401
+from typing import Union  # noqa: F401
 
 import pydantic
 
@@ -14,12 +15,12 @@ from autoblocks.prompts.renderer import TemplateRenderer
 
 
 class TextSummarizationParams(FrozenModel):
-    top_p: float = pydantic.Field(..., alias="topP")
+    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
     model: str = pydantic.Field(..., alias="model")
-    max_tokens: float = pydantic.Field(..., alias="maxTokens")
-    temperature: float = pydantic.Field(..., alias="temperature")
-    presence_penalty: float = pydantic.Field(..., alias="presencePenalty")
-    frequency_penalty: float = pydantic.Field(..., alias="frequencyPenalty")
+    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
+    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
+    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    frequency_penalty: Union[float, int] = pydantic.Field(..., alias="frequencyPenalty")
 
 
 class TextSummarizationTemplateRenderer(TemplateRenderer):
