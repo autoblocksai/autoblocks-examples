@@ -11,7 +11,7 @@ packages = [{include = "src"}]
 python = "^3.9"
 autoblocksai = "^0.0.26"
 python-dotenv = "^1.0.0"
-openai = "1.11.1"
+openai = "1.12.0"
 numexpr = "^2.8.7"
 langchain = "^0.1.0"
 
