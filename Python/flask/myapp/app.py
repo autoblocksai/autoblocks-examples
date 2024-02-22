@@ -10,7 +10,6 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def index():
-    print('got here')
     return augmented_generation(
         user_input=request.json["user_input"],
         n=2,
