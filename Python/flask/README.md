@@ -48,7 +48,7 @@ poetry run python myapp/app.py
 ## Send a request
 
 ```bash
-curl -X POST http://localhost:5000/ -d '{"user_input": "Hello!"}' -H 'Content-Type: application/json'
+curl -X POST http://localhost:8000/ -d '{"user_input": "Hello!"}' -H 'Content-Type: application/json'
 ```
 
 ## View logs in Autoblocks
