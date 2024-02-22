@@ -61,9 +61,7 @@ jobs:
     strategy:
       matrix:
         project:
-          - Python/langchain
-          - Python/openai-automated
-          - Python/openai-manual
+          - Python/openai-tracing
           - Python/prompt-sdk-headless
 
     defaults:
@@ -104,11 +102,7 @@ jobs:
     strategy:
       matrix:
         project:
-          - JavaScript/ai-jsx
-          - JavaScript/langchain
-          - JavaScript/openai-automated
-          - JavaScript/openai-automated-ts
-          - JavaScript/openai-manual
+          - JavaScript/openai-tracing
           - JavaScript/prompt-sdk-headless
           - JavaScript/prompt-sdk-local
           - JavaScript/spans

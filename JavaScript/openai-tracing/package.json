@@ -1,6 +1,6 @@
 {
-  "name": "openai-automated",
-  "description": "Automatic tracing of openai calls",
+  "name": "openai-tracing",
+  "description": "Tracing of openai calls",
   "version": "0.0.0",
   "private": true,
   "engines": {
