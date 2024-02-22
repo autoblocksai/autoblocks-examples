@@ -57,5 +57,6 @@
 | [flask](/Python/flask)                             | Autoblocks tracing within a [Flask](https://flask.palletsprojects.com/) application |
 | [openai-tracing](/Python/openai-tracing)           | Tracing of openai calls                                                             |
 | [prompt-sdk-headless](/Python/prompt-sdk-headless) | Safely integrate prompts managed in the Autoblocks platform into your application   |
+| [testing-sdk](/Python/testing-sdk)                 | Using the Autoblocks Testing SDK for experimentation and regression testing         |
 
 <!-- Python end -->
