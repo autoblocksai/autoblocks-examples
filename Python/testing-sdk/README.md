@@ -1,6 +1,8 @@
+<!-- banner start -->
 <p align="center">
-  <img src="https://app.autoblocks.ai/images/logo.png" width="150px">
+  <img src="https://app.autoblocks.ai/images/logo.png" width="300px">
 </p>
+
 <p align="center">
   📚
   <a href="https://docs.autoblocks.ai/">Documentation</a>
@@ -12,9 +14,22 @@
   &nbsp;
   •
   &nbsp;
-  ☎️
-  <a href="https://cal.frontapp.com/autoblocks/adam/autoblocks-engineering/">Meet with Autoblocks Engineering</a>
+  🏠
+  <a href="https://www.autoblocks.ai/">Home</a>
 </p>
+<!-- banner end -->
+
+## Getting started
+
+- Sign up for an Autoblocks account at https://app.autoblocks.ai
+- Grab your Autoblocks **local testing API key** from https://app.autoblocks.ai/settings/api-keys
+- Grab your OpenAI API key from https://platform.openai.com/account/api-keys
+- Create a file named `.env` in this folder and include the following environment variables:
+
+```
+OPENAI_API_KEY=<your-api-key>
+AUTOBLOCKS_API_KEY=<your-api-key>
+```
 
 ## Setup
 
@@ -55,22 +70,6 @@ poetry install
 ```
 
 ## Run Autoblocks tests
-
-### Set your Autoblocks API key
-
-Retrieve your **local testing API key** from the [settings page](https://app.autoblocks.ai/settings/api-keys) and set it as an environment variable:
-
-```bash
-export AUTOBLOCKS_API_KEY=...
-```
-
-### Set your OpenAI API key
-
-```bash
-export OPENAI_API_KEY=...
-```
-
-### Run the tests
 
 ```bash
 npx autoblocks testing exec -m "my first run" -- poetry run start

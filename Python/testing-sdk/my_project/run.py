@@ -1,5 +1,10 @@
+import dotenv
+
 from my_project.test_suites import flashcard_generator
 from my_project.test_suites import study_guide_outline
+
+
+dotenv.load_dotenv(".env")
 
 
 def run():
