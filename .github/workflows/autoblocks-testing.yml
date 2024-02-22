@@ -32,11 +32,8 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Create .env file
-        run: |
-          touch .env
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-          echo "AUTOBLOCKS_API_KEY=${{ secrets.AUTOBLOCKS_API_KEY }}" >> .env
-
       - name: Run Autoblocks tests
         run: npx autoblocks testing exec -- poetry run start
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AUTOBLOCKS_API_KEY: ${{ secrets.AUTOBLOCKS_API_KEY }}
