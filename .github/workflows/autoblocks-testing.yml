@@ -1,0 +1,39 @@
+name: Autoblocks Testing
+
+on:
+  push: # Run on every push.
+  schedule: # Run every day at ~7:17am PST.
+    - cron: '17 15 * * *'
+
+jobs:
+  py:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: Python/testing-sdk
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install poetry
+        run: curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Check pyproject.toml & poetry.lock are in sync
+        run: poetry lock --check
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run Autoblocks tests
+        run: npx autoblocks testing exec -- poetry run start
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AUTOBLOCKS_API_KEY: ${{ secrets.AUTOBLOCKS_API_KEY }}

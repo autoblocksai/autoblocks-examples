@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "testing-sdk"
+version = "0.0.0"
+description = "Using the Autoblocks Testing SDK for experimentation and regression testing"
+authors = [
+    "Autoblocks Engineering <engineering@autoblocks.ai>",
+]
+readme = "README.md"
+packages = [{include = "my_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+autoblocksai = ">=0.0.27"
+openai = "^1.0.0"
+
+[tool.poetry.scripts]
+# This will execute the run() function in my_project/run.py
+start = "my_project.run:run"
