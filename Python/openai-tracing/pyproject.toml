@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "openai-manual"
-description = "Manual tracing of openai calls"
+name = "openai-tracing"
+description = "Tracing of openai calls"
 version = "0.0.0"
 authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
 license = "MIT"
