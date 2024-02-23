@@ -1,7 +1,7 @@
 import asyncio
 from typing import List
 
-from autoblocks.testing.models import BaseEvaluator
+from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import Evaluation
 from openai import AsyncOpenAI
 
@@ -11,7 +11,7 @@ from my_project.test_suites.flashcard_generator.test_cases import TestCase
 openai_client = AsyncOpenAI()
 
 
-class IsProfessionalTone(BaseEvaluator):
+class IsProfessionalTone(BaseTestEvaluator):
     id = "is-professional-tone"
 
     prompt = """Please evaluate the provided text for its professionalism in the context of formal communication.
@@ -55,7 +55,7 @@ No further explanation or summary is required; just provide the number that repr
 
         raise ValueError(f"Unexpected response: {raw_content}")
 
-    async def evaluate(
+    async def evaluate_test_case(
         self, test_case: TestCase, output: List[Flashcard]
     ) -> Evaluation:
         # Score each flashcard asynchronously
@@ -69,7 +69,7 @@ No further explanation or summary is required; just provide the number that repr
         return Evaluation(score=sum(scores) / len(scores))
 
 
-class IsSupportedByNotes(BaseEvaluator):
+class IsSupportedByNotes(BaseTestEvaluator):
     id = "is-supported-by-notes"
 
     prompt = """Given some notes by a student and a flashcard in the form of a question and answer, evaluate whether the flashcard's question and answer are supported by the notes.
@@ -117,7 +117,7 @@ No further explanation or summary is required; just provide the number that repr
 
         raise ValueError(f"Unexpected response: {raw_content}")
 
-    async def evaluate(
+    async def evaluate_test_case(
         self, test_case: TestCase, output: List[Flashcard]
     ) -> Evaluation:
         """
