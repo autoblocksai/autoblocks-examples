@@ -1,6 +1,6 @@
 from typing import List
 
-from autoblocks.testing.models import BaseEvaluator
+from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import Evaluation
 from autoblocks.testing.models import Threshold
 
@@ -8,7 +8,7 @@ from my_project.evaluators.has_substrings import BaseHasSubstrings
 from my_project.test_suites.study_guide_outline.test_cases import TestCase
 
 
-class Formatting(BaseEvaluator):
+class Formatting(BaseTestEvaluator):
     id = "formatting"
 
     @staticmethod
@@ -21,11 +21,11 @@ class Formatting(BaseEvaluator):
                 return 0
         return 1
 
-    def evaluate(self, test_case: TestCase, output: str) -> Evaluation:
+    def evaluate_test_case(self, test_case: TestCase, output: str) -> Evaluation:
         return Evaluation(score=self.score(output), threshold=Threshold(gte=1))
 
 
-class NumCategories(BaseEvaluator):
+class NumCategories(BaseTestEvaluator):
     id = "num-categories"
 
     min_categories: int = 5
@@ -34,7 +34,7 @@ class NumCategories(BaseEvaluator):
     def score(self, output: str) -> int:
         return int(self.min_categories <= output.count("* ") <= self.max_categories)
 
-    def evaluate(self, test_case: TestCase, output: str) -> Evaluation:
+    def evaluate_test_case(self, test_case: TestCase, output: str) -> Evaluation:
         return Evaluation(score=self.score(output), threshold=Threshold(gte=1))
 
 

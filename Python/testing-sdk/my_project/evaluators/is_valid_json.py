@@ -2,13 +2,13 @@ import json
 from typing import Any
 from typing import Optional
 
-from autoblocks.testing.models import BaseEvaluator
+from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import BaseTestCase
 from autoblocks.testing.models import Evaluation
 from autoblocks.testing.models import Threshold
 
 
-class IsValidJson(BaseEvaluator):
+class IsValidJson(BaseTestEvaluator):
     id = "is-valid-json"
 
     """
@@ -39,7 +39,7 @@ class IsValidJson(BaseEvaluator):
         """
         return str(output)
 
-    def evaluate(self, test_case: BaseTestCase, output: Any) -> Evaluation:
+    def evaluate_test_case(self, test_case: BaseTestCase, output: Any) -> Evaluation:
         try:
             json.loads(self.output_as_str(output))
             return Evaluation(score=1, threshold=self.threshold)
