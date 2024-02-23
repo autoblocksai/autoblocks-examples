@@ -5,7 +5,6 @@ import uuid
 
 import dotenv
 from autoblocks.tracer import AutoblocksTracer
-from autoblocks.vendor.openai import serialize_completion
 from openai import OpenAI
 
 dotenv.load_dotenv(".env")
@@ -47,7 +46,9 @@ def main():
             "ai.response",
             span_id=span_id,
             properties=dict(
-                response=serialize_completion(completion),
+                # OpenAI v1 returns pydantic models, which have a model_dump_json
+                # method for converting to JSON.
+                response=completion.model_dump_json(),
                 latency=(time.time() - start_time) * 1000,
             ),
         )

@@ -2,7 +2,6 @@ import uuid
 
 import dotenv
 from autoblocks.tracer import AutoblocksTracer
-from autoblocks.vendor.openai import serialize_completion
 from openai import OpenAI
 
 from src.prompts import TextSummarizationMinorVersion
@@ -56,7 +55,9 @@ def main():
         tracer.send_event(
             "ai.response",
             properties=dict(
-                response=serialize_completion(response),
+                # OpenAI v1 returns pydantic models, which have a model_dump_json
+                # method for converting to JSON.
+                response=response.model_dump_json(),
                 promptTracking=prompt.track(),
             ),
         )
