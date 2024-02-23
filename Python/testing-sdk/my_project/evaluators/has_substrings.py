@@ -3,13 +3,13 @@ from typing import Any
 from typing import List
 from typing import Optional
 
-from autoblocks.testing.models import BaseEvaluator
+from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import BaseTestCase
 from autoblocks.testing.models import Evaluation
 from autoblocks.testing.models import Threshold
 
 
-class BaseHasSubstrings(BaseEvaluator, abc.ABC):
+class BaseHasSubstrings(BaseTestEvaluator, abc.ABC):
     id = "has-substrings"
 
     """
@@ -51,7 +51,7 @@ class BaseHasSubstrings(BaseEvaluator, abc.ABC):
         """
         return str(output)
 
-    def evaluate(self, test_case: BaseTestCase, output: Any) -> Evaluation:
+    def evaluate_test_case(self, test_case: BaseTestCase, output: Any) -> Evaluation:
         expected_substrings = self.expected_substrings(test_case)
         output_as_str = self.output_as_str(output)
 
