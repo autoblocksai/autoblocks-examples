@@ -72,6 +72,14 @@ poetry run autoblocks prompts generate
 
 ## Run the script
 
+Without Prompt SDK:
+
 ```bash
 poetry run start
+```
+
+With Prompt SDK:
+
+```bash
+poetry run start-with-prompt-sdk
 ```
