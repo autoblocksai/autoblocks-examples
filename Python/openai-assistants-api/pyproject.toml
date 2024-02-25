@@ -16,3 +16,4 @@ pydantic = "^2.5.3"
 
 [tool.poetry.scripts]
 start = "src.main:main"
+start-with-prompt-sdk = "src.main-with-prompt-sdk:main_with_prompt_sdk"
