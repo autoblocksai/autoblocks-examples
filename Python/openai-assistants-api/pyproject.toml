@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "openai-assistants-example"
+description = "Example using Autoblocks with the OpenAI Assistants API"
+version = "0.0.0"
+authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+openai = "^1.0.0"
+autoblocksai = "0.0.28"
+python-dotenv = "^1.0.0"
+pydantic = "^2.5.3"
+
+[tool.poetry.scripts]
+start = "src.main:main"

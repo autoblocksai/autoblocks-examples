@@ -38,6 +38,7 @@ async function run() {
   await tracer.sendEvent('ai.assistant.created');
 
   // Create a new thread
+  await tracer.sendEvent('ai.assistant.thread.create');
   const thread = await openai.beta.threads.create();
   // All future events will have the threadId property
   tracer.updateProperties({

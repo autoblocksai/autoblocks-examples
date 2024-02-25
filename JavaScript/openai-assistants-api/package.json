@@ -1,6 +1,6 @@
 {
   "name": "openai-assistants-api",
-  "description": "Example using Autoblocks with the openai assistants api",
+  "description": "Example using Autoblocks with the OpenAI Assistants API",
   "version": "0.0.0",
   "private": true,
   "engines": {
