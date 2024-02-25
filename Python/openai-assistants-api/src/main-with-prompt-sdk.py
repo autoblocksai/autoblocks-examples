@@ -98,9 +98,7 @@ def main_with_prompt_sdk():
         messages = client.beta.threads.messages.list(thread_id=thread.id)
         tracer.send_event(
             "ai.assistant.thread.run.completed",
-            properties=dict(
-                response=messages.model_dump_json(), promptTracking=prompt.track()
-            ),
+            properties=dict(response=messages.data[0].content[0].text.value),
         )
 
     print(f"View your trace: https://app.autoblocks.ai/explore/trace/{tracer.trace_id}")

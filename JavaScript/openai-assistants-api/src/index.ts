@@ -115,7 +115,10 @@ async function run() {
   const messages = await openai.beta.threads.messages.list(thread.id);
   await tracer.sendEvent('ai.assistant.thread.run.completed', {
     properties: {
-      response: messages.data[messages.data.length - 1].content,
+      response:
+        messages.data[0].content[0].type === 'text'
+          ? messages.data[0].content[0].text.value
+          : messages.data[0].content[0].image_file.file_id,
     },
   });
 
