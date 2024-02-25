@@ -63,6 +63,7 @@ jobs:
         project:
           - Python/openai-tracing
           - Python/prompt-sdk-headless
+          - Python/openai-assistants-api
 
     defaults:
       run:
@@ -106,6 +107,7 @@ jobs:
           - JavaScript/prompt-sdk-headless
           - JavaScript/prompt-sdk-local
           - JavaScript/spans
+          - JavaScript/openai-assistants-api
 
     defaults:
       run:
