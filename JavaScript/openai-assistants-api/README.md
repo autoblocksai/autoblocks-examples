@@ -44,11 +44,13 @@ npm install
 ## Run the script
 
 Without Prompt SDK:
+
 ```
 npm run start
 ```
 
 With Prompt SDK:
+
 ```
 npm run start-with-prompt-sdk
 ```
