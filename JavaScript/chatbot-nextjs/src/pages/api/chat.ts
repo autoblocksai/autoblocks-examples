@@ -35,7 +35,8 @@ export default async function handler(
 
   // Substitute this for process.env.AUTOBLOCKS_INGESTION_KEY in a production environment
   // You can also initialize this outside of the handler in that case
-  const tracer = new AutoblocksTracer(autoblocksIngestionKey, {
+  const tracer = new AutoblocksTracer({
+    ingestionKey: autoblocksIngestionKey,
     traceId,
     properties: {
       provider: 'openai',

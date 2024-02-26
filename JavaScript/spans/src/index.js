@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import { AutoblocksTracer } from '@autoblocks/client';
 
-const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
+const tracer = new AutoblocksTracer({
   traceId: crypto.randomUUID(),
   properties: {
     provider: 'openai',
