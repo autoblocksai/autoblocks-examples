@@ -39,7 +39,7 @@ AUTOBLOCKS_INGESTION_KEY=<your-autoblocks-ingestion-key>
 
 Go to https://app.autoblocks.ai/prompts and click on Create Prompt.
 
-![example-prompt](https://github.com/autoblocksai/autoblocks-examples/assets/7498009/acb7e17c-d09b-4ec0-9069-133bb50533e9)
+![example-prompt](https://github.com/autoblocksai/autoblocks-examples/assets/15793238/f3c148de-87b4-4b6c-ad61-6638544882a5)
 
 Create a prompt like this and deploy it.
 
