@@ -25,13 +25,14 @@
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
 - Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
+- Grab your Autoblocks api key from https://app.autoblocks.ai/settings/api-keys
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
 - Create a file named `.env` in this folder and include the following environment variables:
 
 ```
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
-AUTOBLOCKS_API_KEY=<your-api-key>
+AUTOBLOCKS_API_KEY=<your-api-key
 ```
 
 <!-- getting started end -->
