@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "npm run gen && dotenv -e .env -- tsx ./src/index.ts",
-    "gen": "autoblocks prompts generate"
+    "gen": "dotenv -e .env -- autoblocks prompts generate"
   },
   "license": "MIT",
   "dependencies": {

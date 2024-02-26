@@ -28,7 +28,7 @@
 - Create a file named `.env` in this folder and include the following environment variables:
 
 ```
-AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+AUTOBLOCKS_INGESTION_KEY=<your-autoblocks-ingestion-key>
 ```
 
 <!-- getting started end -->

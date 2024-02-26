@@ -1,0 +1,8 @@
+autogenerate:
+  prompts:
+    outfile: src/prompts.py
+
+    prompts:
+      - id: openai-assistants-example
+        major_versions:
+          - 2

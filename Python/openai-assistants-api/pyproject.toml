@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "prompt-sdk-headless"
-description = "Safely integrate prompts managed in the Autoblocks platform into your application"
+name = "openai-assistants-example"
+description = "Example using Autoblocks with the OpenAI Assistants API"
 version = "0.0.0"
 authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
 license = "MIT"
@@ -10,9 +10,10 @@ packages = [{include = "src"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 openai = "^1.0.0"
-autoblocksai = "^0.0.30"
 python-dotenv = "^1.0.0"
 pydantic = "^2.5.3"
+autoblocksai = "^0.0.30"
 
 [tool.poetry.scripts]
 start = "src.main:main"
+start-with-prompt-sdk = "src.main-with-prompt-sdk:main_with_prompt_sdk"

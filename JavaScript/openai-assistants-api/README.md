@@ -25,27 +25,39 @@
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
 - Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
+- Grab your Autoblocks api key from https://app.autoblocks.ai/settings/api-keys
 - Grab your OpenAI API key from https://platform.openai.com/account/api-keys
 - Create a file named `.env` in this folder and include the following environment variables:
 
 ```
 OPENAI_API_KEY=<your-openai-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-autoblocks-ingestion-key>
+AUTOBLOCKS_API_KEY=<your-autoblocks-api-key>
 ```
 
 <!-- getting started end -->
 
-## Install dependencies
+## Install Dependencies
 
-```bash
-poetry install
+```
+npm install
 ```
 
 ## Run the script
 
-```bash
-poetry run start
+Without Prompt SDK:
+
 ```
+npm run start
+```
+
+With Prompt SDK:
+
+```
+export AUTOBLOCKS_API_KEY=npm run start-with-prompt-sdk
+```
+
+More info on Prompt SDK can be found [here](https://docs.autoblocks.ai/features/prompt-sdk).
 
 ## View logs in Autoblocks
 

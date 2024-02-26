@@ -55,34 +55,37 @@ const BANNER_START_COMMENT = '<!-- banner start -->';
 const BANNER_END_COMMENT = '<!-- banner end -->';
 
 // Getting started checklist we add to each individual project README
-const makeGettingStartedChecklist = (includeOpenAI) => {
-  if (includeOpenAI) {
-    return `
+const makeGettingStartedChecklist = ({
+  includeOpenAI,
+  includeAutoblocksAPIKey,
+}) => {
+  return `
 ## Getting started
 
 - Sign up for an Autoblocks account at https://app.autoblocks.ai
 - Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
-- Grab your OpenAI API key from https://platform.openai.com/account/api-keys
+${
+  includeAutoblocksAPIKey
+    ? '- Grab your Autoblocks api key from https://app.autoblocks.ai/settings/api-keys'
+    : 'DELETE_ME'
+}
+${
+  includeOpenAI
+    ? '- Grab your OpenAI API key from https://platform.openai.com/account/api-keys'
+    : 'DELETE_ME'
+}
 - Create a file named \`.env\` in this folder and include the following environment variables:
 
 \`\`\`
-OPENAI_API_KEY=<your-api-key>
-AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+${includeOpenAI ? 'OPENAI_API_KEY=<your-openai-api-key>' : 'DELETE_ME'}
+AUTOBLOCKS_INGESTION_KEY=<your-autoblocks-ingestion-key>
+${
+  includeAutoblocksAPIKey
+    ? 'AUTOBLOCKS_API_KEY=<your-autoblocks-api-key>'
+    : 'DELETE_ME'
+}
 \`\`\`
-`;
-  } else {
-    return `
-## Getting started
-
-- Sign up for an Autoblocks account at https://app.autoblocks.ai
-- Grab your Autoblocks ingestion key from https://app.autoblocks.ai/settings/api-keys
-- Create a file named \`.env\` in this folder and include the following environment variables:
-
-\`\`\`
-AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
-\`\`\`
-`;
-  }
+`.replaceAll('DELETE_ME\n', '');
 };
 
 const GETTING_STARTED_START_COMMENT = '<!-- getting started start -->';
@@ -100,6 +103,7 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
     for (const project of projects) {
       let description;
       let includeOpenAIInGettingStartedChecklist = false;
+      let includeAutoblocksAPIKeyInGettingStartedChecklist = false;
 
       if (section === 'JavaScript') {
         // Get description from package.json
@@ -108,6 +112,12 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
           'utf-8',
         );
         description = JSON.parse(packageJson).description;
+
+        if (
+          packageJson.includes('dotenv -e .env -- autoblocks prompts generate')
+        ) {
+          includeAutoblocksAPIKeyInGettingStartedChecklist = true;
+        }
 
         // Check if openai is a dependency
         if (packageJson.includes('openai')) {
@@ -147,9 +157,11 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
         content: projectReadme,
         startComment: GETTING_STARTED_START_COMMENT,
         endComment: GETTING_STARTED_END_COMMENT,
-        replacement: makeGettingStartedChecklist(
-          includeOpenAIInGettingStartedChecklist,
-        ),
+        replacement: makeGettingStartedChecklist({
+          includeOpenAI: includeOpenAIInGettingStartedChecklist,
+          includeAutoblocksAPIKey:
+            includeAutoblocksAPIKeyInGettingStartedChecklist,
+        }),
       });
 
       // Write the new project README

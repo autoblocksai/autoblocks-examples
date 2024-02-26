@@ -1,0 +1,25 @@
+{
+  "name": "openai-assistants-api",
+  "description": "Example using Autoblocks with the OpenAI Assistants API",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "dotenv -e .env -- tsx ./src/index.ts",
+    "start-with-prompt-sdk": "npm run gen && dotenv -e .env -- tsx ./src/index.ts",
+    "gen": "dotenv -e .env -- autoblocks prompts generate"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@autoblocks/client": "^0.0.31",
+    "@types/node": "^20.11.20",
+    "dotenv-cli": "^7.3.0",
+    "openai": "^4.28.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  }
+}
