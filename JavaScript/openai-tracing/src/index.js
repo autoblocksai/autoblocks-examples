@@ -6,7 +6,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
+const tracer = new AutoblocksTracer({
   // These apply to every call of tracer.sendEvent() so we don't have to repeat them
   traceId: crypto.randomUUID(),
   properties: {

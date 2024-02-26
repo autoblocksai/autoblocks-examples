@@ -93,7 +93,8 @@ export default function Chat() {
   };
 
   const onFeedback = async (feedback: 'positive' | 'negative') => {
-    const tracer = new AutoblocksTracer(autoblocksIngestionKey, {
+    const tracer = new AutoblocksTracer({
+      ingestionKey: autoblocksIngestionKey,
       traceId,
     });
     await tracer.sendEvent('user.feedback', {
