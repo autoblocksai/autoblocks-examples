@@ -54,11 +54,11 @@ def main():
 
         tracer.send_event(
             "ai.response",
+            prompt_tracking=prompt.track(),
             properties=dict(
                 # OpenAI v1 returns pydantic models, which have a model_dump_json
                 # method for converting to JSON.
                 response=response.model_dump_json(),
-                promptTracking=prompt.track(),
             ),
         )
 
