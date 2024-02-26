@@ -29,8 +29,8 @@
 - Create a file named `.env` in this folder and include the following environment variables:
 
 ```
-OPENAI_API_KEY=<your-api-key>
-AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+OPENAI_API_KEY=<your-openai-api-key>
+AUTOBLOCKS_INGESTION_KEY=<your-autoblocks-ingestion-key>
 ```
 
 <!-- getting started end -->
