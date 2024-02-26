@@ -31,6 +31,7 @@
 ```
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+AUTOBLOCKS_API_KEY=<your-api-key>
 ```
 
 <!-- getting started end -->

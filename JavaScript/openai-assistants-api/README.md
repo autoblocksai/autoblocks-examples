@@ -31,6 +31,7 @@
 ```
 OPENAI_API_KEY=<your-api-key>
 AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
+AUTOBLOCKS_API_KEY=<your-api-key>
 ```
 
 <!-- getting started end -->
@@ -52,7 +53,7 @@ npm run start
 With Prompt SDK:
 
 ```
-npm run start-with-prompt-sdk
+export AUTOBLOCKS_API_KEY=npm run start-with-prompt-sdk
 ```
 
 More info on Prompt SDK can be found [here](https://docs.autoblocks.ai/features/prompt-sdk).
