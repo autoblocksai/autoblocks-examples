@@ -37,6 +37,14 @@ AUTOBLOCKS_API_KEY=<your-autoblocks-api-key>
 
 <!-- getting started end -->
 
+## Create a prompt
+
+Go to https://app.autoblocks.ai/prompts and click on Create Prompt.
+
+![example-prompt](https://github.com/autoblocksai/autoblocks-examples/assets/15793238/f3c148de-87b4-4b6c-ad61-6638544882a5)
+
+Create a prompt like this and deploy it.
+
 ## Install Dependencies
 
 ```
