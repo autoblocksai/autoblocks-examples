@@ -1,0 +1,21 @@
+{
+  "name": "testing-sdk",
+  "description": "Using the Autoblocks Testing SDK for experimentation and regression testing",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "npx autoblocks testing exec -- dotenv -e .env -- tsx ./src/index.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@autoblocks/client": "autoblocksai/javascript-sdk#testing-sdk",
+    "dotenv-cli": "^7.3.0",
+    "openai": "^4.6.0",
+    "tsx": "^4.1.3",
+    "typescript": "^5.2.2"
+  }
+}
