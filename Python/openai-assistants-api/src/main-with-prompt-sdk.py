@@ -90,14 +90,16 @@ def main_with_prompt_sdk():
         for step in run_steps:
             tracer.send_event(
                 f"ai.assistant.thread.run.step.{step.type}",
-                # Autoblocks uses run_ids and parent_run_ids to construct the trace tree view
-                properties=dict(run_id=step.id, parent_run_id=step.run_id),
+                span_id=step.id,
+                parent_span_id=step.run_id,
             )
 
         # Log the output of the run
         messages = client.beta.threads.messages.list(thread_id=thread.id)
         tracer.send_event(
             "ai.assistant.thread.run.completed",
+            span_id=run.id,
+            prompt_tracking=prompt.track(),
             properties=dict(response=messages.data[0].content[0].text.value),
         )
 

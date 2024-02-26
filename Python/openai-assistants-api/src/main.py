@@ -63,7 +63,7 @@ def main():
     run = client.beta.threads.runs.create(**run_params)
     # All future events will have the run_id property
     tracer.update_properties(dict(run_id=run.id))
-    tracer.send_event("ai.assistant.thread.run.created")
+    tracer.send_event("ai.assistant.thread.run.created", span_id=run.id)
 
     run_completed = False
 
@@ -78,14 +78,15 @@ def main():
     for step in run_steps:
         tracer.send_event(
             f"ai.assistant.thread.run.step.{step.type}",
-            # Autoblocks uses run_ids and parent_run_ids to construct the trace tree view
-            properties=dict(run_id=step.id, parent_run_id=step.run_id),
+            span_id=step.id,
+            parent_span_id=step.run_id,
         )
 
     # Log the output of the run
     messages = client.beta.threads.messages.list(thread_id=thread.id)
     tracer.send_event(
         "ai.assistant.thread.run.completed",
+        span_id=run.id,
         properties=dict(response=messages.data[0].content[0].text.value),
     )
 

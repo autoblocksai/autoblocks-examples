@@ -15,7 +15,7 @@ const manager = new AutoblocksPromptManager({
   },
 });
 
-const tracer = new AutoblocksTracer(process.env.AUTOBLOCKS_INGESTION_KEY, {
+const tracer = new AutoblocksTracer({
   // These apply to every call of tracer.sendEvent() so we don't have to repeat them
   traceId: crypto.randomUUID(),
   properties: {
@@ -107,7 +107,9 @@ async function run() {
     tracer.updateProperties({
       runId: run.id,
     });
-    await tracer.sendEvent('ai.assistant.thread.run.created');
+    await tracer.sendEvent('ai.assistant.thread.run.created', {
+      spanId: run.id,
+    });
 
     // Wait for run to complete
     let runCompleted = false;
@@ -129,18 +131,16 @@ async function run() {
     );
     for (const step of runSteps.data) {
       await tracer.sendEvent(`ai.assistant.thread.run.step.${step.type}`, {
-        properties: {
-          ...step,
-          // Autoblocks uses runIds and parentRunIds to construct the trace tree view
-          runId: step.id,
-          parentRunId: step.run_id,
-        },
+        spanId: step.id,
+        parentSpanId: step.run_id,
+        properties: step,
       });
     }
 
     // Log the output of the run
     const messages = await openai.beta.threads.messages.list(thread.id);
     await tracer.sendEvent('ai.assistant.thread.run.completed', {
+      spanId: run.id,
       properties: {
         response:
           messages.data[0].content[0].type === 'text'
