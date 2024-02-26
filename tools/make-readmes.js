@@ -77,9 +77,13 @@ ${
 - Create a file named \`.env\` in this folder and include the following environment variables:
 
 \`\`\`
-${includeOpenAI ? 'OPENAI_API_KEY=<your-api-key>' : 'DELETE_ME'}
-AUTOBLOCKS_INGESTION_KEY=<your-ingestion-key>
-${includeAutoblocksAPIKey ? 'AUTOBLOCKS_API_KEY=<your-api-key' : 'DELETE_ME'}
+${includeOpenAI ? 'OPENAI_API_KEY=<your-openai-api-key>' : 'DELETE_ME'}
+AUTOBLOCKS_INGESTION_KEY=<your-autoblocks-ingestion-key>
+${
+  includeAutoblocksAPIKey
+    ? 'AUTOBLOCKS_API_KEY=<your-autoblocks-api-key>'
+    : 'DELETE_ME'
+}
 \`\`\`
 `.replaceAll('DELETE_ME\n', '');
 };
