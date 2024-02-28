@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "npm run gen && dotenv -e .env -- tsx ./src/index.ts",
-    "gen": "autoblocks prompts generate",
+    "gen": "prompts generate",
     "gen:watch": "nodemon --quiet --watch prompt-templates --ext \"*\" --exec \"npm run gen\""
   },
   "license": "MIT",
