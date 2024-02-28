@@ -11,7 +11,7 @@
   "scripts": {
     "start": "dotenv -e .env -- tsx ./src/index.ts",
     "start-with-prompt-sdk": "npm run gen && dotenv -e .env -- tsx ./src/index.ts",
-    "gen": "dotenv -e .env -- autoblocks prompts generate"
+    "gen": "dotenv -e .env -- prompts generate"
   },
   "license": "MIT",
   "dependencies": {
