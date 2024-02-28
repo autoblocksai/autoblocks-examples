@@ -29,6 +29,10 @@ def gen_flashcards_from_notes(notes: str) -> List[Flashcard]:
         response = openai_client.chat.completions.create(
             model=prompt.params.model,
             temperature=prompt.params.temperature,
+            max_tokens=prompt.params.max_tokens,
+            top_p=prompt.params.top_p,
+            presence_penalty=prompt.params.presence_penalty,
+            frequency_penalty=prompt.params.frequency_penalty,
             response_format=ResponseFormat(type="json_object"),
             messages=[
                 dict(

@@ -27,6 +27,9 @@ def gen_study_guide_outline(topic: str) -> str:
             model=prompt.params.model,
             temperature=prompt.params.temperature,
             max_tokens=prompt.params.max_tokens,
+            top_p=prompt.params.top_p,
+            presence_penalty=prompt.params.presence_penalty,
+            frequency_penalty=prompt.params.frequency_penalty,
             n=1,
             messages=[
                 dict(
