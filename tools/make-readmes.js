@@ -113,9 +113,7 @@ const GETTING_STARTED_END_COMMENT = '<!-- getting started end -->';
         );
         description = JSON.parse(packageJson).description;
 
-        if (
-          packageJson.includes('dotenv -e .env -- autoblocks prompts generate')
-        ) {
+        if (packageJson.includes('dotenv -e .env -- prompts generate')) {
           includeAutoblocksAPIKeyInGettingStartedChecklist = true;
         }
 

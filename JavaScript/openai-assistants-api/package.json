@@ -11,11 +11,11 @@
   "scripts": {
     "start": "dotenv -e .env -- tsx ./src/index.ts",
     "start-with-prompt-sdk": "npm run gen && dotenv -e .env -- tsx ./src/index.ts",
-    "gen": "dotenv -e .env -- autoblocks prompts generate"
+    "gen": "dotenv -e .env -- prompts generate"
   },
   "license": "MIT",
   "dependencies": {
-    "@autoblocks/client": "^0.0.31",
+    "@autoblocks/client": "^0.0.32",
     "@types/node": "^20.11.20",
     "dotenv-cli": "^7.3.0",
     "openai": "^4.28.0",
