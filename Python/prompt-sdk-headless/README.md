@@ -67,7 +67,7 @@ poetry install
 This CLI will autogenerate classes for you to use to interact with the prompts you've created in the UI.
 
 ```
-poetry run autoblocks prompts generate
+poetry run prompts generate
 ```
 
 ## Run the script
