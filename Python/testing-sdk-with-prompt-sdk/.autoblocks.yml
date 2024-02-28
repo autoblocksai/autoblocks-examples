@@ -1,0 +1,20 @@
+autogenerate:
+  prompts:
+    outfile: my_project/prompts.py
+
+    prompts:
+      - id: study-guide-outline
+        major_versions:
+          - 1
+
+      - id: flashcard-generator
+        major_versions:
+          - 1
+
+      - id: is-supported-by-notes-eval
+        major_versions:
+          - 1
+
+      - id: is-professional-tone-eval
+        major_versions:
+          - 1

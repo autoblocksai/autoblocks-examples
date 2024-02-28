@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "testing-sdk"
+name = "testing-sdk-with-prompt-sdk"
 version = "0.0.0"
-description = "Using the Autoblocks Testing SDK for experimentation, regression testing, and rapid prototyping."
+description = "Using the Autoblocks Testing SDK with the Prompt SDK for experimentation, regression testing, and rapid prototyping."
 authors = [
     "Autoblocks Engineering <engineering@autoblocks.ai>",
 ]
@@ -10,7 +10,7 @@ packages = [{include = "my_project"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-autoblocksai = ">=0.0.28"
+autoblocksai = "^0.0.31"
 openai = "^1.0.0"
 
 [tool.poetry.scripts]

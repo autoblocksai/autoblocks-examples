@@ -53,12 +53,13 @@
 
 <!-- Python start -->
 
-| Name                                                   | Description                                                                         |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------------- |
-| [flask](/Python/flask)                                 | Autoblocks tracing within a [Flask](https://flask.palletsprojects.com/) application |
-| [openai-assistants-api](/Python/openai-assistants-api) | Example using Autoblocks with the OpenAI Assistants API                             |
-| [openai-tracing](/Python/openai-tracing)               | Tracing of openai calls                                                             |
-| [prompt-sdk-headless](/Python/prompt-sdk-headless)     | Safely integrate prompts managed in the Autoblocks platform into your application   |
-| [testing-sdk](/Python/testing-sdk)                     | Using the Autoblocks Testing SDK for experimentation and regression testing         |
+| Name                                                               | Description                                                                                                          |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| [flask](/Python/flask)                                             | Autoblocks tracing within a [Flask](https://flask.palletsprojects.com/) application                                  |
+| [openai-assistants-api](/Python/openai-assistants-api)             | Example using Autoblocks with the OpenAI Assistants API                                                              |
+| [openai-tracing](/Python/openai-tracing)                           | Tracing of openai calls                                                                                              |
+| [prompt-sdk-headless](/Python/prompt-sdk-headless)                 | Safely integrate prompts managed in the Autoblocks platform into your application                                    |
+| [testing-sdk](/Python/testing-sdk)                                 | Using the Autoblocks Testing SDK for experimentation, regression testing, and rapid prototyping.                     |
+| [testing-sdk-with-prompt-sdk](/Python/testing-sdk-with-prompt-sdk) | Using the Autoblocks Testing SDK with the Prompt SDK for experimentation, regression testing, and rapid prototyping. |
 
 <!-- Python end -->
