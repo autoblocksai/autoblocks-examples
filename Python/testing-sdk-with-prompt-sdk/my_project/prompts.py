@@ -72,6 +72,129 @@ class FlashcardGeneratorPromptManager(
     __execution_context_class__ = FlashcardGeneratorExecutionContext
 
 
+class IsProfessionalToneEvalParams(FrozenModel):
+    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
+    model: str = pydantic.Field(..., alias="model")
+    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
+    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
+    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    frequency_penalty: Union[float, int] = pydantic.Field(..., alias="frequencyPenalty")
+
+
+class IsProfessionalToneEvalTemplateRenderer(TemplateRenderer):
+    __name_mapper__ = {
+        "output": "output",
+    }
+
+    def system(
+        self,
+    ) -> str:
+        return self._render(
+            "system",
+        )
+
+    def user(
+        self,
+        *,
+        output: str,
+    ) -> str:
+        return self._render(
+            "user",
+            output=output,
+        )
+
+
+class IsProfessionalToneEvalExecutionContext(
+    PromptExecutionContext[
+        IsProfessionalToneEvalParams,
+        IsProfessionalToneEvalTemplateRenderer,
+    ],
+):
+    __params_class__ = IsProfessionalToneEvalParams
+    __template_renderer_class__ = IsProfessionalToneEvalTemplateRenderer
+
+
+class IsProfessionalToneEvalMinorVersion(Enum):
+    v0 = "0"
+    LATEST = "latest"
+
+
+class IsProfessionalToneEvalPromptManager(
+    AutoblocksPromptManager[
+        IsProfessionalToneEvalExecutionContext,
+        IsProfessionalToneEvalMinorVersion,
+    ],
+):
+    __prompt_id__ = "is-professional-tone-eval"
+    __prompt_major_version__ = "1"
+    __execution_context_class__ = IsProfessionalToneEvalExecutionContext
+
+
+class IsSupportedByNotesEvalParams(FrozenModel):
+    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
+    model: str = pydantic.Field(..., alias="model")
+    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
+    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
+    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    frequency_penalty: Union[float, int] = pydantic.Field(..., alias="frequencyPenalty")
+
+
+class IsSupportedByNotesEvalTemplateRenderer(TemplateRenderer):
+    __name_mapper__ = {
+        "answer": "answer",
+        "notes": "notes",
+        "question": "question",
+    }
+
+    def system(
+        self,
+    ) -> str:
+        return self._render(
+            "system",
+        )
+
+    def user(
+        self,
+        *,
+        answer: str,
+        notes: str,
+        question: str,
+    ) -> str:
+        return self._render(
+            "user",
+            answer=answer,
+            notes=notes,
+            question=question,
+        )
+
+
+class IsSupportedByNotesEvalExecutionContext(
+    PromptExecutionContext[
+        IsSupportedByNotesEvalParams,
+        IsSupportedByNotesEvalTemplateRenderer,
+    ],
+):
+    __params_class__ = IsSupportedByNotesEvalParams
+    __template_renderer_class__ = IsSupportedByNotesEvalTemplateRenderer
+
+
+class IsSupportedByNotesEvalMinorVersion(Enum):
+    v0 = "0"
+    v1 = "1"
+    LATEST = "latest"
+
+
+class IsSupportedByNotesEvalPromptManager(
+    AutoblocksPromptManager[
+        IsSupportedByNotesEvalExecutionContext,
+        IsSupportedByNotesEvalMinorVersion,
+    ],
+):
+    __prompt_id__ = "is-supported-by-notes-eval"
+    __prompt_major_version__ = "1"
+    __execution_context_class__ = IsSupportedByNotesEvalExecutionContext
+
+
 class StudyGuideOutlineParams(FrozenModel):
     top_p: Union[float, int] = pydantic.Field(..., alias="topP")
     model: str = pydantic.Field(..., alias="model")

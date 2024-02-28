@@ -168,6 +168,84 @@ Flashcards:
 
 Deploy your prompt.
 
+### Create is-supported-by-notes-eval prompt
+
+Go to https://app.autoblocks.ai/prompts and click on Create Prompt.
+
+Name the prompt `is-supported-by-notes-eval`.
+
+> **_NOTE:_** This matches the name in [`./.autoblocks.yml`](./.autoblocks.yml).
+
+Add parameters and select `gpt-3.5-turbo` as the model.
+
+> **_NOTE:_** You can experiment with different models and params.
+
+Add a template named `system` and add the following text:
+
+```
+Given some notes by a student and a flashcard in the form of a question and answer, evaluate whether the flashcard's question and answer are supported by the notes.
+It's possible the question and answer aren't in the notes verbatim.
+If the notes provide enough context or information to support the question and answer, consider that sufficient support.
+Based on these criteria, provide a binary response where:
+0 indicates the flashcard's question and answer are not supported by the notes.
+1 indicates the flashcard's question and answer are supported by the notes.
+No further explanation or summary is required; just provide the number that represents your assessment.
+```
+
+Add a template named `user` and add the following text:
+
+```
+Notes:
+
+'''
+{{ notes }}
+'''
+
+Flashcard:
+
+Question: {{ question }}
+Answer: {{ answer }}
+```
+
+Deploy your prompt.
+
+### Create is-professional-tone-eval prompt
+
+Go to https://app.autoblocks.ai/prompts and click on Create Prompt.
+
+Name the prompt `is-professional-tone-eval`.
+
+> **_NOTE:_** This matches the name in [`./.autoblocks.yml`](./.autoblocks.yml).
+
+Add parameters and select `gpt-3.5-turbo` as the model.
+
+> **_NOTE:_** You can experiment with different models and params.
+
+Add a template named `system` and add the following text:
+
+```
+Please evaluate the provided text for its professionalism in the context of formal communication.
+Consider the following criteria in your assessment:
+
+Language Use: Formality, clarity, and precision of language without slang or casual expressions.
+Sentence Structure: Logical and well-formed sentence construction without run-ons or fragments.
+Tone and Style: Respectful, objective, and appropriately formal tone without bias or excessive emotionality.
+Grammar and Punctuation: Correct grammar, punctuation, and capitalization.
+Based on these criteria, provide a binary response where:
+
+0 indicates the text does not maintain a professional tone.
+1 indicates the text maintains a professional tone.
+No further explanation or summary is required; just provide the number that represents your assessment.
+```
+
+Add a template named `user` and add the following text:
+
+```
+{{ output }}
+```
+
+Deploy your prompt.
+
 ### Create your `.autoblocks.yml` file
 
 This file instructs the CLI which prompts and which of their versions
