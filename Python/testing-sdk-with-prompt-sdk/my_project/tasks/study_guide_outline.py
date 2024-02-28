@@ -9,14 +9,6 @@ manager = StudyGuideOutlinePromptManager(StudyGuideOutlineMinorVersion.LATEST)
 
 openai_client = OpenAI()
 
-system_prompt = """Generate a study guide outline for a given topic.
-It should be a bulleted list with just the title of each category.
-The top level bullets should be stars: *
-The second level bullets should be dashes: -
-The second level dashes should have two spaces before them.
-The study guide should be no more than two levels deep.
-There should be between five and ten top-level categories."""
-
 
 def gen_study_guide_outline(topic: str) -> str:
     """

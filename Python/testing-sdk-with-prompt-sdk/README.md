@@ -27,29 +27,9 @@
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-### Install [`npm`](https://docs.npmjs.com/about-npm)
+### Install Autoblocks CLI
 
-> **_NOTE:_** You might already have this installed. Check with `npm -v`.
-
-If you don't have `node` or `npm` installed, we recommend you use `nvm` to do so:
-
-#### Install [`nvm`](https://github.com/nvm-sh/nvm)
-
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-```
-
-#### Install `node` and `npm`
-
-```bash
-nvm install node
-```
-
-#### Set the default version when starting a new shell
-
-```bash
-nvm alias default node
-```
+See [Autoblocks CLI docs](https://docs.autoblocks.ai/cli/setup)
 
 ### Install dependencies
 
@@ -206,7 +186,7 @@ export AUTOBLOCKS_API_KEY=...
 This CLI will autogenerate classes for you to use to interact with the prompts you've created in the UI.
 
 ```
-poetry run autoblocks prompts generate
+poetry run prompts generate
 ```
 
 ## Run Autoblocks tests
@@ -257,3 +237,7 @@ my_project/
       evaluators.py  <-- evaluators used only for task2
       test_cases.py <-- contains test cases for task2
 ```
+
+## Futher Reading
+
+- [Autoblocks Testing documentation](https://docs.autoblocks.ai/testing/sdks)

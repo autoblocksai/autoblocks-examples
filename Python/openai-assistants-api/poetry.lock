@@ -35,13 +35,13 @@ trio = ["trio (>=0.23)"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.30"
+version = "0.0.31"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = ">=3.8.1,<4.0.0"
 files = [
-    {file = "autoblocksai-0.0.30-py3-none-any.whl", hash = "sha256:2c3cc4af3670f40a55715863d33c95591a0e2bf3b3c2a0fe356428bdd5ff97a9"},
-    {file = "autoblocksai-0.0.30.tar.gz", hash = "sha256:4f0d77f4961740b167b2615196c2d8c91641f11b5f45c2751fb0144da8ca9451"},
+    {file = "autoblocksai-0.0.31-py3-none-any.whl", hash = "sha256:8ce10e7054e9d5e2e68cd263a0314f5499cf40c4ce45eca1f9170bbfac64bd1b"},
+    {file = "autoblocksai-0.0.31.tar.gz", hash = "sha256:aab4b327f608aa6b97c39aa4639e989fafea0e09779a6f2ebe4165f8e2152710"},
 ]
 
 [package.dependencies]
@@ -262,13 +262,13 @@ files = [
 
 [[package]]
 name = "pydantic"
-version = "2.6.2"
+version = "2.6.3"
 description = "Data validation using Python type hints"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pydantic-2.6.2-py3-none-any.whl", hash = "sha256:37a5432e54b12fecaa1049c5195f3d860a10e01bdfd24f1840ef14bd0d3aeab3"},
-    {file = "pydantic-2.6.2.tar.gz", hash = "sha256:a09be1c3d28f3abe37f8a78af58284b236a92ce520105ddc91a6d29ea1176ba7"},
+    {file = "pydantic-2.6.3-py3-none-any.whl", hash = "sha256:72c6034df47f46ccdf81869fddb81aade68056003900a8724a4f160700016a2a"},
+    {file = "pydantic-2.6.3.tar.gz", hash = "sha256:e07805c4c7f5c6826e33a1d4c9d47950d7eaf34868e2690f8594d2e30241f11f"},
 ]
 
 [package.dependencies]
@@ -489,4 +489,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "fffe551bd6c4ed04b252febb7683cfa3ba1710e0f6b27b41d4227f0b203070a3"
+content-hash = "4f94c6c86bc37ced7d88b8520fba68e93733d0dd1836358cceba6d48454e2731"
