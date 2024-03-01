@@ -65,7 +65,7 @@ With Prompt SDK:
 export AUTOBLOCKS_API_KEY=npm run start-with-prompt-sdk
 ```
 
-More info on Prompt SDK can be found [here](https://docs.autoblocks.ai/features/prompt-sdk).
+More info on Prompt SDK can be found [here](https://docs.autoblocks.ai/prompt-sdks/javascript).
 
 ## View logs in Autoblocks
 
