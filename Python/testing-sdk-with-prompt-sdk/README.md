@@ -298,7 +298,7 @@ on a daily schedule.
 
 ```
 my_project/
-  run.py <-- imports all tests from tests/ and runs them
+  run.py <-- imports all tests from test_suites/ and runs them
   evaluators/ <-- all common evaluators are implemented here
     some_shared_evaluator1.py
     some_shared_evaluator2.py

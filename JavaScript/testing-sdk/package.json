@@ -1,6 +1,6 @@
 {
   "name": "testing-sdk",
-  "description": "Using the Autoblocks Testing SDK for experimentation and regression testing",
+  "description": "Using the Autoblocks Testing SDK with the Prompt SDK for experimentation, regression testing, and rapid prototyping.",
   "version": "0.0.0",
   "private": true,
   "engines": {
