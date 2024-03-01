@@ -77,7 +77,7 @@ src/
   tasks/ <-- all "tasks" are implemented here
     task1.ts
     task2.ts
-  test_suites/ <-- tests for each task
+  test-suites/ <-- tests for each task
     task1/
       index.ts <-- implements the runner for task1
       evaluators.ts  <-- evaluators used only for task1
