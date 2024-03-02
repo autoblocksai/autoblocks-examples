@@ -46,9 +46,9 @@ def main():
             "ai.response",
             span_id=span_id,
             properties=dict(
-                # OpenAI v1 returns pydantic models, which have a model_dump_json
-                # method for converting to JSON.
-                response=completion.model_dump_json(),
+                # OpenAI v1 returns pydantic models, which have a model_dump
+                # method for converting to a dictionary.
+                response=completion.model_dump(),
                 latency=(time.time() - start_time) * 1000,
             ),
         )
