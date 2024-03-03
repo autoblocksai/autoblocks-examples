@@ -44,6 +44,7 @@
 | [prompt-sdk-headless](/JavaScript/prompt-sdk-headless)     | Typesafe and backwards-compatability-ensured headless prompt management                                                |
 | [prompt-sdk-local](/JavaScript/prompt-sdk-local)           | Automated prompt versioning and typesafe prompt building with the local prompt SDK                                     |
 | [spans](/JavaScript/spans)                                 | Establish parent / child relationships between your events with the `spanId` and `parentSpanId` properties             |
+| [testing-sdk](/JavaScript/testing-sdk)                     | Using the Autoblocks Testing SDK with the Prompt SDK for experimentation, regression testing, and rapid prototyping.   |
 
 <!-- JavaScript end -->
 

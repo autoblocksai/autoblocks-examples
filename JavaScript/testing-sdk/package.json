@@ -1,0 +1,22 @@
+{
+  "name": "testing-sdk",
+  "description": "Using the Autoblocks Testing SDK with the Prompt SDK for experimentation, regression testing, and rapid prototyping.",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "dotenv -e .env -- tsx ./src/run.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@autoblocks/client": "^0.0.33",
+    "dotenv-cli": "^7.3.0",
+    "openai": "^4.6.0",
+    "tsx": "^4.1.3",
+    "typescript": "^5.2.2",
+    "zod": "^3.22.4"
+  }
+}
