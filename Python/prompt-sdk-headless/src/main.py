@@ -56,9 +56,9 @@ def main():
             "ai.response",
             prompt_tracking=prompt.track(),
             properties=dict(
-                # OpenAI v1 returns pydantic models, which have a model_dump_json
+                # OpenAI v1 returns pydantic models, which have a model_dump
                 # method for converting to JSON.
-                response=response.model_dump_json(),
+                response=response.model_dump(),
             ),
         )
 
