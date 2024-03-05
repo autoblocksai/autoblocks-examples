@@ -11,6 +11,11 @@ export class IsProfessionalTone extends BaseTestEvaluator<
 > {
   id = 'is-professional-tone';
 
+  // Since this evaluator makes calls to an external service (openai),
+  // restrict how many evaluations can be made concurrently
+  // with this evaluator.
+  maxConcurrency = 2;
+
   prompt = `Please evaluate the provided text for its professionalism in the context of formal communication.
 Consider the following criteria in your assessment:
 
@@ -78,6 +83,11 @@ export class IsSupportedByNotes extends BaseTestEvaluator<
   Flashcard[]
 > {
   id = 'is-supported-by-notes';
+
+  // Since this evaluator makes calls to an external service (openai),
+  // restrict how many evaluations can be made concurrently
+  // with this evaluator.
+  maxConcurrency = 2;
 
   prompt = `Given some notes by a student and a flashcard in the form of a question and answer, evaluate whether the flashcard's question and answer are supported by the notes.
 It's possible the question and answer aren't in the notes verbatim.

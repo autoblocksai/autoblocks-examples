@@ -15,6 +15,5 @@ export async function run() {
     fn: (args: { testCase: TestCase }) =>
       genFlashcardsFromNotes(args.testCase.notes),
     maxTestCaseConcurrency: 5,
-    maxEvaluatorConcurrency: 1,
   });
 }

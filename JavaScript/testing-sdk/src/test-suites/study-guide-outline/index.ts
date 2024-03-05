@@ -12,6 +12,5 @@ export async function run() {
     fn: (args: { testCase: TestCase }) =>
       genStudyGuideOutline(args.testCase.topic),
     maxTestCaseConcurrency: 5,
-    maxEvaluatorConcurrency: 2,
   });
 }
