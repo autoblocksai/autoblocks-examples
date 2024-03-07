@@ -14,6 +14,8 @@ openai_client = AsyncOpenAI()
 class IsProfessionalTone(BaseTestEvaluator):
     id = "is-professional-tone"
 
+    max_concurrency = 2
+
     prompt = """Please evaluate the provided text for its professionalism in the context of formal communication.
 Consider the following criteria in your assessment:
 
@@ -71,6 +73,8 @@ No further explanation or summary is required; just provide the number that repr
 
 class IsSupportedByNotes(BaseTestEvaluator):
     id = "is-supported-by-notes"
+
+    max_concurrency = 2
 
     prompt = """Given some notes by a student and a flashcard in the form of a question and answer, evaluate whether the flashcard's question and answer are supported by the notes.
 It's possible the question and answer aren't in the notes verbatim.
