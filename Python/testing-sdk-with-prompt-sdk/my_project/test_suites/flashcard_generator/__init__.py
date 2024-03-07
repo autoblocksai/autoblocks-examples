@@ -24,5 +24,4 @@ def run():
         ],
         fn=test_fn,
         max_test_case_concurrency=5,
-        max_evaluator_concurrency=1,
     )
