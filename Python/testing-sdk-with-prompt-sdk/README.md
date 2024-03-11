@@ -47,7 +47,7 @@ Name the prompt `study-guide-outline`.
 
 > **_NOTE:_** This matches the name in [`./.autoblocks.yml`](./.autoblocks.yml).
 
-Add parameters and select `gpt-3.5-turbo` as the model and set Max Tokens to at least `1000`. Feel free to modify any of the other parameters as well..
+Add parameters and select `gpt-3.5-turbo` as the model and set max tokens to at least `1000`. Feel free to modify any of the other parameters as well..
 
 > **_NOTE:_** You can experiment with different models and params.
 
@@ -79,7 +79,7 @@ Name the prompt `flashcard-generator`.
 
 > **_NOTE:_** This matches the name in [`./.autoblocks.yml`](./.autoblocks.yml).
 
-Add parameters and select `gpt-3.5-turbo` as the model and set Max Tokens to at least `1000`. Feel free to modify any of the other parameters as well.
+Add parameters and select `gpt-3.5-turbo` as the model and set max tokens to at least `1000`. Feel free to modify any of the other parameters as well.
 
 > **_NOTE:_** You can experiment with different models and params.
 
