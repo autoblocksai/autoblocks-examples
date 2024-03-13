@@ -35,6 +35,7 @@ jobs:
       - name: Run Autoblocks tests
         run: npx autoblocks testing exec -- poetry run start
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AUTOBLOCKS_API_KEY: ${{ secrets.AUTOBLOCKS_API_KEY }}
 
@@ -61,5 +62,6 @@ jobs:
       - name: Run Autoblocks tests
         run: npx autoblocks testing exec -- npm run start
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AUTOBLOCKS_API_KEY: ${{ secrets.AUTOBLOCKS_API_KEY }}
