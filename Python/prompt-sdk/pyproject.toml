@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "prompt-sdk-headless"
+name = "prompt-sdk"
 description = "Safely integrate prompts managed in the Autoblocks platform into your application"
 version = "0.0.0"
 authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]

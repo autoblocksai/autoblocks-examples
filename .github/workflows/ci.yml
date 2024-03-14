@@ -62,7 +62,7 @@ jobs:
       matrix:
         project:
           - Python/openai-tracing
-          - Python/prompt-sdk-headless
+          - Python/prompt-sdk
           - Python/openai-assistants-api
 
     defaults:
@@ -104,8 +104,7 @@ jobs:
       matrix:
         project:
           - JavaScript/openai-tracing
-          - JavaScript/prompt-sdk-headless
-          - JavaScript/prompt-sdk-local
+          - JavaScript/prompt-sdk
           - JavaScript/spans
           - JavaScript/openai-assistants-api
 
