@@ -41,8 +41,7 @@
 | [novel-ai-text-editor](/JavaScript/novel-ai-text-editor)   | A Next.js app that uses [Novel](https://github.com/steven-tey/novel) and Autoblocks to power an AI-enabled text editor |
 | [openai-assistants-api](/JavaScript/openai-assistants-api) | Example using Autoblocks with the OpenAI Assistants API                                                                |
 | [openai-tracing](/JavaScript/openai-tracing)               | Tracing of openai calls                                                                                                |
-| [prompt-sdk-headless](/JavaScript/prompt-sdk-headless)     | Typesafe and backwards-compatability-ensured headless prompt management                                                |
-| [prompt-sdk-local](/JavaScript/prompt-sdk-local)           | Automated prompt versioning and typesafe prompt building with the local prompt SDK                                     |
+| [prompt-sdk](/JavaScript/prompt-sdk)                       | Safely integrate prompts managed in the Autoblocks platform into your application                                      |
 | [spans](/JavaScript/spans)                                 | Establish parent / child relationships between your events with the `spanId` and `parentSpanId` properties             |
 | [testing-sdk](/JavaScript/testing-sdk)                     | Using the Autoblocks Testing SDK with the Prompt SDK for experimentation, regression testing, and rapid prototyping.   |
 
@@ -59,7 +58,7 @@
 | [flask](/Python/flask)                                             | Autoblocks tracing within a [Flask](https://flask.palletsprojects.com/) application                                  |
 | [openai-assistants-api](/Python/openai-assistants-api)             | Example using Autoblocks with the OpenAI Assistants API                                                              |
 | [openai-tracing](/Python/openai-tracing)                           | Tracing of openai calls                                                                                              |
-| [prompt-sdk-headless](/Python/prompt-sdk-headless)                 | Safely integrate prompts managed in the Autoblocks platform into your application                                    |
+| [prompt-sdk](/Python/prompt-sdk)                                   | Safely integrate prompts managed in the Autoblocks platform into your application                                    |
 | [testing-sdk](/Python/testing-sdk)                                 | Using the Autoblocks Testing SDK for experimentation, regression testing, and rapid prototyping.                     |
 | [testing-sdk-with-prompt-sdk](/Python/testing-sdk-with-prompt-sdk) | Using the Autoblocks Testing SDK with the Prompt SDK for experimentation, regression testing, and rapid prototyping. |
 

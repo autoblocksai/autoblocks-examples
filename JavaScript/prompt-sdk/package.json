@@ -1,6 +1,6 @@
 {
-  "name": "prompt-sdk-local",
-  "description": "Automated prompt versioning and typesafe prompt building with the local prompt SDK",
+  "name": "prompt-sdk",
+  "description": "Safely integrate prompts managed in the Autoblocks platform into your application",
   "version": "0.0.0",
   "private": true,
   "engines": {
@@ -8,20 +8,15 @@
   },
   "scripts": {
     "start": "npm run gen && dotenv -e .env -- tsx ./src/index.ts",
-    "gen": "prompts generate",
-    "gen:watch": "nodemon --quiet --watch prompt-templates --ext \"*\" --exec \"npm run gen\""
+    "gen": "dotenv -e .env -- prompts generate"
   },
   "license": "MIT",
   "dependencies": {
     "@autoblocks/client": "^0.0.35",
     "@types/node": "^20.9.1",
     "dotenv-cli": "^7.3.0",
-    "nodemon": "^3.0.1",
     "openai": "^4.6.0",
     "tsx": "^4.1.3",
     "typescript": "^5.2.2"
-  },
-  "autoblocks": {
-    "promptsDirectory": "prompt-templates"
   }
 }
