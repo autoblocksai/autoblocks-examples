@@ -6,7 +6,7 @@ on:
     - cron: '17 15 * * *'
 
 jobs:
-  py:
+  py-autoblocks-tests:
     runs-on: ubuntu-latest
 
     defaults:
@@ -39,7 +39,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AUTOBLOCKS_API_KEY: ${{ secrets.AUTOBLOCKS_API_KEY }}
 
-  js:
+  js-autoblocks-tests:
     runs-on: ubuntu-latest
 
     defaults:
