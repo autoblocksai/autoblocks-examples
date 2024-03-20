@@ -9,6 +9,6 @@ packages = [{include = "myapp"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-autoblocksai = "^0.0.39"
+autoblocksai = "^0.0.40"
 python-dotenv = "^1.0.0"
 flask = "^3.0.0"
