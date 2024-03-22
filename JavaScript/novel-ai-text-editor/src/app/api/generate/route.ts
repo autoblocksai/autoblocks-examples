@@ -49,9 +49,11 @@ export async function POST(req: Request): Promise<Response> {
     n: 1,
   };
 
-  const { traceId } = await sendEventToAutoblocks({
+  const traceId = Math.random().toString(36).substring(7);
+  await sendEventToAutoblocks({
     eventName: 'ai.request',
     properties: { ...params, provider: 'openai' },
+    traceId,
   });
 
   try {
@@ -95,11 +97,11 @@ export async function POST(req: Request): Promise<Response> {
 
 const sendEventToAutoblocks = async (args: {
   eventName: string;
-  properties?: object;
-  traceId?: string;
+  traceId: string;
+  properties?: Record<string, any>;
 }) => {
   try {
-    const res = await fetch('https://ingest-event.autoblocks.ai', {
+    await fetch('https://ingest-event.autoblocks.ai', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -110,9 +112,9 @@ const sendEventToAutoblocks = async (args: {
         message: args.eventName,
         properties: args.properties,
       }),
+      signal: AbortSignal.timeout(1_000),
     });
-    return await res.json();
-  } catch {
-    return {};
+  } catch (err) {
+    console.error('Failed to send event to Autoblocks:', err);
   }
 };

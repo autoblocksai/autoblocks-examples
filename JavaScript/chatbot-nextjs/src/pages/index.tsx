@@ -3,8 +3,6 @@ import { classNames } from '~/utils/classNames';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Avatar } from '~/components/Avatar';
 import { createId } from '@paralleldrive/cuid2';
-import { v4 as uuidv4 } from 'uuid';
-import { AutoblocksTracer } from '@autoblocks/client';
 import Link from 'next/link';
 
 enum MessageTypesEnum {
@@ -37,7 +35,7 @@ export default function Chat() {
       dateTime: new Date().getTime(),
     },
   ]);
-  const [traceId, setTraceId] = useState(uuidv4());
+  const [traceId, setTraceId] = useState(createId());
   const [autoblocksIngestionKey, setAutoblocksIngestionKey] = useState('');
   const [currentMessage, setCurrentMessage] = useState('');
   useEffect(() => {
@@ -93,11 +91,10 @@ export default function Chat() {
   };
 
   const onFeedback = async (feedback: 'positive' | 'negative') => {
-    const tracer = new AutoblocksTracer({
+    await sendEventToAutoblocks({
       ingestionKey: autoblocksIngestionKey,
       traceId,
-    });
-    await tracer.sendEvent('user.feedback', {
+      eventName: 'user.feedback',
       properties: {
         feedback,
       },
@@ -139,7 +136,7 @@ export default function Chat() {
         <div className="mb-4">
           <Button
             onClick={() => {
-              setTraceId(uuidv4());
+              setTraceId(createId());
               setMessages([
                 {
                   ...aiMessages[0],
@@ -328,3 +325,28 @@ function FeedbackButtons(props: {
     </span>
   );
 }
+
+const sendEventToAutoblocks = async (args: {
+  ingestionKey: string;
+  eventName: string;
+  traceId: string;
+  properties?: Record<string, any>;
+}) => {
+  try {
+    await fetch('https://ingest-event.autoblocks.ai', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${args.ingestionKey}`,
+      },
+      body: JSON.stringify({
+        traceId: args.traceId,
+        message: args.eventName,
+        properties: args.properties,
+      }),
+      signal: AbortSignal.timeout(1_000),
+    });
+  } catch (err) {
+    console.error('Failed to send event to Autoblocks:', err);
+  }
+};
