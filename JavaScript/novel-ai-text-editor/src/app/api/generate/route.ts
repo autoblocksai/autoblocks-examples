@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
+import { createId } from '@paralleldrive/cuid2';
 
 // Create an OpenAI API client (that's edge friendly!)
 const openai = new OpenAI({
@@ -49,7 +50,7 @@ export async function POST(req: Request): Promise<Response> {
     n: 1,
   };
 
-  const traceId = Math.random().toString(36).substring(7);
+  const traceId = createId();
   await sendEventToAutoblocks({
     eventName: 'ai.request',
     properties: { ...params, provider: 'openai' },
