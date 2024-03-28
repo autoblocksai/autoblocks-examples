@@ -56,7 +56,7 @@ export default async function handler(
     temperature: 1,
   };
 
-  await tracer.sendEvent('ai.request', {
+  tracer.sendEvent('ai.request', {
     spanId,
     properties: params,
   });
@@ -64,7 +64,7 @@ export default async function handler(
   try {
     const now = Date.now();
     const response = await openai.chat.completions.create(params);
-    await tracer.sendEvent('ai.response', {
+    tracer.sendEvent('ai.response', {
       spanId,
       properties: {
         response,
@@ -75,7 +75,7 @@ export default async function handler(
       message: response.choices[0].message.content,
     });
   } catch (error) {
-    await tracer.sendEvent('ai.error', {
+    tracer.sendEvent('ai.error', {
       spanId,
       properties: {
         error,

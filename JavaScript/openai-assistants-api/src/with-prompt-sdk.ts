@@ -38,7 +38,7 @@ async function run() {
       tools: [{ type: 'code_interpreter' }],
       model: 'gpt-4-turbo-preview',
     };
-    await tracer.sendEvent('ai.assistant.create', {
+    tracer.sendEvent('ai.assistant.create', {
       properties: assistantCreateParams,
     });
     const assistant = await openai.beta.assistants.create(
@@ -49,16 +49,16 @@ async function run() {
       assistantId: assistant.id,
       model: assistantCreateParams.model,
     });
-    await tracer.sendEvent('ai.assistant.created');
+    tracer.sendEvent('ai.assistant.created');
 
     // Create a new thread
-    await tracer.sendEvent('ai.assistant.thread.create');
+    tracer.sendEvent('ai.assistant.thread.create');
     const thread = await openai.beta.threads.create();
     // All future events will have the threadId property
     tracer.updateProperties({
       threadId: thread.id,
     });
-    await tracer.sendEvent('ai.assistant.thread.created');
+    tracer.sendEvent('ai.assistant.thread.created');
 
     // Create a user messge
     const messageCreateParams: OpenAI.Beta.Threads.MessageCreateParams = {
@@ -71,7 +71,7 @@ async function run() {
         },
       }),
     };
-    await tracer.sendEvent('ai.assistant.thread.message.create', {
+    tracer.sendEvent('ai.assistant.thread.message.create', {
       properties: {
         message: messageCreateParams,
       },
@@ -80,7 +80,7 @@ async function run() {
       thread.id,
       messageCreateParams,
     );
-    await tracer.sendEvent('ai.assistant.thread.message.created', {
+    tracer.sendEvent('ai.assistant.thread.message.created', {
       properties: {
         messageId: message.id,
       },
@@ -97,7 +97,7 @@ async function run() {
         },
       }),
     };
-    await tracer.sendEvent('ai.assistant.thread.run.create', {
+    tracer.sendEvent('ai.assistant.thread.run.create', {
       properties: {
         runParams,
       },
@@ -107,7 +107,7 @@ async function run() {
     tracer.updateProperties({
       runId: run.id,
     });
-    await tracer.sendEvent('ai.assistant.thread.run.created', {
+    tracer.sendEvent('ai.assistant.thread.run.created', {
       spanId: run.id,
     });
 
@@ -130,7 +130,7 @@ async function run() {
       run.id,
     );
     for (const step of runSteps.data) {
-      await tracer.sendEvent(`ai.assistant.thread.run.step.${step.type}`, {
+      tracer.sendEvent(`ai.assistant.thread.run.step.${step.type}`, {
         spanId: step.id,
         parentSpanId: step.run_id,
         properties: step,
@@ -139,7 +139,7 @@ async function run() {
 
     // Log the output of the run
     const messages = await openai.beta.threads.messages.list(thread.id);
-    await tracer.sendEvent('ai.assistant.thread.run.completed', {
+    tracer.sendEvent('ai.assistant.thread.run.completed', {
       spanId: run.id,
       properties: {
         response:
