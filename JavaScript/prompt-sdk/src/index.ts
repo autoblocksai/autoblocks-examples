@@ -62,13 +62,13 @@ async function run() {
       ],
     };
 
-    await tracer.sendEvent('ai.request', {
+    tracer.sendEvent('ai.request', {
       properties: params,
     });
 
     const response = await openai.chat.completions.create(params);
 
-    await tracer.sendEvent('ai.response', {
+    tracer.sendEvent('ai.response', {
       properties: {
         response,
       },

@@ -43,7 +43,7 @@ async function run() {
     n: 1,
   };
 
-  await tracer.sendEvent('ai.request', {
+  tracer.sendEvent('ai.request', {
     spanId,
     properties: params,
   });
@@ -51,7 +51,7 @@ async function run() {
   try {
     const now = Date.now();
     const response = await openai.chat.completions.create(params);
-    await tracer.sendEvent('ai.response', {
+    tracer.sendEvent('ai.response', {
       spanId,
       properties: {
         response,
@@ -59,7 +59,7 @@ async function run() {
       },
     });
   } catch (error) {
-    await tracer.sendEvent('ai.error', {
+    tracer.sendEvent('ai.error', {
       spanId,
       properties: {
         error,
