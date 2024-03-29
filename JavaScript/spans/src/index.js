@@ -43,34 +43,34 @@ const spanFunction = async (fn) => {
 };
 
 async function makeEmbeddingRequest() {
-  await tracer.sendEvent('ai.embedding.request');
+  tracer.sendEvent('ai.embedding.request');
 
   // Make embedding request...
 
-  await tracer.sendEvent('ai.embedding.response');
+  tracer.sendEvent('ai.embedding.response');
 }
 
 async function startRAGPipeline() {
-  await tracer.sendEvent('ai.rag.start');
+  tracer.sendEvent('ai.rag.start');
 
   // Simulate making multiple embedding requests within a RAG pipeline
   await spanFunction(makeEmbeddingRequest);
   await spanFunction(makeEmbeddingRequest);
 
-  await tracer.sendEvent('ai.rag.end');
+  tracer.sendEvent('ai.rag.end');
 }
 
 async function makeLLMRequest() {
   // Here we would use the RAG response to generate a prompt for the LLM
 
-  await tracer.sendEvent('ai.completion.request', {
+  tracer.sendEvent('ai.completion.request', {
     properties: {
       temperature: 0.5,
       topP: 1,
     },
   });
 
-  await tracer.sendEvent('ai.completion.response', {
+  tracer.sendEvent('ai.completion.response', {
     properties: {
       totalTokens: 123,
     },
