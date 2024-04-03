@@ -24,13 +24,13 @@ trio = ["trio (>=0.23)"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.43"
+version = "0.0.44"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = "<4.0.0,>=3.9.0"
 files = [
-    {file = "autoblocksai-0.0.43-py3-none-any.whl", hash = "sha256:d4f5bc31ddf6d3b61f35ddb898df9d47a945f097f09d815e9449bede66d8376c"},
-    {file = "autoblocksai-0.0.43.tar.gz", hash = "sha256:8d88eceb698b2004adb7112f357add0a23cbdd5f3e766ed6ee696089b9a90569"},
+    {file = "autoblocksai-0.0.44-py3-none-any.whl", hash = "sha256:cee0f8f0eff900ecee642a89534608fd819818718b32c5ca0085656a841c15bb"},
+    {file = "autoblocksai-0.0.44.tar.gz", hash = "sha256:5369b4f619f8d29091a56cac4e07d28d68fd3caee8d2202658337043cc2b7760"},
 ]
 
 [package.dependencies]
@@ -496,4 +496,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "a2d219efc0a561e5a0e42b3ec9ddbba57e99998b605923394b1a7ba0b22c3d16"
+content-hash = "ffa680b4d621eb3a0cbf0057fe7de3db7abd623bd96402bc0162e7dc76c7d856"
