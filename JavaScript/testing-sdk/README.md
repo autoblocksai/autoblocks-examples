@@ -60,6 +60,26 @@ You should see something like:
 You can click on the links next to each test name to dig into more details.
 You can also find all of your tests on the testing homepage in the [Autoblocks application](https://app.autoblocks.ai/testing/local).
 
+### Managed test cases
+
+After you have ran your first test following the instructions above, you will see a test suite created called **flashcard-generator-managed** in the UI. Visit the [Test Cases Page](https://app.autoblocks.ai/test-cases) and click on this test suite.
+
+Create a new test case with the following JSON body. [Click here to learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
+
+```json
+{
+  "notes": "The Industrial Revolution, which began in Britain in the late 18th century, brought about significant changes in society, economy, and technology, leading to the transition from agrarian to industrial economies."
+}
+```
+
+Once updated, run the testing command again.
+
+```bash
+npx autoblocks testing exec -m "my second run" -- npm run start
+```
+
+You will now see test results for **flashcard-generator-managed** with the test cases you just setup in the UI.
+
 ## GitHub Actions setup
 
 A starter workflow was added in [`.github/workflows/autoblocks-testing.yml`](./.github/workflows/autoblocks-testing.yml).

@@ -1,5 +1,6 @@
 from my_project.test_suites import flashcard_generator
 from my_project.test_suites import study_guide_outline
+from my_project.test_suites import flashcard_generator_managed
 
 
 def run() -> None:
@@ -9,3 +10,4 @@ def run() -> None:
     # run() function and Autoblocks will handle the rest.
     flashcard_generator.run()
     study_guide_outline.run()
+    flashcard_generator_managed.run()
