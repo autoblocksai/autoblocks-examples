@@ -27,11 +27,9 @@ export async function run() {
     console.warn('Test suite does not exist yet,');
   }
 
-  const testCases: TestCase[] = [...managedTestCases, ...inCodeTestCases];
-
   await runTestSuite<TestCase, Flashcard[]>({
     id: TEST_SUITE_ID,
-    testCases,
+    testCases: [...managedTestCases, ...inCodeTestCases],
     testCaseHash: ['notes'],
     evaluators: [new IsProfessionalTone(), new IsSupportedByNotes()],
     fn: (args: { testCase: TestCase }) =>
