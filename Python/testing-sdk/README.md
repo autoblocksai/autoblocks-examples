@@ -70,7 +70,7 @@ You can also find all of your tests on the testing homepage in the [Autoblocks a
 
 After you have ran your first test following the instructions above, you will see a test suite created called **flashcard-generator-managed** in the UI. Visit the [Test Cases Page](https://app.autoblocks.ai/test-cases) and click on this test suite.
 
-Create a new test case with the following JSON body.
+Create a new test case with the following JSON body. [Click here to learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
 
 ```json
 {
@@ -85,8 +85,6 @@ npx autoblocks testing exec -m "my second run" -- poetry run start
 ```
 
 You will now see test results for **flashcard-generator-managed** with the test cases you just setup in the UI.
-
-[Learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
 
 ## GitHub Actions setup
 
