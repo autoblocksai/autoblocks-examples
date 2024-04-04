@@ -31,4 +31,7 @@ def gen_study_guide_outline(topic: str) -> str:
             ),
         ],
     )
-    return response.choices[0].message.content.strip()
+    raw_content = response.choices[0].message.content
+    if not raw_content:
+        raise ValueError("No content was returned")
+    return raw_content.strip()

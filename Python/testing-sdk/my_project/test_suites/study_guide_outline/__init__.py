@@ -12,7 +12,7 @@ def test_fn(test_case: TestCase) -> str:
     return gen_study_guide_outline(test_case.topic)
 
 
-def run():
+def run() -> None:
     run_test_suite(
         id="study-guide-outline",
         test_cases=gen_test_cases(),

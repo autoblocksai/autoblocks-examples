@@ -110,8 +110,11 @@ def gen_flashcards_from_notes(notes: str) -> List[Flashcard]:
             ),
         ],
     )
-    raw_content = response.choices[0].message.content.strip()
-    parsed_content = json.loads(raw_content)
+    raw_content = response.choices[0].message.content
+    if not raw_content:
+        raise ValueError("No content was returned")
+
+    parsed_content = json.loads(raw_content.strip())
     return [
         Flashcard(
             front=parsed_content["front"],

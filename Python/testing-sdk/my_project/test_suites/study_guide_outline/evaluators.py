@@ -8,7 +8,7 @@ from my_project.evaluators.has_substrings import BaseHasSubstrings
 from my_project.test_suites.study_guide_outline.test_cases import TestCase
 
 
-class Formatting(BaseTestEvaluator):
+class Formatting(BaseTestEvaluator[TestCase, str]):
     id = "formatting"
 
     @staticmethod
@@ -25,7 +25,7 @@ class Formatting(BaseTestEvaluator):
         return Evaluation(score=self.score(output), threshold=Threshold(gte=1))
 
 
-class NumCategories(BaseTestEvaluator):
+class NumCategories(BaseTestEvaluator[TestCase, str]):
     id = "num-categories"
 
     min_categories: int = 5
@@ -38,6 +38,6 @@ class NumCategories(BaseTestEvaluator):
         return Evaluation(score=self.score(output), threshold=Threshold(gte=1))
 
 
-class HasSubstrings(BaseHasSubstrings):
+class HasSubstrings(BaseHasSubstrings[TestCase, str]):
     def expected_substrings(self, test_case: TestCase) -> List[str]:
         return test_case.expected_substrings
