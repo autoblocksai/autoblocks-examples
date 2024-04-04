@@ -1,5 +1,5 @@
 import { runTestSuite } from '@autoblocks/client/testing';
-import { genTestCases, type TestCase } from '../flashcard-generator/test-cases';
+import { type TestCase } from '../flashcard-generator/test-cases';
 import {
   IsProfessionalTone,
   IsSupportedByNotes,
@@ -8,6 +8,7 @@ import {
   genFlashcardsFromNotes,
   type Flashcard,
 } from '../../tasks/flashcard-generator';
+import { AutoblocksAPIClient } from '@autoblocks/client';
 
 export async function run() {
   // Uncomment following block to start using managed test cases
