@@ -1,6 +1,7 @@
 from typing import List
 
 from autoblocks.testing.run import run_test_suite
+from autoblocks.api.client import AutoblocksAPIClient
 
 from my_project.tasks.flashcard_generator import Flashcard
 from my_project.tasks.flashcard_generator import gen_flashcards_from_notes
@@ -15,21 +16,24 @@ def test_fn(test_case: TestCase) -> List[Flashcard]:
 
 
 def run():
-    # Uncomment following block to start using managed test cases
-    """client = AutoblocksAPIClient()
-    test_cases_response = client.get_test_cases(test_suite_id="flashcard-generator-managed")
-    test_cases = [
-        TestCase(**test_case.body) for test_case in test_cases_response.test_cases
-    ]"""
+    in_code_test_cases = [TestCase(notes="Initial test case")]
+    managed_test_cases = []
 
-    # Comment this line once you have created test cases for
-    # this test suite
-    test_cases = [TestCase(notes="Initial test case")]
+    try:
+        client = AutoblocksAPIClient()
+        test_cases_response = client.get_test_cases(
+            test_suite_id="flashcard-generator-managed"
+        )
+        managed_test_cases = [
+            TestCase(**test_case.body) for test_case in test_cases_response.test_cases
+        ]
+    except:
+        print("Test suite does not exist yet.")
 
     # Run test suite with managed test cases
     run_test_suite(
         id="flashcard-generator-managed",
-        test_cases=test_cases,
+        test_cases=managed_test_cases + in_code_test_cases,
         evaluators=[
             IsSupportedByNotes(),
             IsProfessionalTone(),

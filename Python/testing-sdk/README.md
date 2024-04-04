@@ -78,21 +78,6 @@ Create a new test case with the following JSON body.
 }
 ```
 
-[Learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
-
-### Running tests with managed test cases
-
-After adding test cases in the UI, uncomment where test cases are being fetched using our API client in `/src/my_project/test_suites/flashcard_generator_managed/__init__.py`. Comment the existing hardcoded test.
-
-Relevant code:
-
-```python
-test_cases_response = client.get_test_cases(test_suite_id="flashcard-generator-managed")
-test_cases = [
-    TestCase(**test_case.body) for test_case in test_cases_response.test_cases
-]
-```
-
 Once updated, run the testing command again.
 
 ```bash
@@ -100,6 +85,8 @@ npx autoblocks testing exec -m "my second run" -- poetry run start
 ```
 
 You will now see test results for **flashcard-generator-managed** with the test cases you just setup in the UI.
+
+[Learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
 
 ## GitHub Actions setup
 
