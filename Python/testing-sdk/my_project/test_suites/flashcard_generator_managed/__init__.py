@@ -30,7 +30,6 @@ def run() -> None:
     except:
         print("Test suite does not exist yet.")
 
-    # Run test suite with managed test cases
     run_test_suite(
         id=TEST_SUITE_ID,
         test_cases=managed_test_cases + in_code_test_cases,

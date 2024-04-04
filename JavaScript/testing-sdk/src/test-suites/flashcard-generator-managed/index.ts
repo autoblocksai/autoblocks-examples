@@ -27,7 +27,6 @@ export async function run() {
     console.warn('Test suite does not exist yet,');
   }
 
-  // Build test cases array
   const testCases: TestCase[] = [...managedTestCases, ...inCodeTestCases];
 
   await runTestSuite<TestCase, Flashcard[]>({
