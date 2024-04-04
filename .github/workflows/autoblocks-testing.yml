@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
+      - name: Run mypy
+        run: poetry run mypy
+
       - name: Run Autoblocks tests
         run: npx autoblocks testing exec -- poetry run start
         env:

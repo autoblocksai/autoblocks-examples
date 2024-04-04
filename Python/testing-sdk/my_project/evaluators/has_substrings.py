@@ -1,15 +1,23 @@
 import abc
-from typing import Any
+from typing import Generic
 from typing import List
 from typing import Optional
+from typing import TypeVar
 
-from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import BaseTestCase
+from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import Evaluation
 from autoblocks.testing.models import Threshold
 
+TestCaseType = TypeVar("TestCaseType", bound=BaseTestCase)
+OutputType = TypeVar("OutputType")
 
-class BaseHasSubstrings(BaseTestEvaluator, abc.ABC):
+
+class BaseHasSubstrings(
+    Generic[TestCaseType, OutputType],
+    BaseTestEvaluator[TestCaseType, OutputType],
+    abc.ABC,
+):
     id = "has-substrings"
 
     """
@@ -29,7 +37,7 @@ class BaseHasSubstrings(BaseTestEvaluator, abc.ABC):
     threshold: Optional[Threshold] = Threshold(gte=1)
 
     @abc.abstractmethod
-    def expected_substrings(self, test_case: BaseTestCase) -> List[str]:
+    def expected_substrings(self, test_case: TestCaseType) -> List[str]:
         """
         Required to be implemented by the subclass.
 
@@ -45,13 +53,17 @@ class BaseHasSubstrings(BaseTestEvaluator, abc.ABC):
         """
         ...
 
-    def output_as_str(self, output: Any) -> str:
+    def output_as_str(self, output: OutputType) -> str:
         """
-        Can be overriden by the subclass to change how the output is converted to a string.
+        Can be overridden by the subclass to change how the output is converted to a string.
         """
         return str(output)
 
-    def evaluate_test_case(self, test_case: BaseTestCase, output: Any) -> Evaluation:
+    def evaluate_test_case(
+        self,
+        test_case: TestCaseType,
+        output: OutputType,
+    ) -> Evaluation:
         expected_substrings = self.expected_substrings(test_case)
         output_as_str = self.output_as_str(output)
 

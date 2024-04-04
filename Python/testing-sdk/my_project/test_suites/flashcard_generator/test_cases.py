@@ -2,11 +2,10 @@ import dataclasses
 from typing import List
 
 from autoblocks.testing.models import BaseTestCase
+from autoblocks.testing.util import md5
 
-from my_project.test_suites.util import md5
 
-
-@dataclasses.dataclass()
+@dataclasses.dataclass
 class TestCase(BaseTestCase):
     notes: str
 
