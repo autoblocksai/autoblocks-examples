@@ -10,6 +10,8 @@ from my_project.test_suites.flashcard_generator.evaluators import IsProfessional
 from my_project.test_suites.flashcard_generator.evaluators import IsSupportedByNotes
 from my_project.test_suites.flashcard_generator.test_cases import TestCase
 
+TEST_SUITE_ID = "flashcard-generator-managed"
+
 
 def test_fn(test_case: TestCase) -> List[Flashcard]:
     return gen_flashcards_from_notes(test_case.notes)
@@ -21,9 +23,7 @@ def run():
 
     try:
         client = AutoblocksAPIClient()
-        test_cases_response = client.get_test_cases(
-            test_suite_id="flashcard-generator-managed"
-        )
+        test_cases_response = client.get_test_cases(test_suite_id=TEST_SUITE_ID)
         managed_test_cases = [
             TestCase(**test_case.body) for test_case in test_cases_response.test_cases
         ]
@@ -32,7 +32,7 @@ def run():
 
     # Run test suite with managed test cases
     run_test_suite(
-        id="flashcard-generator-managed",
+        id=TEST_SUITE_ID,
         test_cases=managed_test_cases + in_code_test_cases,
         evaluators=[
             IsSupportedByNotes(),
