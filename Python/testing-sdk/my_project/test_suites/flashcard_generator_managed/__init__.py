@@ -17,7 +17,7 @@ def test_fn(test_case: TestCase) -> List[Flashcard]:
     return gen_flashcards_from_notes(test_case.notes)
 
 
-def run():
+def run() -> None:
     in_code_test_cases = [TestCase(notes="Initial test case")]
     managed_test_cases = []
 
