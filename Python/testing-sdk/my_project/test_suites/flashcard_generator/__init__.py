@@ -1,6 +1,5 @@
 from typing import List
 
-from autoblocks.api.client import AutoblocksAPIClient
 from autoblocks.testing.run import run_test_suite
 
 from my_project.tasks.flashcard_generator import Flashcard
