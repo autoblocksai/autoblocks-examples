@@ -66,10 +66,11 @@ You should see something like:
 You can click on the links next to each test name to dig into more details.
 You can also find all of your tests on the testing homepage in the [Autoblocks application](https://app.autoblocks.ai/testing/local).
 
-### Setting up managed test cases (optional)
+### Managed test cases
 
-After you have ran your first test, you can visit the Autoblocks UI to configure test cases. In this example, we want to add the following test case to the test suite `flashcard-generator`.
-[Learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
+After you have ran your first test following the instructions above, you will see a test suite created called **flashcard-generator-managed** in the UI. Visit the [Test Cases Page](https://app.autoblocks.ai/test-cases) and click on this test suite to start managing test cases.
+
+Create a new test case with the following json body.
 
 ```json
 {
@@ -77,17 +78,26 @@ After you have ran your first test, you can visit the Autoblocks UI to configure
 }
 ```
 
-Feel free to add as many test cases as you would like
+[Learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
 
 ### Running tests with managed test cases
 
-In /src/run.ts, uncomment where `flashcard_generator.run_with_managed_test_cases()` is called, and run:
+After adding test cases in the UI, in `/src/my_project/test_suites/flashcard_generator_managed/__init__.py`, uncomment where test cases are being fetched using our API client. Comment the existing hardcoded test.
 
-```bash
-npx autoblocks testing exec -m "my second run" -- npm run start
+```python
+test_cases_response = client.get_test_cases(test_suite_id="flashcard-generator-managed")
+test_cases = [
+    TestCase(**test_case.body) for test_case in test_cases_response.test_cases
+]
 ```
 
-This function will run the tests under a new test suite named `flahcard-generator-managed` which uses the test that you just configured.
+Once updated, run the testing command again
+
+```bash
+npx autoblocks testing exec -m "my second run" -- poetry run start
+```
+
+You will now see test results with the test cases you just setup in the UI.
 
 ## GitHub Actions setup
 
