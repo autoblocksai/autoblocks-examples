@@ -10,24 +10,28 @@ import {
 } from '../../tasks/flashcard-generator';
 import { AutoblocksAPIClient } from '@autoblocks/client';
 
+const TEST_SUITE_ID = 'flashcard-generator-managed';
+
 export async function run() {
-  // Uncomment following block to start using managed test cases
-  /* const client = new AutoblocksAPIClient();
+  const inCodeTestCases = [{ notes: 'Initial test case' }];
+  let managedTestCases: TestCase[] = [];
 
-  const { testCases: managedTestCases } = await client.getTestCases<TestCase>({
-    testSuiteId: 'flashcard-generator-managed',
-  });
+  try {
+    const client = new AutoblocksAPIClient();
 
-  const testCases: TestCase[] = managedTestCases.map(
-    (testCase) => testCase.body,
-  ); */
+    const response = await client.getTestCases<TestCase>({
+      testSuiteId: TEST_SUITE_ID,
+    });
+    managedTestCases = response.testCases.map((testCase) => testCase.body);
+  } catch {
+    console.warn('Test suite does not exist yet,');
+  }
 
-  // Comment this line once you have created test cases for
-  // this test suite
-  const testCases = [{ notes: 'Initial test case' }];
+  // Build test cases array
+  const testCases: TestCase[] = [...managedTestCases, ...inCodeTestCases];
 
   await runTestSuite<TestCase, Flashcard[]>({
-    id: 'flashcard-generator-managed',
+    id: TEST_SUITE_ID,
     testCases,
     testCaseHash: ['notes'],
     evaluators: [new IsProfessionalTone(), new IsSupportedByNotes()],

@@ -72,29 +72,13 @@ Create a new test case with the following JSON body.
 }
 ```
 
-[Learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
-
-### Running tests with managed test cases
-
-After adding test cases in the UI, uncomment where test cases are being fetched using our API client in `/src/test-suites/flashcard-generator-managed/index.ts`. Comment the existing hardcoded test.
-
-Relevant code:
-
-```typescript
-const client = new AutoblocksAPIClient();
-
-const { testCases: managedTestCases } = await client.getTestCases<TestCase>({
-  testSuiteId: 'flashcard-generator-managed',
-});
-
-const testCases: TestCase[] = managedTestCases.map((testCase) => testCase.body);
-```
-
 Once updated, run the testing command again.
 
 ```bash
 npx autoblocks testing exec -m "my second run" -- npm run start
 ```
+
+[Learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
 
 You will now see test results for **flashcard-generator-managed** with the test cases you just setup in the UI.
 
