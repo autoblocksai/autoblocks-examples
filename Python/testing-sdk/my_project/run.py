@@ -10,4 +10,4 @@ def run():
     # run() function and Autoblocks will handle the rest.
     flashcard_generator.run()
     study_guide_outline.run()
-    # flashcard_generator_managed.run()
+    flashcard_generator_managed.run()
