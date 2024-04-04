@@ -66,6 +66,29 @@ You should see something like:
 You can click on the links next to each test name to dig into more details.
 You can also find all of your tests on the testing homepage in the [Autoblocks application](https://app.autoblocks.ai/testing/local).
 
+### Setting up managed test cases (optional)
+
+After you have ran your first test, you can visit the Autoblocks UI to configure test cases. In this example, we want to add the following test case to the test suite `flashcard-generator`.
+[Learn how to manage test cases](https://docs.autoblocks.ai/testing/test-case-management).
+
+```json
+{
+  "notes": "The Industrial Revolution, which began in Britain in the late 18th century, brought about significant changes in society, economy, and technology, leading to the transition from agrarian to industrial economies."
+}
+```
+
+Feel free to add as many test cases as you would like
+
+### Running tests with managed test cases
+
+In /src/run.ts, uncomment where `flashcard_generator.run_with_managed_test_cases()` is called, and run:
+
+```bash
+npx autoblocks testing exec -m "my second run" -- npm run start
+```
+
+This function will run the tests under a new test suite named `flahcard-generator-managed` which uses the test that you just configured.
+
 ## GitHub Actions setup
 
 A starter workflow was added in [`.github/workflows/autoblocks-testing.yml`](./.github/workflows/autoblocks-testing.yml).

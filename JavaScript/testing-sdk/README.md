@@ -75,7 +75,7 @@ Feel free to add as many test cases as you would like
 
 ### Running tests with managed test cases
 
-In /src/run.ts, uncomment line 10 where `flashcardGenerator.runWithManagedTestCases` is called, and run:
+In /src/run.ts, uncomment where `flashcardGenerator.runWithManagedTestCases` is called, and run:
 
 ```bash
 npx autoblocks testing exec -m "my second run" -- npm run start
