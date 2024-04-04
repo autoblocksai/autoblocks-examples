@@ -14,7 +14,7 @@ def test_fn(test_case: TestCase) -> List[Flashcard]:
     return gen_flashcards_from_notes(test_case.notes)
 
 
-def run():
+def run() -> None:
     run_test_suite(
         id="flashcard-generator",
         test_cases=gen_test_cases(),
