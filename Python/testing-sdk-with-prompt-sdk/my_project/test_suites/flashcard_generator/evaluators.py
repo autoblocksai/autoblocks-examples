@@ -5,23 +5,11 @@ from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import Evaluation
 from openai import AsyncOpenAI
 
+from my_project import prompt_managers
 from my_project.tasks.flashcard_generator import Flashcard
 from my_project.test_suites.flashcard_generator.test_cases import TestCase
-from my_project.prompts import (
-    IsProfessionalToneEvalPromptManager,
-    IsProfessionalToneEvalMinorVersion,
-    IsSupportedByNotesEvalPromptManager,
-    IsSupportedByNotesEvalMinorVersion,
-)
 
 openai_client = AsyncOpenAI()
-
-is_professional_tone_manager = IsProfessionalToneEvalPromptManager(
-    IsProfessionalToneEvalMinorVersion.LATEST
-)
-is_supported_by_notes_manager = IsSupportedByNotesEvalPromptManager(
-    IsSupportedByNotesEvalMinorVersion.LATEST
-)
 
 
 class IsProfessionalTone(BaseTestEvaluator):
@@ -30,7 +18,7 @@ class IsProfessionalTone(BaseTestEvaluator):
     async def score_flashcard(self, flashcard: Flashcard) -> int:
         content = f"{flashcard.front}\n{flashcard.back}"
 
-        with is_professional_tone_manager.exec() as prompt:
+        with prompt_managers.is_professional_tone.exec() as prompt:
             response = await openai_client.chat.completions.create(
                 model=prompt.params.model,
                 temperature=prompt.params.temperature,
@@ -75,7 +63,7 @@ class IsSupportedByNotes(BaseTestEvaluator):
     id = "is-supported-by-notes"
 
     async def score_flashcard(self, test_case: TestCase, flashcard: Flashcard) -> int:
-        with is_supported_by_notes_manager.exec() as prompt:
+        with prompt_managers.is_supported_by_notes.exec() as prompt:
             response = await openai_client.chat.completions.create(
                 model=prompt.params.model,
                 temperature=prompt.params.temperature,

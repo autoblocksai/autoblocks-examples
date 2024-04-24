@@ -5,12 +5,7 @@ from typing import List
 from openai import OpenAI
 from openai.types.chat.completion_create_params import ResponseFormat
 
-from my_project.prompts import (
-    FlashcardGeneratorPromptManager,
-    FlashcardGeneratorMinorVersion,
-)
-
-manager = FlashcardGeneratorPromptManager(FlashcardGeneratorMinorVersion.LATEST)
+from my_project import prompt_managers
 
 openai_client = OpenAI()
 
@@ -25,7 +20,7 @@ def gen_flashcards_from_notes(notes: str) -> List[Flashcard]:
     """
     Generates flashcards based on a user's notes.
     """
-    with manager.exec() as prompt:
+    with prompt_managers.flashcard_generator.exec() as prompt:
         response = openai_client.chat.completions.create(
             model=prompt.params.model,
             temperature=prompt.params.temperature,

@@ -1,11 +1,6 @@
 from openai import OpenAI
 
-from my_project.prompts import (
-    StudyGuideOutlinePromptManager,
-    StudyGuideOutlineMinorVersion,
-)
-
-manager = StudyGuideOutlinePromptManager(StudyGuideOutlineMinorVersion.LATEST)
+from my_project import prompt_managers
 
 openai_client = OpenAI()
 
@@ -14,7 +9,7 @@ def gen_study_guide_outline(topic: str) -> str:
     """
     Generates a bulleted study guide outline for a given topic.
     """
-    with manager.exec() as prompt:
+    with prompt_managers.study_guide_outline.exec() as prompt:
         response = openai_client.chat.completions.create(
             model=prompt.params.model,
             temperature=prompt.params.temperature,
