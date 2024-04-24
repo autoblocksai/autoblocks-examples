@@ -33,13 +33,13 @@ trio = ["trio (>=0.23)"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.47"
+version = "0.0.49"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = "<4.0.0,>=3.9.0"
 files = [
-    {file = "autoblocksai-0.0.47-py3-none-any.whl", hash = "sha256:6c4e3cda9458187a7a66e0da5b0a84fcda3425eff28cb4a114d96728cb281d9a"},
-    {file = "autoblocksai-0.0.47.tar.gz", hash = "sha256:511a7206bd28df42ecd4a71753351105510efba1391471997bafffd71167d90b"},
+    {file = "autoblocksai-0.0.49-py3-none-any.whl", hash = "sha256:50e0ed7d6c6ea30e7bb1d8e2a047221ed5f128f7011c533b23ad896eb63b3d72"},
+    {file = "autoblocksai-0.0.49.tar.gz", hash = "sha256:c6c12f175ba047733dc7c6c02bfc12b42ee070b31c31640aa3946839463a2e3a"},
 ]
 
 [package.dependencies]
@@ -221,13 +221,13 @@ files = [
 
 [[package]]
 name = "openai"
-version = "1.14.3"
+version = "1.23.2"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.7.1"
 files = [
-    {file = "openai-1.14.3-py3-none-any.whl", hash = "sha256:7a465994a7ccf677a110c6cc2ef9d86229bad42c060b585b67049aa749f3b774"},
-    {file = "openai-1.14.3.tar.gz", hash = "sha256:37b514e9c0ff45383ec9b242abd0f7859b1080d4b54b61393ed341ecad1b8eb9"},
+    {file = "openai-1.23.2-py3-none-any.whl", hash = "sha256:293a36effde29946eb221040c89c46a4850f2f2e30b37ef09ff6d75226d71b42"},
+    {file = "openai-1.23.2.tar.gz", hash = "sha256:b84aa3005357ceb38f22a269e0e22ee58ce103897f447032d021906f18178a8e"},
 ]
 
 [package.dependencies]
@@ -516,4 +516,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "00aab1f6d46858c661e599d934967040c22bae6ea8b790533ea1dd6b85ff4dff"
+content-hash = "5e7a740b297fbad9d8c497c575905bef8475dbd1cf143917040b7ad385139b38"
