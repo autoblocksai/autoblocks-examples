@@ -13,7 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@autoblocks/client": "^0.0.43",
+    "@autoblocks/client": "^0.0.44",
     "@paralleldrive/cuid2": "^2.2.2",
     "@types/node": "20.12.7",
     "@types/react": "18.2.79",
