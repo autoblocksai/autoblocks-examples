@@ -2,11 +2,9 @@
 # This file was generated automatically by Autoblocks. Do not edit directly.
 ############################################################################
 
-from enum import Enum
-from typing import List  # noqa: F401
 from typing import Union  # noqa: F401
 
-import pydantic
+import pydantic  # noqa: F401
 
 from autoblocks.prompts.context import PromptExecutionContext
 from autoblocks.prompts.manager import AutoblocksPromptManager
@@ -56,16 +54,8 @@ class FlashcardGeneratorExecutionContext(
     __template_renderer_class__ = FlashcardGeneratorTemplateRenderer
 
 
-class FlashcardGeneratorMinorVersion(Enum):
-    v0 = "0"
-    LATEST = "latest"
-
-
 class FlashcardGeneratorPromptManager(
-    AutoblocksPromptManager[
-        FlashcardGeneratorExecutionContext,
-        FlashcardGeneratorMinorVersion,
-    ],
+    AutoblocksPromptManager[FlashcardGeneratorExecutionContext],
 ):
     __prompt_id__ = "flashcard-generator"
     __prompt_major_version__ = "1"
@@ -114,16 +104,8 @@ class IsProfessionalToneEvalExecutionContext(
     __template_renderer_class__ = IsProfessionalToneEvalTemplateRenderer
 
 
-class IsProfessionalToneEvalMinorVersion(Enum):
-    v0 = "0"
-    LATEST = "latest"
-
-
 class IsProfessionalToneEvalPromptManager(
-    AutoblocksPromptManager[
-        IsProfessionalToneEvalExecutionContext,
-        IsProfessionalToneEvalMinorVersion,
-    ],
+    AutoblocksPromptManager[IsProfessionalToneEvalExecutionContext],
 ):
     __prompt_id__ = "is-professional-tone-eval"
     __prompt_major_version__ = "1"
@@ -178,17 +160,8 @@ class IsSupportedByNotesEvalExecutionContext(
     __template_renderer_class__ = IsSupportedByNotesEvalTemplateRenderer
 
 
-class IsSupportedByNotesEvalMinorVersion(Enum):
-    v0 = "0"
-    v1 = "1"
-    LATEST = "latest"
-
-
 class IsSupportedByNotesEvalPromptManager(
-    AutoblocksPromptManager[
-        IsSupportedByNotesEvalExecutionContext,
-        IsSupportedByNotesEvalMinorVersion,
-    ],
+    AutoblocksPromptManager[IsSupportedByNotesEvalExecutionContext],
 ):
     __prompt_id__ = "is-supported-by-notes-eval"
     __prompt_major_version__ = "1"
@@ -237,16 +210,8 @@ class StudyGuideOutlineExecutionContext(
     __template_renderer_class__ = StudyGuideOutlineTemplateRenderer
 
 
-class StudyGuideOutlineMinorVersion(Enum):
-    v0 = "0"
-    LATEST = "latest"
-
-
 class StudyGuideOutlinePromptManager(
-    AutoblocksPromptManager[
-        StudyGuideOutlineExecutionContext,
-        StudyGuideOutlineMinorVersion,
-    ],
+    AutoblocksPromptManager[StudyGuideOutlineExecutionContext],
 ):
     __prompt_id__ = "study-guide-outline"
     __prompt_major_version__ = "1"
