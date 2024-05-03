@@ -12,7 +12,9 @@ packages = [{include = "my_project"}]
 python = "^3.11"
 autoblocksai = "^0.0.54"
 openai = "^1.0.0"
+httpx = "^0.27.0"
 
 [tool.poetry.scripts]
+create-prompts = "tools.create_prompts:main"
 # This will execute the run() function in my_project/run.py
 start = "my_project.run:run"

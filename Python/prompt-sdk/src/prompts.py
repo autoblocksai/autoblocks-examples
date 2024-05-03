@@ -2,11 +2,9 @@
 # This file was generated automatically by Autoblocks. Do not edit directly.
 ############################################################################
 
-from enum import Enum
-from typing import List  # noqa: F401
 from typing import Union  # noqa: F401
 
-import pydantic
+import pydantic  # noqa: F401
 
 from autoblocks.prompts.context import PromptExecutionContext
 from autoblocks.prompts.manager import AutoblocksPromptManager
@@ -85,17 +83,8 @@ class TextSummarizationExecutionContext(
     __template_renderer_class__ = TextSummarizationTemplateRenderer
 
 
-class TextSummarizationMinorVersion(Enum):
-    v0 = "0"
-    v1 = "1"
-    LATEST = "latest"
-
-
 class TextSummarizationPromptManager(
-    AutoblocksPromptManager[
-        TextSummarizationExecutionContext,
-        TextSummarizationMinorVersion,
-    ],
+    AutoblocksPromptManager[TextSummarizationExecutionContext],
 ):
     __prompt_id__ = "text-summarization"
     __prompt_major_version__ = "1"

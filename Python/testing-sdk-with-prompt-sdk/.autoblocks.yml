@@ -4,17 +4,13 @@ autogenerate:
 
     prompts:
       - id: study-guide-outline
-        major_versions:
-          - 1
+        major_version: 1
 
       - id: flashcard-generator
-        major_versions:
-          - 1
+        major_version: 1
 
       - id: is-supported-by-notes-eval
-        major_versions:
-          - 1
+        major_version: 1
 
       - id: is-professional-tone-eval
-        major_versions:
-          - 1
+        major_version: 1

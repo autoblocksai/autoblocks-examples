@@ -4,13 +4,14 @@ import dotenv
 from autoblocks.tracer import AutoblocksTracer
 from openai import OpenAI
 
-from src.prompts import TextSummarizationMinorVersion
 from src.prompts import TextSummarizationPromptManager
 
 dotenv.load_dotenv(".env")
 
 openai = OpenAI()
-manager = TextSummarizationPromptManager(TextSummarizationMinorVersion.v0)
+manager = TextSummarizationPromptManager(
+    minor_version="0",
+)
 
 
 def main():
