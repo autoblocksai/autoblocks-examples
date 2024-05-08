@@ -15,7 +15,7 @@ OutputType = TypeVar("OutputType")
 
 class BaseHasSubstrings(
     Generic[TestCaseType, OutputType],
-    BaseTestEvaluator[TestCaseType, OutputType],
+    BaseTestEvaluator,
     abc.ABC,
 ):
     id = "has-substrings"

@@ -11,7 +11,7 @@ from my_project.test_suites.flashcard_generator.test_cases import TestCase
 openai_client = AsyncOpenAI()
 
 
-class IsProfessionalTone(BaseTestEvaluator[TestCase, List[Flashcard]]):
+class IsProfessionalTone(BaseTestEvaluator):
     id = "is-professional-tone"
 
     max_concurrency = 2
@@ -76,7 +76,7 @@ No further explanation or summary is required; just provide the number that repr
         return Evaluation(score=sum(scores) / len(scores))
 
 
-class IsSupportedByNotes(BaseTestEvaluator[TestCase, List[Flashcard]]):
+class IsSupportedByNotes(BaseTestEvaluator):
     id = "is-supported-by-notes"
 
     max_concurrency = 2
