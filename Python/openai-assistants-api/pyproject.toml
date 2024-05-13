@@ -12,7 +12,7 @@ python = "^3.9"
 openai = "^1.0.0"
 python-dotenv = "^1.0.0"
 pydantic = "^2.5.3"
-autoblocksai = "^0.0.58"
+autoblocksai = "^0.0.60"
 
 [tool.poetry.scripts]
 start = "src.main:main"
