@@ -84,6 +84,8 @@ npx autoblocks testing exec -m "my first run" -- poetry run test
 
 You should see something like:
 
+![image](https://github.com/autoblocksai/autoblocks-examples/assets/15793238/eff0e0da-4625-4764-9b53-d208f152f601)
+
 You can click on the links next to each test name to dig into more details.
 You can also find all of your tests on the testing homepage in the [Autoblocks application](https://app.autoblocks.ai/testing/local).
 
