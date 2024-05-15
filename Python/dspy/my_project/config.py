@@ -26,10 +26,6 @@ config = Config(
 )
 
 config.activate_from_remote(
-    config=RemoteConfig(
-        id="dspy",
-        major_version="1",
-        minor_version="0",
-    ),
+    config=RemoteConfig(id="dspy", dangerously_use_undeployed_revision="latest"),
     parser=ConfigValue.model_validate,
 )

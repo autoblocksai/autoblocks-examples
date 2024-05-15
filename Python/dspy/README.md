@@ -46,7 +46,7 @@ poetry install
 
 | Parameter Name         | Type   | Default | Values                                   |
 | ---------------------- | ------ | ------- | ---------------------------------------- |
-| model                  | enum   | -       | "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo" |
+| model                  | enum   | gpt-4o  | "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo" |
 | max_bootstrapped_demos | number | 4       | -                                        |
 | max_labeled_demos      | number | 4       | -                                        |
 | max_rounds             | number | 1       | -                                        |
@@ -92,8 +92,6 @@ You can also find all of your tests on the testing homepage in the [Autoblocks a
 ### Edit the config
 
 Edit your config in the Autoblocks UI and save as a new revision.
-
-Use your revision by copying the revision ID and updating the config to use it.
 
 ### Run the tests with the new config
 
