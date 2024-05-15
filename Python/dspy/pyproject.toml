@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "autoblocks-dspy"
 version = "0.0.0"
-description = "Using the Autoblocks Testing SDK with DSPy."
+description = "Using the Autoblocks Testing and Config SDKs with DSPy."
 authors = [
     "Autoblocks Engineering <engineering@autoblocks.ai>",
 ]
@@ -17,8 +17,6 @@ dspy = "^0.1.5"
 pydantic = "2.5.0"
 
 [tool.poetry.scripts]
-# This will execute the run() function in my_project/app/run.py
-start = "my_project.app.run:run"
 test = "my_project.evaluate:run_test"
 
 [tool.mypy]
