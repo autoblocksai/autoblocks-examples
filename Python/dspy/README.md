@@ -79,7 +79,7 @@ export OPENAI_API_KEY=...
 ### Run the tests
 
 ```bash
-npx autoblocks testing exec -m "my first run" -- poetry run test
+npx autoblocks testing exec -m "my first run" -- poetry run start
 ```
 
 You should see something like:
@@ -98,7 +98,7 @@ Use your revision by copying the revision ID and updating the config to use it.
 ### Run the tests with the new config
 
 ```bash
-npx autoblocks testing exec -m "my second run" -- poetry run test
+npx autoblocks testing exec -m "my second run" -- poetry run start
 ```
 
 ## Futher Reading

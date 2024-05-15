@@ -17,7 +17,7 @@ dspy = "^0.1.5"
 pydantic = "2.5.0"
 
 [tool.poetry.scripts]
-test = "my_project.evaluate:run_test"
+start = "my_project.evaluate:run_test"
 
 [tool.mypy]
 strict = true
