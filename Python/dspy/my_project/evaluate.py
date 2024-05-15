@@ -2,7 +2,7 @@ from autoblocks.testing.run import run_test_suite
 from my_project.run import run
 from autoblocks.testing.models import BaseTestEvaluator
 from dspy.primitives import Prediction
-import dataclasses
+from dataclasses import dataclass
 from autoblocks.testing.models import BaseTestCase
 
 from autoblocks.testing.util import md5
@@ -12,7 +12,13 @@ from my_project.datasets import devset
 from my_project.datasets import metric
 
 
-@dataclasses.dataclass()
+@dataclass
+class Output:
+    answer: str
+    rationale: str
+
+
+@dataclass
 class TestCase(BaseTestCase):
     question: str
     answer: str
@@ -22,12 +28,6 @@ class TestCase(BaseTestCase):
         This hash serves as a unique identifier for a test case throughout its lifetime.
         """
         return md5(f"{self.question}")
-
-
-@dataclasses.dataclass()
-class Output:
-    answer: str
-    rationale: str
 
 
 class Correctness(BaseTestEvaluator):
