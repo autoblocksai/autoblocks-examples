@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "autoblocks-dspy"
+version = "0.0.0"
+description = "Using the Autoblocks Testing and Config SDKs with DSPy."
+authors = [
+    "Autoblocks Engineering <engineering@autoblocks.ai>",
+]
+readme = "README.md"
+packages = [{include = "my_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+autoblocksai = "^0.0.60"
+openai = "^1.0.0"
+mypy = "^1.9.0"
+pydantic = "^2.7.1"
+dspy-ai = "^2.4.9"
+
+[tool.poetry.scripts]
+start = "my_project.evaluate:run_test"
+
+[tool.mypy]
+strict = true
+files = [
+    "my_project",
+]
