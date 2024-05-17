@@ -13,8 +13,8 @@ python = "^3.11"
 autoblocksai = "^0.0.60"
 openai = "^1.0.0"
 mypy = "^1.9.0"
-dspy = "^0.1.5"
-pydantic = "2.5.0"
+pydantic = "^2.7.1"
+dspy-ai = "^2.4.9"
 
 [tool.poetry.scripts]
 start = "my_project.evaluate:run_test"

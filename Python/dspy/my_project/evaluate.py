@@ -32,7 +32,7 @@ class TestCase(BaseTestCase):
         """
         This hash serves as a unique identifier for a test case throughout its lifetime.
         """
-        return md5(f"{self.question}")
+        return md5(self.question)
 
 
 class Correctness(BaseTestEvaluator):

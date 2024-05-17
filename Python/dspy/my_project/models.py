@@ -12,9 +12,6 @@ tracer = AutoblocksTracer(
 class LoggingOpenAI(dspy.OpenAI):
     """Extend the OpenAI class from DSPy to log requests and responses to Autoblocks."""
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
     def basic_request(self, prompt: str, **kwargs):
         trace_id = str(uuid.uuid4())
         tracer.send_event(
