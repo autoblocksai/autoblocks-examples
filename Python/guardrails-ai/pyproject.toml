@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "autoblocks-guardrails-ai"
+description = "Using Guardrails AI to build reliable and safe AI applications."
+version = "0.0.0"
+authors = ["Autoblocks Engineering <engineering@autoblocks.ai>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+openai = "^1.30.1"
+autoblocksai = "^0.0.60"
+python-dotenv = "^1.0.0"
+guardrails-ai = "^0.4.4"
+
+[tool.poetry.scripts]
+start = "src.main:main"
+test = "src.test_suite:run_test"

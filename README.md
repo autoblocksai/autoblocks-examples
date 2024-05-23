@@ -57,6 +57,7 @@
 | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
 | [dspy](/Python/dspy)                                               | Using the Autoblocks Testing and Config SDKs with DSPy.                                                              |
 | [flask](/Python/flask)                                             | Autoblocks tracing within a [Flask](https://flask.palletsprojects.com/) application                                  |
+| [guardrails-ai](/Python/guardrails-ai)                             | Using Guardrails AI to build reliable and safe AI applications.                                                      |
 | [openai-assistants-api](/Python/openai-assistants-api)             | Example using Autoblocks with the OpenAI Assistants API                                                              |
 | [openai-tracing](/Python/openai-tracing)                           | Tracing of openai calls                                                                                              |
 | [prompt-sdk](/Python/prompt-sdk)                                   | Safely integrate prompts managed in the Autoblocks platform into your application                                    |
