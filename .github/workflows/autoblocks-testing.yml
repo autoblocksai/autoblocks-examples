@@ -15,6 +15,7 @@ jobs:
           - Python/testing-sdk
           - Python/testing-sdk-with-prompt-sdk
           - Python/dspy
+          - Python/pinecone
 
     defaults:
       run:
