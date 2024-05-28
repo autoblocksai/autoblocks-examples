@@ -64,6 +64,14 @@ This CLI will autogenerate classes for you to use to interact with the prompts y
 poetry run prompts generate
 ```
 
+### Create config
+
+On the [configs page](https://app.autoblocks.ai/configs) create a new config with the following parameters:
+
+- **Name**: `health-copilot-retrieval`
+- **top_k**: `number` (default: `1`)
+- **similarity_metric**: `enum` (default: `euclidean`) (options: `euclidean`, `cosine`, `dot_product`)
+
 ### Set your Pinecone API key
 
 ```bash
