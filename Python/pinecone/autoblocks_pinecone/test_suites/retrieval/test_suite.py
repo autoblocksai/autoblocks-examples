@@ -7,7 +7,7 @@ from autoblocks_pinecone.test_suites.retrieval.test_cases import gen_test_cases
 
 
 def test_fn(test_case: TestCase) -> list[MedicalRecord]:
-    return search_medical_records(treatment_plan=test_case.treatment_plan)
+    return search_medical_records(plan=test_case.treatment_plan)
 
 
 def run_test():
