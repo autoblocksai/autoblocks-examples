@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "autoblocks-pinecone"
 version = "0.1.0"
-description = "How to use test and evaluate an application that uses Pinecone."
+description = "How to integrate Autoblocks with an application that uses Pinecone."
 authors = ["Adam Nolte <ajnolte12@gmail.com>"]
 readme = "README.md"
 
