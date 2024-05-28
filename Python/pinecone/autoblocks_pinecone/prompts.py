@@ -14,13 +14,11 @@ from autoblocks.prompts.renderer import TemplateRenderer
 
 class EvalComprehensivenessParams(FrozenModel):
     model: str = pydantic.Field(..., alias="model")
-    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
 
 
 class EvalComprehensivenessTemplateRenderer(TemplateRenderer):
     __name_mapper__ = {
         "existing_treatment_plan": "existing_treatment_plan",
-        "generated_plan": "generated_plan",
         "medical_records": "medical_records",
     }
 
@@ -35,13 +33,11 @@ class EvalComprehensivenessTemplateRenderer(TemplateRenderer):
         self,
         *,
         existing_treatment_plan: str,
-        generated_plan: str,
         medical_records: str,
     ) -> str:
         return self._render(
             "user",
             existing_treatment_plan=existing_treatment_plan,
-            generated_plan=generated_plan,
             medical_records=medical_records,
         )
 
@@ -66,7 +62,6 @@ class EvalComprehensivenessPromptManager(
 
 class EvalCorrectnessParams(FrozenModel):
     model: str = pydantic.Field(..., alias="model")
-    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
 
 
 class EvalCorrectnessTemplateRenderer(TemplateRenderer):
@@ -115,7 +110,6 @@ class EvalCorrectnessPromptManager(
 
 class EvalFaithfulnessParams(FrozenModel):
     model: str = pydantic.Field(..., alias="model")
-    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
 
 
 class EvalFaithfulnessTemplateRenderer(TemplateRenderer):
@@ -167,7 +161,6 @@ class EvalFaithfulnessPromptManager(
 
 class EvalRelevancyParams(FrozenModel):
     model: str = pydantic.Field(..., alias="model")
-    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
 
 
 class EvalRelevancyTemplateRenderer(TemplateRenderer):
@@ -216,7 +209,6 @@ class EvalRelevancyPromptManager(
 
 class GenPersonalizedTreatmentPlanParams(FrozenModel):
     model: str = pydantic.Field(..., alias="model")
-    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
 
 
 class GenPersonalizedTreatmentPlanTemplateRenderer(TemplateRenderer):
@@ -265,7 +257,6 @@ class GenPersonalizedTreatmentPlanPromptManager(
 
 class GenTreatmentPlanParams(FrozenModel):
     model: str = pydantic.Field(..., alias="model")
-    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
 
 
 class GenTreatmentPlanTemplateRenderer(TemplateRenderer):

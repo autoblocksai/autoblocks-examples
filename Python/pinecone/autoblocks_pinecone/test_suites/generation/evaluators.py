@@ -40,7 +40,6 @@ class Faithfulness(BaseTestEvaluator):
                         ),
                     },
                 ],
-                temperature=prompt.params.temperature,
                 n=1,
                 response_format=ResponseFormat(type="json_object"),
             )
@@ -80,7 +79,6 @@ class Comprehensiveness(BaseTestEvaluator):
                         ),
                     },
                 ],
-                temperature=prompt.params.temperature,
                 n=1,
                 response_format=ResponseFormat(type="json_object"),
             )

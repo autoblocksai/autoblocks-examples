@@ -31,7 +31,6 @@ async def generate_plan_from_transcript(transcript: str) -> str:
                 },
                 {"role": "user", "content": prompt.render.user(transcript=transcript)},
             ],
-            temperature=prompt.params.temperature,
             n=1,
         )
         span_id = str(uuid.uuid4())
@@ -89,7 +88,6 @@ async def generate_personalized_treatment_plan(
                     ),
                 },
             ],
-            temperature=prompt.params.temperature,
             n=1,
         )
         span_id = str(uuid.uuid4())
