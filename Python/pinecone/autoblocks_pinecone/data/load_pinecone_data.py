@@ -16,7 +16,9 @@ class MedicalRecord:
 
 
 def read_files_from_directory():
-    directory = "autoblocks_pinecone/data/medical_records_raw_files/patient-1"
+    directory = (
+        os.getcwd() + "/autoblocks_pinecone/data/medical_records_raw_files/patient-1"
+    )
     file_data_list = []
     # Iterate over all files in the given directory
     for filename in os.listdir(directory):
