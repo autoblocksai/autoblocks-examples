@@ -60,6 +60,7 @@
 | [guardrails-ai](/Python/guardrails-ai)                             | Using Guardrails AI to build reliable and safe AI applications.                                                      |
 | [openai-assistants-api](/Python/openai-assistants-api)             | Example using Autoblocks with the OpenAI Assistants API                                                              |
 | [openai-tracing](/Python/openai-tracing)                           | Tracing of openai calls                                                                                              |
+| [pinecone](/Python/pinecone)                                       | How to integrate Autoblocks with an application that uses Pinecone.                                                  |
 | [prompt-sdk](/Python/prompt-sdk)                                   | Safely integrate prompts managed in the Autoblocks platform into your application                                    |
 | [testing-sdk](/Python/testing-sdk)                                 | Using the Autoblocks Testing SDK for experimentation, regression testing, and rapid prototyping.                     |
 | [testing-sdk-with-prompt-sdk](/Python/testing-sdk-with-prompt-sdk) | Using the Autoblocks Testing SDK with the Prompt SDK for experimentation, regression testing, and rapid prototyping. |

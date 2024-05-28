@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "autoblocks-pinecone"
+version = "0.1.0"
+description = "How to integrate Autoblocks with an application that uses Pinecone."
+authors = ["Adam Nolte <ajnolte12@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+autoblocksai = "^0.0.60"
+openai = "^1.30.3"
+pinecone-client = "^4.1.0"
+pydantic = "^2.7.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+create-prompts = "tools.create_prompts:main"
+start = "autoblocks_pinecone.test_suites.run:run_tests"
+load-data = "autoblocks_pinecone.data.load_pinecone_data:load_data"
+
+[tool.ruff.lint.isort]
+force-single-line = true
+known-first-party = ["autoblocks_pinecone"]

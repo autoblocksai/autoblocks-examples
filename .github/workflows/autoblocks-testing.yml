@@ -15,6 +15,7 @@ jobs:
           - Python/testing-sdk
           - Python/testing-sdk-with-prompt-sdk
           - Python/dspy
+          - Python/pinecone
 
     defaults:
       run:
@@ -50,6 +51,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AUTOBLOCKS_API_KEY: ${{ secrets.AUTOBLOCKS_API_KEY }}
           AUTOBLOCKS_INGESTION_KEY: ${{ secrets.AUTOBLOCKS_INGESTION_KEY }}
+          PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
 
   js-autoblocks-tests:
     runs-on: ubuntu-latest
