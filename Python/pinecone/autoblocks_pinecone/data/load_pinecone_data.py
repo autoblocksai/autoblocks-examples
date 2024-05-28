@@ -8,6 +8,11 @@ client = OpenAI()
 
 pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
 
+namespace = "patient-1"
+cosine_index_name = "autoblocks-pinecone-example-index-cosine"
+euclidean_index_name = "autoblocks-pinecone-example-index-euclidean"
+dotproduct_index_name = "autoblocks-pinecone-example-index-dotproduct"
+
 
 @dataclass
 class MedicalRecord:
@@ -26,7 +31,7 @@ def read_files_from_directory():
         if os.path.isfile(filepath):  # Check if it is a file
             with open(filepath, "r", encoding="utf-8") as file:
                 contents = file.read()
-                # Create an instance of FileData and append it to the list
+                # Create an instance of MedicalRecord and append it to the list
                 file_data = MedicalRecord(
                     id=filename.replace(".txt", ""), text=contents
                 )
@@ -36,31 +41,29 @@ def read_files_from_directory():
 
 sample_medical_records = read_files_from_directory()
 
-namespace = "patient-1"
-
 
 def load_data():
     pc.create_index(
-        name="autoblocks-pinecone-example-index-cosine",
-        dimension=1536,  # Replace with your model dimensions
-        metric="cosine",  # Replace with your model metric
+        name=cosine_index_name,
+        dimension=1536,
+        metric="cosine",
         spec=ServerlessSpec(cloud="aws", region="us-east-1"),
     )
     pc.create_index(
-        name="autoblocks-pinecone-example-index-euclidean",
-        dimension=1536,  # Replace with your model dimensions
-        metric="euclidean",  # Replace with your model metric
+        name=cosine_index_name,
+        dimension=1536,
+        metric="euclidean",
         spec=ServerlessSpec(cloud="aws", region="us-east-1"),
     )
     pc.create_index(
-        name="autoblocks-pinecone-example-index-dotproduct",
-        dimension=1536,  # Replace with your model dimensions
-        metric="dotproduct",  # Replace with your model metric
+        name=dotproduct_index_name,
+        dimension=1536,
+        metric="dotproduct",
         spec=ServerlessSpec(cloud="aws", region="us-east-1"),
     )
-    cosine_index = pc.Index("autoblocks-pinecone-example-index-cosine")
-    euclidean_index = pc.Index("autoblocks-pinecone-example-index-euclidean")
-    dotproduct_index = pc.Index("autoblocks-pinecone-example-index-dotproduct")
+    cosine_index = pc.Index(cosine_index_name)
+    euclidean_index = pc.Index(euclidean_index_name)
+    dotproduct_index = pc.Index(dotproduct_index_name)
     embeddings = []
     for record in sample_medical_records:
         res = client.embeddings.create(
