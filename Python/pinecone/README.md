@@ -95,5 +95,5 @@ export OPENAI_API_KEY=...
 ### Run the tests
 
 ```bash
-npx autoblocks testing exec -m "my first run" -- poetry run test
+npx autoblocks testing exec -m "my first run" -- poetry run start
 ```
