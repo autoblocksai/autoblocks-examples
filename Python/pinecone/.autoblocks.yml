@@ -1,0 +1,22 @@
+autogenerate:
+  prompts:
+    outfile: autoblocks_pinecone/prompts.py
+
+    prompts:
+      - id: gen-personalized-treatment-plan
+        major_version: 1
+
+      - id: gen-treatment-plan
+        major_version: 1
+
+      - id: eval-comprehensiveness
+        major_version: 1
+
+      - id: eval-faithfulness
+        major_version: 1
+
+      - id: eval-correctness
+        major_version: 1
+
+      - id: eval-relevancy
+        major_version: 1
