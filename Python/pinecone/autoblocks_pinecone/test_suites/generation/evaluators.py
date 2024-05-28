@@ -18,9 +18,7 @@ class Faithfulness(BaseTestEvaluator):
     max_concurrency = 5
     threshold = Threshold(gte=0.5)
 
-    async def evaluate_test_case(
-        self, test_case: TestCase, output: list[MedicalRecord]
-    ) -> Evaluation:
+    async def evaluate_test_case(self, test_case: TestCase, output: str) -> Evaluation:
         with prompt_managers.eval_faithfulness.exec() as prompt:
             params = dict(
                 model=prompt.params.model,
@@ -57,9 +55,7 @@ class Comprehensiveness(BaseTestEvaluator):
     max_concurrency = 5
     threshold = Threshold(gte=0.5)
 
-    async def evaluate_test_case(
-        self, test_case: TestCase, output: list[MedicalRecord]
-    ) -> Evaluation:
+    async def evaluate_test_case(self, test_case: TestCase, output: str) -> Evaluation:
         with prompt_managers.eval_comprehensiveness.exec() as prompt:
             params = dict(
                 model=prompt.params.model,

@@ -28,7 +28,9 @@ Output in the following json format:
                 id="user",
                 template="""Existing Treatment Plan: {{ existing_treatment_plan }}
 
-Medical Records: {{ medical_records }}""",
+Medical Records: {{ medical_records }}
+
+Generated Plan: {{ generated_plan }}""",
             ),
         ],
     ),
