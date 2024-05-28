@@ -138,7 +138,7 @@ Medical Records: {{ medical_records }}""",
     dict(
         id="gen-treatment-plan",
         params=dict(
-            model="gpt-4p",
+            model="gpt-4o",
         ),
         templates=[
             dict(
