@@ -131,11 +131,11 @@ def retrieve_relevant_medical_records(treatment_plan: str) -> list[MedicalRecord
 
 
 async def run(transcript: str) -> str:
-    unpersonalized_plan = generate_plan_from_transcript(transcript=transcript)
+    unpersonalized_plan = await generate_plan_from_transcript(transcript=transcript)
     medical_records = retrieve_relevant_medical_records(
         treatment_plan=unpersonalized_plan
     )
-    personalized_treatment_plan = generate_personalized_treatment_plan(
+    personalized_treatment_plan = await generate_personalized_treatment_plan(
         existing_treatment_plan=unpersonalized_plan, medical_records=medical_records
     )
     return personalized_treatment_plan

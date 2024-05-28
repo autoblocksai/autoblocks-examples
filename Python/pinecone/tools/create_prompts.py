@@ -168,7 +168,7 @@ async def create_prompts():
             promises.append(response)
 
         for response in await asyncio.gather(*promises):
-            print(f"Prompt created: {response.json()['id']}")
+            print(f"Prompt created: {response.json()}")
 
 
 def main():
