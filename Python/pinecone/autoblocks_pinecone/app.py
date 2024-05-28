@@ -8,10 +8,10 @@ from openai import AsyncOpenAI
 
 from autoblocks.tracer import AutoblocksTracer
 from autoblocks_pinecone import prompt_managers
-from autoblocks_pinecone.data.load_pinecone_data import MedicalRecord
-from autoblocks_pinecone.data.medical_records import search_medical_records
+from autoblocks_pinecone.data.model import MedicalRecord
+from autoblocks_pinecone.data.search import search_medical_records
 
-client = AsyncOpenAI()
+openai_client = AsyncOpenAI()
 
 tracer = AutoblocksTracer(
     os.environ["AUTOBLOCKS_INGESTION_KEY"],
@@ -37,7 +37,7 @@ async def generate_plan_from_transcript(transcript: str) -> str:
         tracer.send_event("ai.request", span_id=span_id, properties=params)
         try:
             start_time = time.time()
-            completion = await client.chat.completions.create(**params)
+            completion = await openai_client.chat.completions.create(**params)
             tracer.send_event(
                 "ai.response",
                 span_id=span_id,
@@ -94,7 +94,7 @@ async def generate_personalized_treatment_plan(
         tracer.send_event("ai.request", span_id=span_id, properties=params)
         try:
             start_time = time.time()
-            completion = await client.chat.completions.create(**params)
+            completion = await openai_client.chat.completions.create(**params)
             tracer.send_event(
                 "ai.response",
                 span_id=span_id,
@@ -124,15 +124,9 @@ async def generate_personalized_treatment_plan(
     return completion.choices[0].message.content
 
 
-def retrieve_relevant_medical_records(treatment_plan: str) -> list[MedicalRecord]:
-    return search_medical_records(plan=treatment_plan)
-
-
 async def run(transcript: str) -> str:
     unpersonalized_plan = await generate_plan_from_transcript(transcript=transcript)
-    medical_records = retrieve_relevant_medical_records(
-        treatment_plan=unpersonalized_plan
-    )
+    medical_records = search_medical_records(plan=unpersonalized_plan)
     personalized_treatment_plan = await generate_personalized_treatment_plan(
         existing_treatment_plan=unpersonalized_plan, medical_records=medical_records
     )

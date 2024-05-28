@@ -7,10 +7,9 @@ from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import Evaluation
 from autoblocks.testing.models import Threshold
 from autoblocks_pinecone import prompt_managers
-from autoblocks_pinecone.data.medical_records import MedicalRecord
 from autoblocks_pinecone.test_suites.generation.test_cases import TestCase
 
-client = AsyncOpenAI()
+openai_client = AsyncOpenAI()
 
 
 class Faithfulness(BaseTestEvaluator):
@@ -41,7 +40,7 @@ class Faithfulness(BaseTestEvaluator):
                 n=1,
                 response_format=ResponseFormat(type="json_object"),
             )
-            response = await client.chat.completions.create(**params)
+            response = await openai_client.chat.completions.create(**params)
             parsed_response = json.loads(response.choices[0].message.content.strip())
             score = parsed_response["score"]
             reason = parsed_response["reason"]
@@ -78,7 +77,7 @@ class Comprehensiveness(BaseTestEvaluator):
                 n=1,
                 response_format=ResponseFormat(type="json_object"),
             )
-            response = await client.chat.completions.create(**params)
+            response = await openai_client.chat.completions.create(**params)
             parsed_response = json.loads(response.choices[0].message.content.strip())
             score = parsed_response["score"]
             reason = parsed_response["reason"]

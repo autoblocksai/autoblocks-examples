@@ -1,23 +1,16 @@
 import os
-from dataclasses import dataclass
 
+from autoblocks_pinecone.data.model import MedicalRecord
+from autoblocks_pinecone.data.constants import namespace
+from autoblocks_pinecone.data.constants import cosine_index_name
+from autoblocks_pinecone.data.constants import euclidean_index_name
+from autoblocks_pinecone.data.constants import dotproduct_index_name
 from openai import OpenAI
 from pinecone import Pinecone, ServerlessSpec
 
-client = OpenAI()
+openai_client = OpenAI()
 
 pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
-
-namespace = "patient-1"
-cosine_index_name = "autoblocks-pinecone-example-index-cosine"
-euclidean_index_name = "autoblocks-pinecone-example-index-euclidean"
-dotproduct_index_name = "autoblocks-pinecone-example-index-dotproduct"
-
-
-@dataclass
-class MedicalRecord:
-    id: str
-    text: str
 
 
 def read_files_from_directory():
@@ -66,7 +59,7 @@ def load_data():
     dotproduct_index = pc.Index(dotproduct_index_name)
     embeddings = []
     for record in sample_medical_records:
-        res = client.embeddings.create(
+        res = openai_client.embeddings.create(
             input=record.text, model="text-embedding-3-small"
         )
         embeddings.append({"id": record.id, "vectors": res.data[0].embedding})

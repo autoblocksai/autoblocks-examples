@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from autoblocks.testing.models import BaseTestCase
 from autoblocks.testing.util import md5
-from autoblocks_pinecone.data.medical_records import MedicalRecord
+from autoblocks_pinecone.data.model import MedicalRecord
 
 
 @dataclass

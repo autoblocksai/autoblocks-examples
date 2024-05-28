@@ -9,7 +9,7 @@ from autoblocks.testing.models import Threshold
 from autoblocks_pinecone import prompt_managers
 from autoblocks_pinecone.test_suites.e2e.test_cases import TestCase
 
-client = AsyncOpenAI()
+openai_client = AsyncOpenAI()
 
 
 class Correctness(BaseTestEvaluator):
@@ -37,7 +37,7 @@ class Correctness(BaseTestEvaluator):
                 n=1,
                 response_format=ResponseFormat(type="json_object"),
             )
-            response = await client.chat.completions.create(**params)
+            response = await openai_client.chat.completions.create(**params)
             parsed_response = json.loads(response.choices[0].message.content.strip())
             score = parsed_response["score"]
             reason = parsed_response["reason"]
