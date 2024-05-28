@@ -2,7 +2,7 @@ import os
 from dataclasses import dataclass
 
 from openai import OpenAI
-from pinecone import Pinecone
+from pinecone import Pinecone, ServerlessSpec
 
 client = OpenAI()
 
@@ -34,26 +34,28 @@ def read_files_from_directory():
 
 sample_medical_records = read_files_from_directory()
 
+namespace = "patient-1"
+
 
 def load_data():
-    # pc.create_index(
-    #     name="autoblocks-pinecone-example-index-cosine",
-    #     dimension=1536,  # Replace with your model dimensions
-    #     metric="cosine",  # Replace with your model metric
-    #     spec=ServerlessSpec(cloud="aws", region="us-east-1"),
-    # )
-    # pc.create_index(
-    #     name="autoblocks-pinecone-example-index-euclidean",
-    #     dimension=1536,  # Replace with your model dimensions
-    #     metric="euclidean",  # Replace with your model metric
-    #     spec=ServerlessSpec(cloud="aws", region="us-east-1"),
-    # )
-    # pc.create_index(
-    #     name="autoblocks-pinecone-example-index-dotproduct",
-    #     dimension=1536,  # Replace with your model dimensions
-    #     metric="dotproduct",  # Replace with your model metric
-    #     spec=ServerlessSpec(cloud="aws", region="us-east-1"),
-    # )
+    pc.create_index(
+        name="autoblocks-pinecone-example-index-cosine",
+        dimension=1536,  # Replace with your model dimensions
+        metric="cosine",  # Replace with your model metric
+        spec=ServerlessSpec(cloud="aws", region="us-east-1"),
+    )
+    pc.create_index(
+        name="autoblocks-pinecone-example-index-euclidean",
+        dimension=1536,  # Replace with your model dimensions
+        metric="euclidean",  # Replace with your model metric
+        spec=ServerlessSpec(cloud="aws", region="us-east-1"),
+    )
+    pc.create_index(
+        name="autoblocks-pinecone-example-index-dotproduct",
+        dimension=1536,  # Replace with your model dimensions
+        metric="dotproduct",  # Replace with your model metric
+        spec=ServerlessSpec(cloud="aws", region="us-east-1"),
+    )
     cosine_index = pc.Index("autoblocks-pinecone-example-index-cosine")
     euclidean_index = pc.Index("autoblocks-pinecone-example-index-euclidean")
     dotproduct_index = pc.Index("autoblocks-pinecone-example-index-dotproduct")
@@ -64,17 +66,15 @@ def load_data():
         )
         embeddings.append({"id": record.id, "vectors": res.data[0].embedding})
 
-    for i in range(1, 21):
-        namespace = f"patient-{i}"
-        cosine_index.upsert(
-            vectors=[{"id": emb["id"], "values": emb["vectors"]} for emb in embeddings],
-            namespace=namespace,
-        )
-        euclidean_index.upsert(
-            vectors=[{"id": emb["id"], "values": emb["vectors"]} for emb in embeddings],
-            namespace=namespace,
-        )
-        dotproduct_index.upsert(
-            vectors=[{"id": emb["id"], "values": emb["vectors"]} for emb in embeddings],
-            namespace=namespace,
-        )
+    cosine_index.upsert(
+        vectors=[{"id": emb["id"], "values": emb["vectors"]} for emb in embeddings],
+        namespace=namespace,
+    )
+    euclidean_index.upsert(
+        vectors=[{"id": emb["id"], "values": emb["vectors"]} for emb in embeddings],
+        namespace=namespace,
+    )
+    dotproduct_index.upsert(
+        vectors=[{"id": emb["id"], "values": emb["vectors"]} for emb in embeddings],
+        namespace=namespace,
+    )

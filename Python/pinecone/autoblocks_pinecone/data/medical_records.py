@@ -5,6 +5,7 @@ from pinecone import Pinecone
 
 from autoblocks_pinecone.data.load_pinecone_data import MedicalRecord
 from autoblocks_pinecone.data.load_pinecone_data import sample_medical_records
+from autoblocks_pinecone.data.load_pinecone_data import namespace
 from autoblocks_pinecone.config import config
 
 client = OpenAI()
@@ -22,7 +23,7 @@ def search_for_query(query: str) -> list[MedicalRecord]:
         index = pc.Index("autoblocks-pinecone-example-index-euclidean")
 
     query_res = index.query(
-        vector=res.data[0].embedding, top_k=config.value.top_k, namespace="patient-1"
+        vector=res.data[0].embedding, top_k=config.value.top_k, namespace=namespace
     )
     # Collect IDs from the matches
     ids = [match["id"] for match in query_res["matches"]]

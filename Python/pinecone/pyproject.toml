@@ -18,6 +18,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
+create-prompts = "tools.create_prompts:main"
 test = "autoblocks_pinecone.test_suites.run:run_tests"
 load-data = "autoblocks_pinecone.data.load_pinecone_data:load_data"
 
