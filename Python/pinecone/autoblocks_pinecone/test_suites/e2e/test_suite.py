@@ -5,8 +5,8 @@ from autoblocks_pinecone.test_suites.e2e.test_cases import TestCase
 from autoblocks_pinecone.test_suites.e2e.test_cases import gen_test_cases
 
 
-def test_fn(test_case: TestCase) -> str:
-    return run(
+async def test_fn(test_case: TestCase) -> str:
+    return await run(
         transcript=test_case.transcript,
     )
 

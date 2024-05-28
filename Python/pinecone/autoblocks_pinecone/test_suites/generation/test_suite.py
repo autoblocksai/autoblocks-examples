@@ -6,8 +6,8 @@ from autoblocks_pinecone.test_suites.generation.test_cases import TestCase
 from autoblocks_pinecone.test_suites.generation.test_cases import gen_test_cases
 
 
-def test_fn(test_case: TestCase) -> str:
-    return generate_personalized_treatment_plan(
+async def test_fn(test_case: TestCase) -> str:
+    return await generate_personalized_treatment_plan(
         existing_treatment_plan=test_case.existing_treatment_plan,
         medical_records=test_case.medical_records,
     )
