@@ -87,7 +87,7 @@ You can also find all of your tests on the testing homepage in the [Autoblocks a
 
 ## GitHub Actions setup
 
-A starter workflow was added in [`.github/workflows/autoblocks-testing.yml`](./.github/workflows/autoblocks-testing.yml).
+A starter workflow was added in [`.github/workflows/autoblocks-testing.yml`](/.github/workflows/autoblocks-testing.yml).
 This workflow runs the tests on every push to the repository and also
 on a daily schedule.
 
