@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-autoblocksai = "^0.0.60"
+autoblocksai = "^0.0.66"
 openai = "^1.30.3"
 pinecone-client = "^4.1.0"
 pydantic = "^2.7.1"
