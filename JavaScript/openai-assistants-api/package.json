@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@autoblocks/client": "^0.0.47",
+    "@autoblocks/client": "^0.0.51",
     "@types/node": "^20.11.20",
     "dotenv-cli": "^7.3.0",
     "openai": "^4.28.0",
