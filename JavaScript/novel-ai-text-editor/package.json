@@ -15,7 +15,7 @@
   "dependencies": {
     "@autoblocks/client": "^0.0.51",
     "@paralleldrive/cuid2": "^2.2.2",
-    "@types/node": "20.14.8",
+    "@types/node": "20.14.9",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "ai": "^3.0.0",
@@ -25,7 +25,7 @@
     "next": "14.2.4",
     "novel": "^0.4.0",
     "openai": "^4.6.0",
-    "postcss": "8.4.38",
+    "postcss": "8.4.39",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "tailwindcss": "3.4.4",
