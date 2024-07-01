@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@autoblocks/client": "^0.0.51",
+    "@autoblocks/client": "^0.0.56",
     "dotenv-cli": "^7.3.0"
   }
 }
