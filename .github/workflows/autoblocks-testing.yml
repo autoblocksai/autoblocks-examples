@@ -4,6 +4,12 @@ on:
   push: # Run on every push.
   schedule: # Run every day at ~7:17am PST.
     - cron: '17 15 * * *'
+  workflow_dispatch: # Allow runs triggered from Autoblocks UI.
+    inputs:
+      autoblocks-overrides:
+        type: string
+        description: Overrides for Autoblocks-managed entities
+        required: false
 
 jobs:
   py-autoblocks-tests:
