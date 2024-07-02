@@ -54,13 +54,13 @@ tests-no-zope = ["attrs[tests-mypy]", "cloudpickle", "hypothesis", "pympler", "p
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.73"
+version = "0.0.75"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = "<4.0.0,>=3.9.0"
 files = [
-    {file = "autoblocksai-0.0.73-py3-none-any.whl", hash = "sha256:0f65b399fdcbe913a43d176ca9b57dc9ce6a7460460a9b82dcbbc2b58eb0bc2c"},
-    {file = "autoblocksai-0.0.73.tar.gz", hash = "sha256:5c492f0b8c1778c39bf28a5728e30fca254b253afa539854c1d9e0da2f026c0d"},
+    {file = "autoblocksai-0.0.75-py3-none-any.whl", hash = "sha256:d589c5b8864ecf4a7e1358a73a1f47a953804c26464ddd93838bb85cdecd26b8"},
+    {file = "autoblocksai-0.0.75.tar.gz", hash = "sha256:b386d7323497b6ff768cd8ca22e27777858a37326d2997a939305d4e132d4ccb"},
 ]
 
 [package.dependencies]
@@ -1797,4 +1797,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "7f998aae700985fc788cfdb91e5fd7a528f262c6f36ca47baa9ef2285586c1ce"
+content-hash = "2a04d30fa32f39be4d9e2e710792f449c395aef5cc5cdf6c8afcc849d1c418ba"
