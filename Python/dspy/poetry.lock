@@ -180,13 +180,13 @@ tests-no-zope = ["attrs[tests-mypy]", "cloudpickle", "hypothesis", "pympler", "p
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.66"
+version = "0.0.73"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = "<4.0.0,>=3.9.0"
 files = [
-    {file = "autoblocksai-0.0.66-py3-none-any.whl", hash = "sha256:05ce5c17daa6a91033e5eb3109320ebfdd07c70c8311847dfc38e1d91e42e13f"},
-    {file = "autoblocksai-0.0.66.tar.gz", hash = "sha256:9bea90219b06800a866b9888c972c8a1325d8d7d2b0a91464bb2a2fb6b3dbbb4"},
+    {file = "autoblocksai-0.0.73-py3-none-any.whl", hash = "sha256:0f65b399fdcbe913a43d176ca9b57dc9ce6a7460460a9b82dcbbc2b58eb0bc2c"},
+    {file = "autoblocksai-0.0.73.tar.gz", hash = "sha256:5c492f0b8c1778c39bf28a5728e30fca254b253afa539854c1d9e0da2f026c0d"},
 ]
 
 [package.dependencies]
@@ -2176,4 +2176,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "c3db74c49ac9efb7f9d5d6e8608e544de62dc1aa530847e1076b23fe4e874d9b"
+content-hash = "44e74a1dc827532000911c486f76dafa2ea44d6778049ce53bb237bc0f243006"
