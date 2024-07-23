@@ -12,7 +12,7 @@ python = "^3.9"
 openai = "^1.30.1"
 autoblocksai = "^0.0.78"
 python-dotenv = "^1.0.0"
-guardrails-ai = "^0.4.4"
+guardrails-ai = "^0.5.0"
 
 [tool.poetry.scripts]
 start = "src.main:main"
