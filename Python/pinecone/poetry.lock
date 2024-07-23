@@ -35,13 +35,13 @@ trio = ["trio (>=0.23)"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.78"
+version = "0.0.83"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = "<4.0.0,>=3.9.0"
 files = [
-    {file = "autoblocksai-0.0.78-py3-none-any.whl", hash = "sha256:a8a16c917d38c8af8edc01861dd03bcdf5372b4f39a156825b757f272a75b921"},
-    {file = "autoblocksai-0.0.78.tar.gz", hash = "sha256:32b5ea3d964cd97c07580a50efd2b84f91b37ae597d3e5680820b3d94bb006b2"},
+    {file = "autoblocksai-0.0.83-py3-none-any.whl", hash = "sha256:239f8008d9398e92cc6b13ea7e017cc5e3ce3d9cb795963fd69d09498172b2c8"},
+    {file = "autoblocksai-0.0.83.tar.gz", hash = "sha256:7fcd049e83f50722ae7f62d18718b7d39403467e11700a7c4d27ca62da2baf90"},
 ]
 
 [package.dependencies]
@@ -507,17 +507,6 @@ telegram = ["requests"]
 
 [[package]]
 name = "typing-extensions"
-version = "4.12.0"
-description = "Backported and Experimental Type Hints for Python 3.8+"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "typing_extensions-4.12.0-py3-none-any.whl", hash = "sha256:b349c66bea9016ac22978d800cfff206d5f9816951f12a7d0ec5578b0a819594"},
-    {file = "typing_extensions-4.12.0.tar.gz", hash = "sha256:8cbcdc8606ebcb0d95453ad7dc5065e6237b6aa230a31e81d0f440c30fed5fd8"},
-]
-
-[[package]]
-name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
 optional = false
@@ -547,4 +536,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "b94e63056157d31b716cc99e6ce9716c2d9ef2cf47ce2aed918113c00602a4a7"
+content-hash = "97b6e92589107f6a8339439e043f529e9eb95b71b0be0b5e2a94d49ad21b9ccb"
