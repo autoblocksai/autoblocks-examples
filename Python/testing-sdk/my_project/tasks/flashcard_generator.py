@@ -3,7 +3,6 @@ import json
 from typing import List
 
 from openai import OpenAI
-from openai.types.chat.completion_create_params import ResponseFormat
 
 openai_client = OpenAI()
 
@@ -98,7 +97,7 @@ def gen_flashcards_from_notes(notes: str) -> List[Flashcard]:
     response = openai_client.chat.completions.create(
         model="gpt-3.5-turbo-1106",
         temperature=0.0,
-        response_format=ResponseFormat(type="json_object"),
+        response_format=dict(type="json_object"),
         messages=[
             dict(
                 role="system",

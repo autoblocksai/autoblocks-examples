@@ -4,7 +4,6 @@ from autoblocks.testing.models import Threshold
 from autoblocks_pinecone.data.search import MedicalRecord
 from autoblocks_pinecone.test_suites.retrieval.test_cases import TestCase
 from openai import AsyncOpenAI
-from openai.types.chat.completion_create_params import ResponseFormat
 from autoblocks_pinecone import prompt_managers
 import json
 
@@ -38,7 +37,7 @@ class Relevancy(BaseTestEvaluator):
                         },
                     ],
                     n=1,
-                    response_format=ResponseFormat(type="json_object"),
+                    response_format=dict(type="json_object"),
                 )
                 response = await openai_client.chat.completions.create(**params)
                 parsed_response = json.loads(
