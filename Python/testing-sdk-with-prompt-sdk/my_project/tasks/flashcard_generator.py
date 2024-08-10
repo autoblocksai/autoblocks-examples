@@ -3,7 +3,6 @@ import json
 from typing import List
 
 from openai import OpenAI
-from openai.types.chat.completion_create_params import ResponseFormat
 
 from my_project import prompt_managers
 
@@ -28,7 +27,7 @@ def gen_flashcards_from_notes(notes: str) -> List[Flashcard]:
             top_p=prompt.params.top_p,
             presence_penalty=prompt.params.presence_penalty,
             frequency_penalty=prompt.params.frequency_penalty,
-            response_format=ResponseFormat(type="json_object"),
+            response_format=dict(type="json_object"),
             messages=[
                 dict(
                     role="system",

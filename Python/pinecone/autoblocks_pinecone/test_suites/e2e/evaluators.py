@@ -1,7 +1,6 @@
 import json
 
 from openai import AsyncOpenAI
-from openai.types.chat.completion_create_params import ResponseFormat
 
 from autoblocks.testing.models import BaseTestEvaluator
 from autoblocks.testing.models import Evaluation
@@ -35,7 +34,7 @@ class Correctness(BaseTestEvaluator):
                     },
                 ],
                 n=1,
-                response_format=ResponseFormat(type="json_object"),
+                response_format=dict(type="json_object"),
             )
             response = await openai_client.chat.completions.create(**params)
             parsed_response = json.loads(response.choices[0].message.content.strip())
