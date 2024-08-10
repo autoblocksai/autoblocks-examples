@@ -5,11 +5,9 @@
   "packageRules": [
     {
       "groupName": "all non-major dependencies",
-      "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
       "extends": ["schedule:weekly"],
-      "excludePackagePrefixes": ["@autoblocks/"],
-      "excludePackageNames": ["autoblocksai"]
+      "matchPackageNames": ["*", "!@autoblocks/{/,}**", "!autoblocksai"]
     }
   ]
 }
