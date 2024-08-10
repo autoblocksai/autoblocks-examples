@@ -2,6 +2,8 @@
 # This file was generated automatically by Autoblocks. Do not edit directly.
 ############################################################################
 
+from typing import Any  # noqa: F401
+from typing import Dict  # noqa: F401
 from typing import Union  # noqa: F401
 
 import pydantic  # noqa: F401
@@ -10,15 +12,16 @@ from autoblocks.prompts.context import PromptExecutionContext
 from autoblocks.prompts.manager import AutoblocksPromptManager
 from autoblocks.prompts.models import FrozenModel
 from autoblocks.prompts.renderer import TemplateRenderer
+from autoblocks.prompts.renderer import ToolRenderer
 
 
 class TextSummarizationParams(FrozenModel):
-    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
-    model: str = pydantic.Field(..., alias="model")
-    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
     temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
-    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
     frequency_penalty: Union[float, int] = pydantic.Field(..., alias="frequencyPenalty")
+    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
+    model: str = pydantic.Field(..., alias="model")
 
 
 class TextSummarizationTemplateRenderer(TemplateRenderer):
@@ -73,14 +76,20 @@ class TextSummarizationTemplateRenderer(TemplateRenderer):
         )
 
 
+class TextSummarizationToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class TextSummarizationExecutionContext(
     PromptExecutionContext[
         TextSummarizationParams,
         TextSummarizationTemplateRenderer,
+        TextSummarizationToolRenderer,
     ],
 ):
     __params_class__ = TextSummarizationParams
     __template_renderer_class__ = TextSummarizationTemplateRenderer
+    __tool_renderer_class__ = TextSummarizationToolRenderer
 
 
 class TextSummarizationPromptManager(

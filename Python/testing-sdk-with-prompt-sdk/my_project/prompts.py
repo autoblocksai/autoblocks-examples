@@ -2,6 +2,8 @@
 # This file was generated automatically by Autoblocks. Do not edit directly.
 ############################################################################
 
+from typing import Any  # noqa: F401
+from typing import Dict  # noqa: F401
 from typing import Union  # noqa: F401
 
 import pydantic  # noqa: F401
@@ -10,15 +12,16 @@ from autoblocks.prompts.context import PromptExecutionContext
 from autoblocks.prompts.manager import AutoblocksPromptManager
 from autoblocks.prompts.models import FrozenModel
 from autoblocks.prompts.renderer import TemplateRenderer
+from autoblocks.prompts.renderer import ToolRenderer
 
 
 class FlashcardGeneratorParams(FrozenModel):
-    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
-    model: str = pydantic.Field(..., alias="model")
-    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
     temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
-    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
     frequency_penalty: Union[float, int] = pydantic.Field(..., alias="frequencyPenalty")
+    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
+    model: str = pydantic.Field(..., alias="model")
 
 
 class FlashcardGeneratorTemplateRenderer(TemplateRenderer):
@@ -44,14 +47,20 @@ class FlashcardGeneratorTemplateRenderer(TemplateRenderer):
         )
 
 
+class FlashcardGeneratorToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class FlashcardGeneratorExecutionContext(
     PromptExecutionContext[
         FlashcardGeneratorParams,
         FlashcardGeneratorTemplateRenderer,
+        FlashcardGeneratorToolRenderer,
     ],
 ):
     __params_class__ = FlashcardGeneratorParams
     __template_renderer_class__ = FlashcardGeneratorTemplateRenderer
+    __tool_renderer_class__ = FlashcardGeneratorToolRenderer
 
 
 class FlashcardGeneratorPromptManager(
@@ -63,12 +72,12 @@ class FlashcardGeneratorPromptManager(
 
 
 class IsProfessionalToneEvalParams(FrozenModel):
-    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
-    model: str = pydantic.Field(..., alias="model")
-    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
     temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
-    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
     frequency_penalty: Union[float, int] = pydantic.Field(..., alias="frequencyPenalty")
+    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
+    model: str = pydantic.Field(..., alias="model")
 
 
 class IsProfessionalToneEvalTemplateRenderer(TemplateRenderer):
@@ -94,14 +103,20 @@ class IsProfessionalToneEvalTemplateRenderer(TemplateRenderer):
         )
 
 
+class IsProfessionalToneEvalToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class IsProfessionalToneEvalExecutionContext(
     PromptExecutionContext[
         IsProfessionalToneEvalParams,
         IsProfessionalToneEvalTemplateRenderer,
+        IsProfessionalToneEvalToolRenderer,
     ],
 ):
     __params_class__ = IsProfessionalToneEvalParams
     __template_renderer_class__ = IsProfessionalToneEvalTemplateRenderer
+    __tool_renderer_class__ = IsProfessionalToneEvalToolRenderer
 
 
 class IsProfessionalToneEvalPromptManager(
@@ -113,12 +128,12 @@ class IsProfessionalToneEvalPromptManager(
 
 
 class IsSupportedByNotesEvalParams(FrozenModel):
-    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
-    model: str = pydantic.Field(..., alias="model")
-    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
     temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
-    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
     frequency_penalty: Union[float, int] = pydantic.Field(..., alias="frequencyPenalty")
+    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
+    model: str = pydantic.Field(..., alias="model")
 
 
 class IsSupportedByNotesEvalTemplateRenderer(TemplateRenderer):
@@ -150,14 +165,20 @@ class IsSupportedByNotesEvalTemplateRenderer(TemplateRenderer):
         )
 
 
+class IsSupportedByNotesEvalToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class IsSupportedByNotesEvalExecutionContext(
     PromptExecutionContext[
         IsSupportedByNotesEvalParams,
         IsSupportedByNotesEvalTemplateRenderer,
+        IsSupportedByNotesEvalToolRenderer,
     ],
 ):
     __params_class__ = IsSupportedByNotesEvalParams
     __template_renderer_class__ = IsSupportedByNotesEvalTemplateRenderer
+    __tool_renderer_class__ = IsSupportedByNotesEvalToolRenderer
 
 
 class IsSupportedByNotesEvalPromptManager(
@@ -169,12 +190,12 @@ class IsSupportedByNotesEvalPromptManager(
 
 
 class StudyGuideOutlineParams(FrozenModel):
-    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
-    model: str = pydantic.Field(..., alias="model")
-    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
     temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
-    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    top_p: Union[float, int] = pydantic.Field(..., alias="topP")
     frequency_penalty: Union[float, int] = pydantic.Field(..., alias="frequencyPenalty")
+    presence_penalty: Union[float, int] = pydantic.Field(..., alias="presencePenalty")
+    max_tokens: Union[float, int] = pydantic.Field(..., alias="maxTokens")
+    model: str = pydantic.Field(..., alias="model")
 
 
 class StudyGuideOutlineTemplateRenderer(TemplateRenderer):
@@ -200,14 +221,20 @@ class StudyGuideOutlineTemplateRenderer(TemplateRenderer):
         )
 
 
+class StudyGuideOutlineToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class StudyGuideOutlineExecutionContext(
     PromptExecutionContext[
         StudyGuideOutlineParams,
         StudyGuideOutlineTemplateRenderer,
+        StudyGuideOutlineToolRenderer,
     ],
 ):
     __params_class__ = StudyGuideOutlineParams
     __template_renderer_class__ = StudyGuideOutlineTemplateRenderer
+    __tool_renderer_class__ = StudyGuideOutlineToolRenderer
 
 
 class StudyGuideOutlinePromptManager(

@@ -2,6 +2,8 @@
 # This file was generated automatically by Autoblocks. Do not edit directly.
 ############################################################################
 
+from typing import Any  # noqa: F401
+from typing import Dict  # noqa: F401
 from typing import Union  # noqa: F401
 
 import pydantic  # noqa: F401
@@ -10,6 +12,7 @@ from autoblocks.prompts.context import PromptExecutionContext
 from autoblocks.prompts.manager import AutoblocksPromptManager
 from autoblocks.prompts.models import FrozenModel
 from autoblocks.prompts.renderer import TemplateRenderer
+from autoblocks.prompts.renderer import ToolRenderer
 
 
 class EvalComprehensivenessParams(FrozenModel):
@@ -45,14 +48,20 @@ class EvalComprehensivenessTemplateRenderer(TemplateRenderer):
         )
 
 
+class EvalComprehensivenessToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class EvalComprehensivenessExecutionContext(
     PromptExecutionContext[
         EvalComprehensivenessParams,
         EvalComprehensivenessTemplateRenderer,
+        EvalComprehensivenessToolRenderer,
     ],
 ):
     __params_class__ = EvalComprehensivenessParams
     __template_renderer_class__ = EvalComprehensivenessTemplateRenderer
+    __tool_renderer_class__ = EvalComprehensivenessToolRenderer
 
 
 class EvalComprehensivenessPromptManager(
@@ -93,14 +102,20 @@ class EvalCorrectnessTemplateRenderer(TemplateRenderer):
         )
 
 
+class EvalCorrectnessToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class EvalCorrectnessExecutionContext(
     PromptExecutionContext[
         EvalCorrectnessParams,
         EvalCorrectnessTemplateRenderer,
+        EvalCorrectnessToolRenderer,
     ],
 ):
     __params_class__ = EvalCorrectnessParams
     __template_renderer_class__ = EvalCorrectnessTemplateRenderer
+    __tool_renderer_class__ = EvalCorrectnessToolRenderer
 
 
 class EvalCorrectnessPromptManager(
@@ -144,14 +159,20 @@ class EvalFaithfulnessTemplateRenderer(TemplateRenderer):
         )
 
 
+class EvalFaithfulnessToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class EvalFaithfulnessExecutionContext(
     PromptExecutionContext[
         EvalFaithfulnessParams,
         EvalFaithfulnessTemplateRenderer,
+        EvalFaithfulnessToolRenderer,
     ],
 ):
     __params_class__ = EvalFaithfulnessParams
     __template_renderer_class__ = EvalFaithfulnessTemplateRenderer
+    __tool_renderer_class__ = EvalFaithfulnessToolRenderer
 
 
 class EvalFaithfulnessPromptManager(
@@ -192,14 +213,20 @@ class EvalRelevancyTemplateRenderer(TemplateRenderer):
         )
 
 
+class EvalRelevancyToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class EvalRelevancyExecutionContext(
     PromptExecutionContext[
         EvalRelevancyParams,
         EvalRelevancyTemplateRenderer,
+        EvalRelevancyToolRenderer,
     ],
 ):
     __params_class__ = EvalRelevancyParams
     __template_renderer_class__ = EvalRelevancyTemplateRenderer
+    __tool_renderer_class__ = EvalRelevancyToolRenderer
 
 
 class EvalRelevancyPromptManager(
@@ -240,14 +267,20 @@ class GenPersonalizedTreatmentPlanTemplateRenderer(TemplateRenderer):
         )
 
 
+class GenPersonalizedTreatmentPlanToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class GenPersonalizedTreatmentPlanExecutionContext(
     PromptExecutionContext[
         GenPersonalizedTreatmentPlanParams,
         GenPersonalizedTreatmentPlanTemplateRenderer,
+        GenPersonalizedTreatmentPlanToolRenderer,
     ],
 ):
     __params_class__ = GenPersonalizedTreatmentPlanParams
     __template_renderer_class__ = GenPersonalizedTreatmentPlanTemplateRenderer
+    __tool_renderer_class__ = GenPersonalizedTreatmentPlanToolRenderer
 
 
 class GenPersonalizedTreatmentPlanPromptManager(
@@ -285,14 +318,20 @@ class GenTreatmentPlanTemplateRenderer(TemplateRenderer):
         )
 
 
+class GenTreatmentPlanToolRenderer(ToolRenderer):
+    __name_mapper__ = {}
+
+
 class GenTreatmentPlanExecutionContext(
     PromptExecutionContext[
         GenTreatmentPlanParams,
         GenTreatmentPlanTemplateRenderer,
+        GenTreatmentPlanToolRenderer,
     ],
 ):
     __params_class__ = GenTreatmentPlanParams
     __template_renderer_class__ = GenTreatmentPlanTemplateRenderer
+    __tool_renderer_class__ = GenTreatmentPlanToolRenderer
 
 
 class GenTreatmentPlanPromptManager(
