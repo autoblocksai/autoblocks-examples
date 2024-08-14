@@ -198,13 +198,13 @@ tests-mypy = ["mypy (>=1.11.1)", "pytest-mypy-plugins"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.86"
+version = "0.0.88"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = "<4.0.0,>=3.9.0"
 files = [
-    {file = "autoblocksai-0.0.86-py3-none-any.whl", hash = "sha256:a19d5109d62eb8fd2baf1bcfc59c5d087d40d6fbcd581f937e254a02d9b2a7aa"},
-    {file = "autoblocksai-0.0.86.tar.gz", hash = "sha256:48bc013053972e396753c82c98470f0212f539de9db3e270499c598fcb6cc859"},
+    {file = "autoblocksai-0.0.88-py3-none-any.whl", hash = "sha256:b43eac14dc1bf0bf4ac2fc710ed141d5a8f30234a941a936d8c8794c74396790"},
+    {file = "autoblocksai-0.0.88.tar.gz", hash = "sha256:70f7c4e104aaef2e1b0a0ac1d027f735d2e9c120de6752ab057b5813f6dc65f0"},
 ]
 
 [package.dependencies]
@@ -2259,4 +2259,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "3489ab7289c31eb279ffb14377791c4697f694a7214ff6bfdeb62083dbb565c8"
+content-hash = "2175488250b6f3a739d1e2b71aa51351c8f6181dc020f0306806b72885788c49"
