@@ -11,6 +11,12 @@ on:
         description: Overrides for Autoblocks-managed entities
         required: false
 
+permissions:
+  # Allow commenting on pull requests
+  issues: write
+  # Allow getting associated pull requests when event is type `push`
+  pull-requests: read
+
 jobs:
   py-autoblocks-tests:
     runs-on: ubuntu-latest
