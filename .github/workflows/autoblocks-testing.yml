@@ -16,6 +16,7 @@ permissions:
   issues: write
   # Allow getting associated pull requests when event is type `push`
   pull-requests: read
+  contents: read
 
 jobs:
   py-autoblocks-tests:
