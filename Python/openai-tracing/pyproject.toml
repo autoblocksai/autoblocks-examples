@@ -10,7 +10,7 @@ packages = [{include = "src"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 openai = "^1.0.0"
-autoblocksai = "^0.0.88"
+autoblocksai = "^0.0.89"
 python-dotenv = "^1.0.0"
 
 [tool.poetry.scripts]
