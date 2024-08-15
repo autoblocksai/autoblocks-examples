@@ -184,13 +184,13 @@ tests-mypy = ["mypy (>=1.11.1)", "pytest-mypy-plugins"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.89"
+version = "0.0.90"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = "<4.0.0,>=3.9.0"
 files = [
-    {file = "autoblocksai-0.0.89-py3-none-any.whl", hash = "sha256:d68a7eb51adb184bbcd717531235714de5cf0a60344f6d8630e913888cfdcc07"},
-    {file = "autoblocksai-0.0.89.tar.gz", hash = "sha256:ab3acb8fb5bc19847e6068cce4d8f3de24abe60729061afa1e9cdffe0304a8d5"},
+    {file = "autoblocksai-0.0.90-py3-none-any.whl", hash = "sha256:637743f8c17af386eaf42f88b8b5d1f9fbe46f2099137f22a97d0bbaff404128"},
+    {file = "autoblocksai-0.0.90.tar.gz", hash = "sha256:9422554c6d04f3537fc22df4ed1a60a707312459c9aa7f9616d6da42abfb77f5"},
 ]
 
 [package.dependencies]
@@ -199,6 +199,7 @@ httpx = ">=0.24.0"
 orjson = ">=3.0.0"
 pyyaml = ">=6.0.0"
 ragas = "0.1.10"
+tenacity = ">=8.0.0"
 
 [[package]]
 name = "certifi"
@@ -2356,4 +2357,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "b845bb2c675fccab51c80809da67ea9e0ac21e69214b2aeb7e4ccb38188465c2"
+content-hash = "02fdaf47361a4be0a0ea51eb7b298e01bcd5c9d7dbe664662dfbf7c2e5fd1208"
