@@ -449,6 +449,20 @@ wrapt = ">=1.10,<2"
 dev = ["PyTest", "PyTest-Cov", "bump2version (<1)", "sphinx (<2)", "tox"]
 
 [[package]]
+name = "diff-match-patch"
+version = "20230430"
+description = "Diff Match and Patch"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "diff-match-patch-20230430.tar.gz", hash = "sha256:953019cdb9c9d2c9e47b5b12bcff3cf4746fc4598eb406076fa1fc27e6a1f15c"},
+    {file = "diff_match_patch-20230430-py3-none-any.whl", hash = "sha256:dce43505fb7b1b317de7195579388df0746d90db07015ed47a85e5e44930ef93"},
+]
+
+[package.extras]
+dev = ["attribution (==1.6.2)", "black (==23.3.0)", "flit (==3.8.0)", "mypy (==1.2.0)", "ufmt (==2.1.0)", "usort (==1.0.6)"]
+
+[[package]]
 name = "dill"
 version = "0.3.7"
 description = "serialize all of Python"
@@ -818,17 +832,18 @@ protobuf = ["grpcio-tools (>=1.64.0)"]
 
 [[package]]
 name = "guardrails-ai"
-version = "0.5.3"
+version = "0.5.4"
 description = "Adding guardrails to large language models."
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "guardrails_ai-0.5.3-py3-none-any.whl", hash = "sha256:6ac05cad153c2c464bac94f462bd860e918d9eaafc55100e999fa651fbe8c6b9"},
-    {file = "guardrails_ai-0.5.3.tar.gz", hash = "sha256:2124360aa9cc1cac87b33c5937da7a206ef5de7af24e8e04e2e4f110d1b3f2fe"},
+    {file = "guardrails_ai-0.5.4-py3-none-any.whl", hash = "sha256:70a5c9514a251259e4478a345e7ab4392a64ff597386a07b44fbc06fd6ece3f5"},
+    {file = "guardrails_ai-0.5.4.tar.gz", hash = "sha256:96cd26b5e4028e459ecd858e61934e01784d5c47e6d0a20e54c2fb08e425fb41"},
 ]
 
 [package.dependencies]
 coloredlogs = ">=15.0.1,<16.0.0"
+diff-match-patch = ">=20230430,<20230431"
 faker = ">=25.2.0,<26.0.0"
 griffe = ">=0.36.9,<0.37.0"
 guardrails-api-client = ">=0.3.8"
@@ -837,7 +852,7 @@ jsonschema = {version = ">=4.22.0,<5.0.0", extras = ["format"]}
 langchain-core = ">=0.1,<0.3"
 litellm = ">=1.37.14,<2.0.0"
 lxml = ">=4.9.3,<5.0.0"
-nltk = ">=3.8.1,<4.0.0"
+nltk = ">3.0,<=3.8.1"
 openai = ">=1.30.1,<2.0.0"
 opentelemetry-exporter-otlp-proto-grpc = ">=1.24.0,<2.0.0"
 opentelemetry-exporter-otlp-proto-http = ">=1.24.0,<2.0.0"
@@ -1821,13 +1836,13 @@ files = [
 
 [[package]]
 name = "openai"
-version = "1.40.3"
+version = "1.41.0"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.7.1"
 files = [
-    {file = "openai-1.40.3-py3-none-any.whl", hash = "sha256:09396cb6e2e15c921a5d872bf92841a60a9425da10dcd962b45fe7c4f48f8395"},
-    {file = "openai-1.40.3.tar.gz", hash = "sha256:f2ffe907618240938c59d7ccc67dd01dc8c50be203c0077240db6758d2f02480"},
+    {file = "openai-1.41.0-py3-none-any.whl", hash = "sha256:3b6cca4571667f3e0800442ef8f2bfa6a6f3301c51776bc7626159a4d81c242c"},
+    {file = "openai-1.41.0.tar.gz", hash = "sha256:26b81f39b49dce92ff5d30c373625ddb212c2f1050e1574e456d18423730cdd0"},
 ]
 
 [package.dependencies]
