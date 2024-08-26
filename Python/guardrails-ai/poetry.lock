@@ -675,13 +675,13 @@ protobuf = ["grpcio-tools (>=1.64.0)"]
 
 [[package]]
 name = "guardrails-ai"
-version = "0.5.4"
+version = "0.5.5"
 description = "Adding guardrails to large language models."
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "guardrails_ai-0.5.4-py3-none-any.whl", hash = "sha256:70a5c9514a251259e4478a345e7ab4392a64ff597386a07b44fbc06fd6ece3f5"},
-    {file = "guardrails_ai-0.5.4.tar.gz", hash = "sha256:96cd26b5e4028e459ecd858e61934e01784d5c47e6d0a20e54c2fb08e425fb41"},
+    {file = "guardrails_ai-0.5.5-py3-none-any.whl", hash = "sha256:f539a28783f2be83270f989605d7ec40626bc0036aebd72d2e65da9e8d90ed38"},
+    {file = "guardrails_ai-0.5.5.tar.gz", hash = "sha256:f14fe35adfccdeb61e2fc290da0a90744a6609bcaa5a69dc7595dfe72f1915bb"},
 ]
 
 [package.dependencies]
@@ -1466,13 +1466,13 @@ twitter = ["twython"]
 
 [[package]]
 name = "openai"
-version = "1.41.0"
+version = "1.42.0"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.7.1"
 files = [
-    {file = "openai-1.41.0-py3-none-any.whl", hash = "sha256:3b6cca4571667f3e0800442ef8f2bfa6a6f3301c51776bc7626159a4d81c242c"},
-    {file = "openai-1.41.0.tar.gz", hash = "sha256:26b81f39b49dce92ff5d30c373625ddb212c2f1050e1574e456d18423730cdd0"},
+    {file = "openai-1.42.0-py3-none-any.whl", hash = "sha256:dc91e0307033a4f94931e5d03cc3b29b9717014ad5e73f9f2051b6cb5eda4d80"},
+    {file = "openai-1.42.0.tar.gz", hash = "sha256:c9d31853b4e0bc2dc8bd08003b462a006035655a701471695d0bfdc08529cde3"},
 ]
 
 [package.dependencies]
