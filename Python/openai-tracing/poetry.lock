@@ -34,13 +34,13 @@ trio = ["trio (<0.22)"]
 
 [[package]]
 name = "autoblocksai"
-version = "0.0.91"
+version = "0.0.92"
 description = "Python client for Autoblocks"
 optional = false
 python-versions = "<4.0.0,>=3.9.0"
 files = [
-    {file = "autoblocksai-0.0.91-py3-none-any.whl", hash = "sha256:4a6fec3cb316cf08953df23f94d2218456deff9660088ce695324836bf41ea6a"},
-    {file = "autoblocksai-0.0.91.tar.gz", hash = "sha256:62db6d24af686ab0f55a768c58e2d71c001799e2a28c272b3b6b1218ef11d809"},
+    {file = "autoblocksai-0.0.92-py3-none-any.whl", hash = "sha256:90f12c36e64afc7ee496360c816cdd31e07254771743805a1321f59780d3292c"},
+    {file = "autoblocksai-0.0.92.tar.gz", hash = "sha256:0ad100acd509f3200d242efd188c4870a2150edc47f3b1a0f198b69e6cda04a8"},
 ]
 
 [package.dependencies]
@@ -601,4 +601,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "c969edd7d9fa0f98ec3ccd8769a32d5c9574315d68379af9b4b3d1ec134511df"
+content-hash = "d0bdeebb35be57278bbb6701de875e63202aa05715353457e3b6450c66cc1900"
