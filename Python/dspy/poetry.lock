@@ -439,14 +439,14 @@ files = [
 ]
 
 [[package]]
-name = "dspy-ai"
-version = "2.5.2"
+name = "dspy"
+version = "2.5.6"
 description = "DSPy"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "dspy-ai-2.5.2.tar.gz", hash = "sha256:75529b450b3888b1a8ea26eb86dd549916f4a38288fab8ab8065ee8603301c75"},
-    {file = "dspy_ai-2.5.2-py3-none-any.whl", hash = "sha256:aaf6bccab4f69b34ca557b42cb5e724fd88be28e5fe2e00142891bdc39e4218e"},
+    {file = "dspy-2.5.6-py3-none-any.whl", hash = "sha256:545fe64704b84be27e9b310583b0f2d2518e1fcb602e2c6baae799335d154d73"},
+    {file = "dspy-2.5.6.tar.gz", hash = "sha256:61053285f96486fee0afc74586905b76f4c7ff958f125e3945987911df62d816"},
 ]
 
 [package.dependencies]
@@ -483,6 +483,20 @@ pinecone = ["pinecone-client (>=2.2.4,<2.3.0)"]
 qdrant = ["fastembed", "qdrant-client"]
 snowflake = ["snowflake-snowpark-python"]
 weaviate = ["weaviate-client (>=4.6.5,<4.7.0)"]
+
+[[package]]
+name = "dspy-ai"
+version = "2.5.6"
+description = "DSPy"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "dspy-ai-2.5.6.tar.gz", hash = "sha256:cc193558750e2969b7e364446729fce8e2468cde407e89e07f2afcf29c7391eb"},
+    {file = "dspy_ai-2.5.6-py3-none-any.whl", hash = "sha256:9535631ab6d4146e349fcc6e17fc230e500d4d0917027eebe2b45619960d7e0d"},
+]
+
+[package.dependencies]
+dspy = "2.5.6"
 
 [[package]]
 name = "filelock"
@@ -1310,13 +1324,13 @@ files = [
 
 [[package]]
 name = "openai"
-version = "1.50.2"
+version = "1.51.2"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.7.1"
 files = [
-    {file = "openai-1.50.2-py3-none-any.whl", hash = "sha256:822dd2051baa3393d0d5406990611975dd6f533020dc9375a34d4fe67e8b75f7"},
-    {file = "openai-1.50.2.tar.gz", hash = "sha256:3987ae027152fc8bea745d60b02c8f4c4a76e1b5c70e73565fa556db6f78c9e6"},
+    {file = "openai-1.51.2-py3-none-any.whl", hash = "sha256:5c5954711cba931423e471c37ff22ae0fd3892be9b083eee36459865fbbb83fa"},
+    {file = "openai-1.51.2.tar.gz", hash = "sha256:c6a51fac62a1ca9df85a522e462918f6bb6bc51a8897032217e453a0730123a6"},
 ]
 
 [package.dependencies]
