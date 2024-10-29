@@ -675,13 +675,13 @@ protobuf = ["grpcio-tools (>=1.64.0)"]
 
 [[package]]
 name = "guardrails-ai"
-version = "0.5.11"
+version = "0.5.15"
 description = "Adding guardrails to large language models."
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "guardrails_ai-0.5.11-py3-none-any.whl", hash = "sha256:f1a03eb3a405507f7de58ccc084d962cb2f60dd80c1f4d7e8e30e1ff48dc0522"},
-    {file = "guardrails_ai-0.5.11.tar.gz", hash = "sha256:dc3c9ccc62f0d3772c44e02974ba54603dd9559821d3141ad05e70138669653f"},
+    {file = "guardrails_ai-0.5.15-py3-none-any.whl", hash = "sha256:cd87106ebe3baa71e2ac1a8a16499a574a309368fa680a02a41a6d3ae28efb87"},
+    {file = "guardrails_ai-0.5.15.tar.gz", hash = "sha256:c644ecc530c1731911d15aa0875cf453338b7c2cd8c1af19acd333a342bc73f7"},
 ]
 
 [package.dependencies]
@@ -689,11 +689,11 @@ coloredlogs = ">=15.0.1,<16.0.0"
 diff-match-patch = ">=20230430,<20230431"
 faker = ">=25.2.0,<26.0.0"
 griffe = ">=0.36.9,<0.37.0"
-guardrails-api-client = ">=0.3.8"
+guardrails-api-client = ">=0.3.13,<0.4.0"
 guardrails-hub-types = ">=0.0.4,<0.0.5"
 jsonref = ">=1.1.0,<2.0.0"
 jsonschema = {version = ">=4.22.0,<5.0.0", extras = ["format"]}
-langchain-core = ">=0.1,<0.3"
+langchain-core = ">=0.1,<0.4"
 litellm = ">=1.37.14,<2.0.0"
 lxml = ">=4.9.3,<5.0.0"
 nltk = ">3.0,<=3.8.1"
@@ -718,8 +718,8 @@ typing-extensions = ">=4.8.0,<5.0.0"
 
 [package.extras]
 anthropic = ["anthropic (>=0.7.2,<0.8.0)"]
-api = ["guardrails-api (>=0.0.1)"]
-databricks = ["mlflow (>=2.0.1)"]
+api = ["guardrails-api (>=0.0.3,<0.0.4)"]
+databricks = ["mlflow (>=2.0.1,<3.0.0)"]
 docs-build = ["docspec_python (==2.2.1)", "nbdoc (>=0.0.82,<0.0.83)", "pydoc-markdown (==4.8.2)"]
 huggingface = ["jsonformer (==0.12.0)", "torch (>=2.1.1,<3.0.0)", "transformers (>=4.38.0,<5.0.0)"]
 manifest = ["manifest-ml (>=0.1.8,<0.2.0)"]
@@ -729,14 +729,21 @@ vectordb = ["faiss-cpu (>=1.7.4,<2.0.0)", "numpy (>=1.25,<2.0)"]
 
 [[package]]
 name = "guardrails-api-client"
-version = "0.3.9"
+version = "0.3.13"
 description = "Guardrails API Client."
 optional = false
 python-versions = "<4,>=3.8"
 files = [
-    {file = "guardrails_api_client-0.3.9-py3-none-any.whl", hash = "sha256:f24110690669007ca276ddfea928770c9e1ba360e4a70b06cb6e63aceffd0d4f"},
-    {file = "guardrails_api_client-0.3.9.tar.gz", hash = "sha256:dac110182381cd779579c217028534db20168dd659f2484c5c2d21aa9560d2fc"},
+    {file = "guardrails_api_client-0.3.13-py3-none-any.whl", hash = "sha256:c9c5297355d022428a573e6e845d4876cdfbda81635d9c65fb107db1f3bb0ac2"},
+    {file = "guardrails_api_client-0.3.13.tar.gz", hash = "sha256:4f0f1a7e7ef100138fb99634d75e3330e9abba9d4e8363f27af8bc7e722e2d88"},
 ]
+
+[package.dependencies]
+pydantic = ">=2"
+python-dateutil = ">=2.5.3"
+setuptools = ">=21.0.0"
+typing-extensions = ">=4.7.1"
+urllib3 = ">=1.25.3,<2.1.0"
 
 [package.extras]
 dev = ["pyright", "pytest", "pytest-cov", "ruff"]
@@ -1484,13 +1491,13 @@ twitter = ["twython"]
 
 [[package]]
 name = "openai"
-version = "1.50.2"
+version = "1.52.2"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.7.1"
 files = [
-    {file = "openai-1.50.2-py3-none-any.whl", hash = "sha256:822dd2051baa3393d0d5406990611975dd6f533020dc9375a34d4fe67e8b75f7"},
-    {file = "openai-1.50.2.tar.gz", hash = "sha256:3987ae027152fc8bea745d60b02c8f4c4a76e1b5c70e73565fa556db6f78c9e6"},
+    {file = "openai-1.52.2-py3-none-any.whl", hash = "sha256:57e9e37bc407f39bb6ec3a27d7e8fb9728b2779936daa1fcf95df17d3edfaccc"},
+    {file = "openai-1.52.2.tar.gz", hash = "sha256:87b7d0f69d85f5641678d414b7ee3082363647a5c66a462ed7f3ccb59582da0d"},
 ]
 
 [package.dependencies]
@@ -2285,6 +2292,26 @@ files = [
 ]
 
 [[package]]
+name = "setuptools"
+version = "75.2.0"
+description = "Easily download, build, install, upgrade, and uninstall Python packages"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "setuptools-75.2.0-py3-none-any.whl", hash = "sha256:a7fcb66f68b4d9e8e66b42f9876150a3371558f98fa32222ffaa5bced76406f8"},
+    {file = "setuptools-75.2.0.tar.gz", hash = "sha256:753bb6ebf1f465a1912e19ed1d41f403a79173a9acf66a42e7e6aec45c3c16ec"},
+]
+
+[package.extras]
+check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1)", "ruff (>=0.5.2)"]
+core = ["importlib-metadata (>=6)", "importlib-resources (>=5.10.2)", "jaraco.collections", "jaraco.functools", "jaraco.text (>=3.7)", "more-itertools", "more-itertools (>=8.8)", "packaging", "packaging (>=24)", "platformdirs (>=2.6.2)", "tomli (>=2.0.1)", "wheel (>=0.43.0)"]
+cover = ["pytest-cov"]
+doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier", "towncrier (<24.7)"]
+enabler = ["pytest-enabler (>=2.2)"]
+test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "jaraco.test", "packaging (>=23.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-home (>=0.5)", "pytest-perf", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel (>=0.44.0)"]
+type = ["importlib-metadata (>=7.0.2)", "jaraco.develop (>=7.21)", "mypy (==1.11.*)", "pytest-mypy"]
+
+[[package]]
 name = "shellingham"
 version = "1.5.4"
 description = "Tool to Detect Surrounding Shell"
@@ -2583,18 +2610,18 @@ dev = ["flake8", "flake8-annotations", "flake8-bandit", "flake8-bugbear", "flake
 
 [[package]]
 name = "urllib3"
-version = "2.2.1"
+version = "2.0.7"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.7"
 files = [
-    {file = "urllib3-2.2.1-py3-none-any.whl", hash = "sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d"},
-    {file = "urllib3-2.2.1.tar.gz", hash = "sha256:d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"},
+    {file = "urllib3-2.0.7-py3-none-any.whl", hash = "sha256:fdb6d215c776278489906c2f8916e6e7d4f5a9b602ccbcfdf7f016fc8da0596e"},
+    {file = "urllib3-2.0.7.tar.gz", hash = "sha256:c97dfde1f7bd43a71c8d2a58e369e9b2bf692d1334ea9f9cae55add7d0dd0f84"},
 ]
 
 [package.extras]
 brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)"]
-h2 = ["h2 (>=4,<5)"]
+secure = ["certifi", "cryptography (>=1.9)", "idna (>=2.0.0)", "pyopenssl (>=17.1.0)", "urllib3-secure-extra"]
 socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
 
