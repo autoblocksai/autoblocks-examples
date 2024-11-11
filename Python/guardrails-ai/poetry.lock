@@ -675,13 +675,13 @@ protobuf = ["grpcio-tools (>=1.64.0)"]
 
 [[package]]
 name = "guardrails-ai"
-version = "0.5.15"
+version = "0.6.0"
 description = "Adding guardrails to large language models."
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "guardrails_ai-0.5.15-py3-none-any.whl", hash = "sha256:cd87106ebe3baa71e2ac1a8a16499a574a309368fa680a02a41a6d3ae28efb87"},
-    {file = "guardrails_ai-0.5.15.tar.gz", hash = "sha256:c644ecc530c1731911d15aa0875cf453338b7c2cd8c1af19acd333a342bc73f7"},
+    {file = "guardrails_ai-0.6.0-py3-none-any.whl", hash = "sha256:a11a0aad96ecbb412bce58533fcaaa03ca6d21872f5bad02babffe4959a13e17"},
+    {file = "guardrails_ai-0.6.0.tar.gz", hash = "sha256:6bd634b56ef34c6027ea066ea411f895261f14204e0592bdefb446875ce68eea"},
 ]
 
 [package.dependencies]
@@ -689,14 +689,13 @@ coloredlogs = ">=15.0.1,<16.0.0"
 diff-match-patch = ">=20230430,<20230431"
 faker = ">=25.2.0,<26.0.0"
 griffe = ">=0.36.9,<0.37.0"
-guardrails-api-client = ">=0.3.13,<0.4.0"
+guardrails-api-client = ">=0.4.0a1,<0.5.0"
 guardrails-hub-types = ">=0.0.4,<0.0.5"
 jsonref = ">=1.1.0,<2.0.0"
 jsonschema = {version = ">=4.22.0,<5.0.0", extras = ["format"]}
 langchain-core = ">=0.1,<0.4"
 litellm = ">=1.37.14,<2.0.0"
 lxml = ">=4.9.3,<5.0.0"
-nltk = ">3.0,<=3.8.1"
 openai = ">=1.30.1,<2.0.0"
 opentelemetry-exporter-otlp-proto-grpc = ">=1.24.0,<2.0.0"
 opentelemetry-exporter-otlp-proto-http = ">=1.24.0,<2.0.0"
@@ -706,7 +705,6 @@ pydantic = ">=2.0.0,<3.0"
 pydash = ">=7.0.6,<8.0.0"
 pyjwt = ">=2.8.0,<3.0.0"
 python-dateutil = ">=2.8.2,<3.0.0"
-regex = ">=2023.10.3,<2024.0.0"
 requests = ">=2.31.0,<3.0.0"
 rich = ">=13.6.0,<14.0.0"
 rstr = ">=3.2.2,<4.0.0"
@@ -718,7 +716,7 @@ typing-extensions = ">=4.8.0,<5.0.0"
 
 [package.extras]
 anthropic = ["anthropic (>=0.7.2,<0.8.0)"]
-api = ["guardrails-api (>=0.0.3,<0.0.4)"]
+api = ["guardrails-api (>=0.1.0a1,<0.2.0)"]
 databricks = ["mlflow (>=2.0.1,<3.0.0)"]
 docs-build = ["docspec_python (==2.2.1)", "nbdoc (>=0.0.82,<0.0.83)", "pydoc-markdown (==4.8.2)"]
 huggingface = ["jsonformer (==0.12.0)", "torch (>=2.1.1,<3.0.0)", "transformers (>=4.38.0,<5.0.0)"]
@@ -729,13 +727,13 @@ vectordb = ["faiss-cpu (>=1.7.4,<2.0.0)", "numpy (>=1.25,<2.0)"]
 
 [[package]]
 name = "guardrails-api-client"
-version = "0.3.13"
+version = "0.4.0a1"
 description = "Guardrails API Client."
 optional = false
 python-versions = "<4,>=3.8"
 files = [
-    {file = "guardrails_api_client-0.3.13-py3-none-any.whl", hash = "sha256:c9c5297355d022428a573e6e845d4876cdfbda81635d9c65fb107db1f3bb0ac2"},
-    {file = "guardrails_api_client-0.3.13.tar.gz", hash = "sha256:4f0f1a7e7ef100138fb99634d75e3330e9abba9d4e8363f27af8bc7e722e2d88"},
+    {file = "guardrails_api_client-0.4.0a1-py3-none-any.whl", hash = "sha256:163352bc09b295966d206bc5e912edb29fc3cae8f7749a6ceea1a80aae816029"},
+    {file = "guardrails_api_client-0.4.0a1.tar.gz", hash = "sha256:102e70cd53704298cd3d71c58bdac71bc6bfa2c341bc3b336a4ec434c540e9b4"},
 ]
 
 [package.dependencies]
@@ -995,17 +993,6 @@ files = [
     {file = "jiter-0.5.0-cp39-none-win32.whl", hash = "sha256:368084d8d5c4fc40ff7c3cc513c4f73e02c85f6009217922d0823a48ee7adf61"},
     {file = "jiter-0.5.0-cp39-none-win_amd64.whl", hash = "sha256:ce03f7b4129eb72f1687fa11300fbf677b02990618428934662406d2a76742a1"},
     {file = "jiter-0.5.0.tar.gz", hash = "sha256:1d916ba875bcab5c5f7d927df998c4cb694d27dceddf3392e58beaf10563368a"},
-]
-
-[[package]]
-name = "joblib"
-version = "1.4.2"
-description = "Lightweight pipelining with Python functions"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "joblib-1.4.2-py3-none-any.whl", hash = "sha256:06d478d5674cbc267e7496a410ee875abd68e4340feff4490bcb7afb88060ae6"},
-    {file = "joblib-1.4.2.tar.gz", hash = "sha256:2382c5816b2636fbd20a09e0f4e9dad4736765fdfb7dca582943b9c1366b3f0e"},
 ]
 
 [[package]]
@@ -1465,39 +1452,14 @@ files = [
 ]
 
 [[package]]
-name = "nltk"
-version = "3.8.1"
-description = "Natural Language Toolkit"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "nltk-3.8.1-py3-none-any.whl", hash = "sha256:fd5c9109f976fa86bcadba8f91e47f5e9293bd034474752e92a520f81c93dda5"},
-    {file = "nltk-3.8.1.zip", hash = "sha256:1834da3d0682cba4f2cede2f9aad6b0fafb6461ba451db0efb6f9c39798d64d3"},
-]
-
-[package.dependencies]
-click = "*"
-joblib = "*"
-regex = ">=2021.8.3"
-tqdm = "*"
-
-[package.extras]
-all = ["matplotlib", "numpy", "pyparsing", "python-crfsuite", "requests", "scikit-learn", "scipy", "twython"]
-corenlp = ["requests"]
-machine-learning = ["numpy", "python-crfsuite", "scikit-learn", "scipy"]
-plot = ["matplotlib"]
-tgrep = ["pyparsing"]
-twitter = ["twython"]
-
-[[package]]
 name = "openai"
-version = "1.53.0"
+version = "1.54.3"
 description = "The official Python library for the openai API"
 optional = false
-python-versions = ">=3.7.1"
+python-versions = ">=3.8"
 files = [
-    {file = "openai-1.53.0-py3-none-any.whl", hash = "sha256:20f408c32fc5cb66e60c6882c994cdca580a5648e10045cd840734194f033418"},
-    {file = "openai-1.53.0.tar.gz", hash = "sha256:be2c4e77721b166cce8130e544178b7d579f751b4b074ffbaade3854b6f85ec5"},
+    {file = "openai-1.54.3-py3-none-any.whl", hash = "sha256:f18dbaf09c50d70c4185b892a2a553f80681d1d866323a2da7f7be2f688615d5"},
+    {file = "openai-1.54.3.tar.gz", hash = "sha256:7511b74eeb894ac0b0253dc71f087a15d2e4d71d22d0088767205143d880cca6"},
 ]
 
 [package.dependencies]
@@ -2840,4 +2802,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "5e61f366dee253ee4244b4cf4e50957e5c8385702fa5204f789629ecb272054a"
+content-hash = "78d413ecf2933a119b4ee6b3ad3b8fd248f9b3e688e3e79df9bf0d1c470c2033"

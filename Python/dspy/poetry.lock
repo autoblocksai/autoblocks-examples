@@ -488,17 +488,17 @@ weaviate = ["weaviate-client (>=4.6.5,<4.7.0)"]
 
 [[package]]
 name = "dspy-ai"
-version = "2.5.20"
+version = "2.5.29"
 description = "DSPy"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "dspy-ai-2.5.20.tar.gz", hash = "sha256:b75ceb8dd53c849e6ff4e10dc04bfac1c981efb2b2f594f219583b6223f0ea69"},
-    {file = "dspy_ai-2.5.20-py3-none-any.whl", hash = "sha256:5b1670674edcf4edd9043b9298b6f2671881c56c7a790492614cb7babeb4b096"},
+    {file = "dspy-ai-2.5.29.tar.gz", hash = "sha256:a4e8f58acd6ff95b5286908d0a7deb1b93eea40109ddf4bba932b048f1463783"},
+    {file = "dspy_ai-2.5.29-py3-none-any.whl", hash = "sha256:38aa5cf1edd79a3ad985f4d8556f1ec28fe64fad13a048bf0450bb5ad2599588"},
 ]
 
 [package.dependencies]
-dspy = "2.5.20"
+dspy = ">=2.5.3"
 
 [[package]]
 name = "filelock"
@@ -1343,13 +1343,13 @@ files = [
 
 [[package]]
 name = "openai"
-version = "1.53.0"
+version = "1.54.3"
 description = "The official Python library for the openai API"
 optional = false
-python-versions = ">=3.7.1"
+python-versions = ">=3.8"
 files = [
-    {file = "openai-1.53.0-py3-none-any.whl", hash = "sha256:20f408c32fc5cb66e60c6882c994cdca580a5648e10045cd840734194f033418"},
-    {file = "openai-1.53.0.tar.gz", hash = "sha256:be2c4e77721b166cce8130e544178b7d579f751b4b074ffbaade3854b6f85ec5"},
+    {file = "openai-1.54.3-py3-none-any.whl", hash = "sha256:f18dbaf09c50d70c4185b892a2a553f80681d1d866323a2da7f7be2f688615d5"},
+    {file = "openai-1.54.3.tar.gz", hash = "sha256:7511b74eeb894ac0b0253dc71f087a15d2e4d71d22d0088767205143d880cca6"},
 ]
 
 [package.dependencies]
