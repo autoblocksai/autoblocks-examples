@@ -23,7 +23,7 @@
     "eslint": "8.57.1",
     "eslint-config-next": "14.2.17",
     "next": "14.2.17",
-    "novel": "^0.5.0",
+    "novel": "^1.0.0",
     "openai": "^4.6.0",
     "postcss": "8.4.48",
     "react": "18.3.1",
