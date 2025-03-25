@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "Autoblocks Auto Tracer"
+version = "0.0.0"
+description = "Auto Tracer built on top of OpenTelemetry."
+authors = [
+    "Autoblocks Engineering <engineering@autoblocks.ai>",
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+autoblocksai = "^0.0.115"
+openai = "^1.65.4"
+opentelemetry-instrumentation-openai = "^0.38.12"
+
+[tool.poetry.scripts]
+start = "autotracer.run:run"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
