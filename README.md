@@ -55,6 +55,7 @@
 
 | Name                                                               | Description                                                                                                          |
 | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| [auto-tracer](/Python/auto-tracer)                                 | Auto Tracer built on top of OpenTelemetry.                                                                           |
 | [dspy](/Python/dspy)                                               | Using the Autoblocks Testing and Config SDKs with DSPy.                                                              |
 | [flask](/Python/flask)                                             | Autoblocks tracing within a [Flask](https://flask.palletsprojects.com/) application                                  |
 | [guardrails-ai](/Python/guardrails-ai)                             | Using Guardrails AI to build reliable and safe AI applications.                                                      |
