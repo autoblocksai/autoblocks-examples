@@ -11,7 +11,7 @@ readme = "README.md"
 python = "^3.11"
 autoblocksai = "^0.0.115"
 openai = "^1.65.4"
-opentelemetry-instrumentation-openai = "^0.38.12"
+opentelemetry-instrumentation-openai = "^0.39.0"
 
 [tool.poetry.scripts]
 start = "autotracer.run:run"
